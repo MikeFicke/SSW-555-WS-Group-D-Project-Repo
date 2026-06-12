@@ -8,6 +8,8 @@
 from prettytable import PrettyTable
 import datetime
 
+# citation: https://github.com/MikeFicke/SSW-555-WS-M2.B3
+
 # valid GEDCOM tags, organized by their expected level in the GEDCOM data
 valid_tags = {
     0: {"INDI", "FAM", "HEAD", "TRLR", "NOTE"},
@@ -132,7 +134,7 @@ def parse_gedcom(file_contents):
 
     return individuals, families
 
-
+# citation: https://www.google.com/search?q=how+to+use+pretty+print+to+make+tables+in+Python&rlz=1C1CHBF_enUS1023US1023&oq=how+to+use+prett&gs_lcrp=EgZjaHJvbWUqCAgAEEUYJxg7MggIABBFGCcYOzIGCAEQRRg5MgcIAhAAGIAEMgcIAxAAGIAEMgcIBBAAGIAEMgcIBRAAGIAEMgcIBhAAGIAEMgcIBxAAGIAEMgcICBAAGIAEMgcICRAAGIAE0gEIMzEzNmowajmoAgCwAgA&sourceid=chrome&ie=UTF-8
 def print_people(individuals):
     """Print the People table based on the formatting requirements."""
     print("People")
@@ -144,6 +146,7 @@ def print_people(individuals):
     print()
 
 
+# citation: https://www.google.com/search?q=how+to+use+pretty+print+to+make+tables+in+Python&rlz=1C1CHBF_enUS1023US1023&oq=how+to+use+prett&gs_lcrp=EgZjaHJvbWUqCAgAEEUYJxg7MggIABBFGCcYOzIGCAEQRRg5MgcIAhAAGIAEMgcIAxAAGIAEMgcIBBAAGIAEMgcIBRAAGIAEMgcIBhAAGIAEMgcIBxAAGIAEMgcICBAAGIAEMgcICRAAGIAE0gEIMzEzNmowajmoAgCwAgA&sourceid=chrome&ie=UTF-8
 def print_families(families, individuals):
     """Print the Families table based on the formatting requirements."""
     print("Families")
