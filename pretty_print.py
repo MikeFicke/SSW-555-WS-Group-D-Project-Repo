@@ -6,6 +6,7 @@
 # People and Families.
 
 from prettytable import PrettyTable
+import datetime
 
 # valid GEDCOM tags, organized by their expected level in the GEDCOM data
 valid_tags = {
@@ -20,12 +21,12 @@ def parse_gedcom(file_contents):
     """Parse GEDCOM file lines and return individuals and families dictionaries."""
     individuals = {}
     families = {}
-
     current_id = None
-    current_type = None  # Either INDI or FAM
-    current_event = None  # Either BIRT, DEAT, MARR, DIV
+    current_type = None
+    current_event = None
 
     for line in file_contents:
+        # Split into words, strip whitespace, skip blank lines
         stripped_line = line.strip()
         line_tokens = stripped_line.split()
 
@@ -33,6 +34,7 @@ def parse_gedcom(file_contents):
             continue
 
         try:
+            # Get the level number
             level = int(line_tokens[0])
         except ValueError:
             continue
@@ -42,7 +44,7 @@ def parse_gedcom(file_contents):
 
         data_length = len(line_tokens)
         if data_length >= 3 and line_tokens[2] in ("INDI", "FAM"):
-            # Special case: "0 @I1@ INDI" — ID comes before the tag
+            # Special case: "0 @I1@ INDI" — ID comes before the tag.  Location of tag changes based on the length.
             tag = line_tokens[2]
             args = line_tokens[1]
         elif data_length >= 2:
@@ -54,6 +56,7 @@ def parse_gedcom(file_contents):
 
         if level == 0:
             current_event = None
+            # Identify if we are parsing an individual or a family, otherwise we skip.
             if tag == "INDI":
                 current_id = args
                 current_type = "INDI"
@@ -66,7 +69,10 @@ def parse_gedcom(file_contents):
                 current_id = None
                 current_type = None
         elif level == 1 and current_id is not None:
+            # Identify the tag at level 1.
+            # Check if we are parsing an individual or a family.
             if current_type == "INDI":
+                # Check the tag for individuals
                 if tag == "NAME":
                     individuals[current_id]["Name"] = args
                 elif tag == "SEX":
@@ -80,6 +86,7 @@ def parse_gedcom(file_contents):
                 elif tag == "FAMS":
                     individuals[current_id]["Spouse"].append(args)
             elif current_type == "FAM":
+                # Check the tag for families
                 if tag == "MARR":
                     current_event = "MARR"
                 elif tag == "DIV":
@@ -91,12 +98,14 @@ def parse_gedcom(file_contents):
                 elif tag == "CHIL":
                     families[current_id]["Children"].append(args)
         elif level == 2 and tag == "DATE" and current_event is not None:
+            # Split the date into day, month, year and format it
             split_args = args.strip().split()
             day = split_args[0]
             month = split_args[1]
             year = split_args[2]
             date_string = day + " " + month + ", " + year
-
+            
+            # Check if the current event is a birth, death, marriage, or divorce and set the date
             if current_event == "BIRT":
                 individuals[current_id]["Birthday"] = date_string
             elif current_event == "DEAT":
@@ -109,14 +118,23 @@ def parse_gedcom(file_contents):
 
     # Compute Alive and Age for each individual
     for indi in individuals.values():
-        indi["Alive"] = indi["Death"] == "NA"
-        indi["Age"] = "NA"
+        indi["Alive"] = indi["Death"] == "NA"  # "Is this person's Death field still 'NA' ? "  Boolean check
+        # Calculate the age
+        if indi["Birthday"] == "NA":
+            indi["Age"] = "NA"
+        else:
+            birth_year = int(indi["Birthday"].split()[2])  # Get the year
+            if indi["Death"] != "NA":  # Person is dead
+                death_year = int(indi["Death"].split()[2])  # Get the year
+            else:
+                death_year = datetime.date.today().year  # Use the current year because the person is living
+            indi["Age"] = death_year - birth_year  # Calculate the age
 
     return individuals, families
 
 
 def print_people(individuals):
-    """Print the People table."""
+    """Print the People table based on the formatting requirements."""
     print("People")
     people_table = PrettyTable()
     people_table.field_names = ["ID", "Name", "Gender", "Birthday", "Age", "Alive", "Death", "Child", "Spouse"]
@@ -127,13 +145,19 @@ def print_people(individuals):
 
 
 def print_families(families, individuals):
-    """Print the Families table."""
+    """Print the Families table based on the formatting requirements."""
     print("Families")
     families_table = PrettyTable()
     families_table.field_names = ["ID", "Married", "Divorced", "Husband ID", "Husband Name", "Wife ID", "Wife Name", "Children"]
     for row in families.values():
-        husb_name = individuals[row["Husband ID"]]["Name"] if row["Husband ID"] in individuals else "NA"
-        wife_name = individuals[row["Wife ID"]]["Name"] if row["Wife ID"] in individuals else "NA"
+        if row["Husband ID"] in individuals:
+            husb_name = individuals[row["Husband ID"]]["Name"] 
+        else:
+            husb_name = "NA"
+        if row["Wife ID"] in individuals:
+            wife_name = individuals[row["Wife ID"]]["Name"] 
+        else:
+            wife_name = "NA"
         families_table.add_row([row["ID"], row["Married"], row["Divorced"], row["Husband ID"], husb_name, row["Wife ID"], wife_name, row["Children"]])
     print(families_table)
     print()
