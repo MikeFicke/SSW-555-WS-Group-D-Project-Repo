@@ -5,6 +5,8 @@
 # This module parses a GEDCOM file and pretty-prints two summary tables:
 # People and Families.
 
+# Acknowledgement: IDE auto-complete was used for certain code lines in this file
+
 from prettytable import PrettyTable
 import datetime
 
