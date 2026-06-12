@@ -23,6 +23,14 @@ if __name__ == "__main__":
         # Step 3: Run unit tests / validations
         # TODO
 
+        # Save terminal output as a text file
+        with open("output.txt", "w") as file:
+            output = sys.stdout  # Save terminal contents for restoration after
+            sys.stdout = file  # Terminal outputs routed to file instead
+            print_people(individuals)
+            print_families(families, individuals)
+            sys.stdout = output  # Restore to terminal
+
     except FileNotFoundError as fe:
         print(f"File not found: {fe}")
     except IndexError:
