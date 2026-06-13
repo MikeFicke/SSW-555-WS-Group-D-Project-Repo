@@ -103,11 +103,8 @@ def parse_gedcom(file_contents):
                     families[current_id]["Children"].append(args)
         elif level == 2 and tag == "DATE" and current_event is not None:
             # Split the date into day, month, year and format it
-            split_args = args.strip().split()
-            day = split_args[0]
-            month = split_args[1]
-            year = split_args[2]
-            date_string = day + " " + month + ", " + year
+            # citation: https://www.google.com/search?q=python+sprtime+and+strftime&rlz=1C1CHBF_enUS1023US1023&oq=python+sprtime+and+strftime&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIJCAEQABgNGIAEMgoIAhAAGAgYDRgeMgoIAxAAGAgYDRgeMgoIBBAAGAgYDRgeMgoIBRAAGAgYDRgeMgoIBhAAGAgYDRgeMg0IBxAAGIYDGIAEGIoFMgcICBAAGO8FMgcICRAAGO8F0gEIMzY5NGowajeoAgCwAgA&sourceid=chrome&ie=UTF-8
+            date_string = datetime.datetime.strftime(datetime.datetime.strptime(args, "%d %b %Y"), "%Y-%m-%d")
             
             # Check if the current event is a birth, death, marriage, or divorce and set the date
             if current_event == "BIRT":
@@ -127,9 +124,9 @@ def parse_gedcom(file_contents):
         if indi["Birthday"] == "NA":
             indi["Age"] = "NA"
         else:
-            birth_year = int(indi["Birthday"].split()[2])  # Get the year
+            birth_year = int(indi["Birthday"].split("-")[0])  #  YYYY-MM-DD
             if indi["Death"] != "NA":  # Person is dead
-                death_year = int(indi["Death"].split()[2])  # Get the year
+                death_year = int(indi["Death"].split("-")[0])  #  YYYY-MM-DD
             else:
                 death_year = datetime.date.today().year  # Use the current year because the person is living
             indi["Age"] = death_year - birth_year  # Calculate the age
@@ -139,11 +136,12 @@ def parse_gedcom(file_contents):
 # citation: https://www.google.com/search?q=how+to+use+pretty+print+to+make+tables+in+Python&rlz=1C1CHBF_enUS1023US1023&oq=how+to+use+prett&gs_lcrp=EgZjaHJvbWUqCAgAEEUYJxg7MggIABBFGCcYOzIGCAEQRRg5MgcIAhAAGIAEMgcIAxAAGIAEMgcIBBAAGIAEMgcIBRAAGIAEMgcIBhAAGIAEMgcIBxAAGIAEMgcICBAAGIAEMgcICRAAGIAE0gEIMzEzNmowajmoAgCwAgA&sourceid=chrome&ie=UTF-8
 def print_people(individuals):
     """Print the People table based on the formatting requirements."""
-    print("People")
+    print("Individuals")
     people_table = PrettyTable()
     people_table.field_names = ["ID", "Name", "Gender", "Birthday", "Age", "Alive", "Death", "Child", "Spouse"]
-    for row in individuals.values():
-        people_table.add_row([row["ID"], row["Name"], row["Gender"], row["Birthday"], row["Age"], row["Alive"], row["Death"], row["Child"], row["Spouse"]])
+    for row in sorted(individuals.values(), key=lambda x: int(x["ID"][2:-1])):  # extract the number in the ID
+        spouse = set(row["Spouse"]) if row["Spouse"] else "NA"
+        people_table.add_row([row["ID"], row["Name"], row["Gender"], row["Birthday"], row["Age"], row["Alive"], row["Death"], row["Child"], spouse])
     print(people_table)
     print()
 
@@ -154,7 +152,7 @@ def print_families(families, individuals):
     print("Families")
     families_table = PrettyTable()
     families_table.field_names = ["ID", "Married", "Divorced", "Husband ID", "Husband Name", "Wife ID", "Wife Name", "Children"]
-    for row in families.values():
+    for row in sorted(families.values(), key=lambda x: int(x["ID"][2:-1])):  # sort families by numeric ID
         if row["Husband ID"] in individuals:
             husb_name = individuals[row["Husband ID"]]["Name"] 
         else:
