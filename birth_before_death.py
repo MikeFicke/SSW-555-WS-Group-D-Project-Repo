@@ -1,6 +1,3 @@
-# TODO make sure to show evidence by logging that the test file that we create passed
-# TODO both files -> better error catching
-
 import datetime
 
 def validate_birth_before_death(individuals):
@@ -20,4 +17,3 @@ def validate_birth_before_death(individuals):
         death_date = datetime.datetime.strptime(death_date, "%Y-%m-%d").date()
         if birth_date >= death_date:
             print(f"ERROR: Birth date {birth_date} is after or the same as death date {death_date} for individual {individual['ID']}")
-        
