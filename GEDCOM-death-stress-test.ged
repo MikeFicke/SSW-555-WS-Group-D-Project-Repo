@@ -1,0 +1,152 @@
+0 NOTE Stress-test GEDCOM for birth-before-death validation (This GEDCOM test file was AI-generated for testing purposes only)
+0 HEAD
+1 SOUR Test Generator
+1 FILE Birth Before Death Stress Test
+1 DATE 15 JUN 2026
+1 GEDC
+2 VERS 5.5.1
+2 FORM LINEAGE-LINKED
+1 CHAR UTF-8
+
+0 NOTE ========================================================
+0 NOTE  INDIVIDUALS
+0 NOTE ========================================================
+
+0 NOTE --- CASE 1: Normal deceased person, born well before death (NO ERROR) ---
+0 @I1@ INDI
+1 NAME Normal /Deceased/
+1 SEX M
+1 BIRT
+2 DATE 5 MAR 1940
+1 DEAT Y
+2 DATE 12 NOV 2010
+
+0 NOTE --- CASE 2: Living person, no death date (SKIP — NO ERROR) ---
+0 @I2@ INDI
+1 NAME Still /Alive/
+1 SEX F
+1 BIRT
+2 DATE 22 JUL 1985
+
+0 NOTE --- CASE 3: Person born AFTER their death date (ERROR expected) ---
+0 @I3@ INDI
+1 NAME Born /AfterDeath/
+1 SEX M
+1 BIRT
+2 DATE 15 JUN 2020
+1 DEAT Y
+2 DATE 3 FEB 2010
+
+0 NOTE --- CASE 4: Person born on EXACT SAME DAY as death (ERROR expected — born >= died) ---
+0 @I4@ INDI
+1 NAME Sameday /Death/
+1 SEX F
+1 BIRT
+2 DATE 1 JAN 1990
+1 DEAT Y
+2 DATE 1 JAN 1990
+
+0 NOTE --- CASE 5: Person born one day BEFORE death (NO ERROR — edge case) ---
+0 @I5@ INDI
+1 NAME OneDay /Before/
+1 SEX M
+1 BIRT
+2 DATE 31 DEC 1999
+1 DEAT Y
+2 DATE 1 JAN 2000
+
+0 NOTE --- CASE 6: Person born one day AFTER death (ERROR expected) ---
+0 @I6@ INDI
+1 NAME OneDay /After/
+1 SEX F
+1 BIRT
+2 DATE 2 JAN 2000
+1 DEAT Y
+2 DATE 1 JAN 2000
+
+0 NOTE --- CASE 7: No birthday, has death date (SKIP — NO ERROR) ---
+0 @I7@ INDI
+1 NAME NoBirth /Date/
+1 SEX M
+1 DEAT Y
+2 DATE 15 AUG 2005
+
+0 NOTE --- CASE 8: No birthday, no death date (SKIP — NO ERROR) ---
+0 @I8@ INDI
+1 NAME NoData /Person/
+1 SEX F
+
+0 NOTE --- CASE 9: Very old person, valid (NO ERROR) ---
+0 @I9@ INDI
+1 NAME Ancient /Person/
+1 SEX M
+1 BIRT
+2 DATE 1 JAN 1880
+1 DEAT Y
+2 DATE 31 DEC 1999
+
+0 NOTE --- CASE 10: Birth year AFTER death year by many years (ERROR expected) ---
+0 @I10@ INDI
+1 NAME Way /TooLate/
+1 SEX F
+1 BIRT
+2 DATE 25 DEC 2025
+1 DEAT Y
+2 DATE 4 JUL 1776
+
+0 NOTE --- CASE 11: Person died young, valid (NO ERROR) ---
+0 @I11@ INDI
+1 NAME Infant /Child/
+1 SEX M
+1 BIRT
+2 DATE 10 MAR 2015
+1 DEAT Y
+2 DATE 12 MAR 2015
+
+0 NOTE --- CASE 12: Another normal deceased, part of a family (NO ERROR) ---
+0 @I12@ INDI
+1 NAME Family /Dad/
+1 SEX M
+1 BIRT
+2 DATE 8 FEB 1955
+1 DEAT Y
+2 DATE 20 SEP 2020
+1 FAMS @F1@
+
+0 NOTE --- CASE 13: Living spouse (SKIP — NO ERROR) ---
+0 @I13@ INDI
+1 NAME Family /Mom/
+1 SEX F
+1 BIRT
+2 DATE 19 OCT 1960
+1 FAMS @F1@
+
+0 NOTE --- CASE 14: Child, living (SKIP — NO ERROR) ---
+0 @I14@ INDI
+1 NAME Family /Kid/
+1 SEX M
+1 BIRT
+2 DATE 3 APR 1990
+1 FAMC @F1@
+
+0 NOTE --- CASE 15: Person born in future, died in past (ERROR expected) ---
+0 @I15@ INDI
+1 NAME Future /Birth/
+1 SEX F
+1 BIRT
+2 DATE 1 JAN 2099
+1 DEAT Y
+2 DATE 15 JUN 2026
+
+0 NOTE ========================================================
+0 NOTE  FAMILIES (needed for valid GEDCOM structure)
+0 NOTE ========================================================
+
+0 @F1@ FAM
+1 HUSB @I12@
+1 WIFE @I13@
+1 CHIL @I14@
+1 MARR
+2 DATE 5 JUN 1985
+
+0 TRLR
