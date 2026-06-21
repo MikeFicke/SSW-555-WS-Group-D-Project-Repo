@@ -17,7 +17,7 @@ def validate_dates_before_current_date(individual_dict, family_dict):
         if death_date and death_date != "NA":
             death_date = datetime.datetime.strptime(death_date, "%Y-%m-%d").date()
             if death_date > current_date:
-                print(f"ERROR: INDIVIDUAL: US01: {individual['ID']}: Birthday {death_date} occurs in the future")
+                print(f"ERROR: INDIVIDUAL: US01: {individual['ID']}: Death {death_date} occurs in the future")
     for family in family_dict.values():
         marriage_date = family["Married"]
         divorce_date = family["Divorced"]
