@@ -22,4 +22,4 @@ def validate_marriage_before_divorce(family_dict):
         # citation: https://www.google.com/search?q=python+how+to+convert+a+sring+date+to+a+yyyy-mm-dd+format%3F&rlz=1C1CHBF_enUS1023US1023&oq=python+how+to+convert+a+sring+date+to+a+yyyy-mm-dd+format%3F&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIJCAEQIRgKGKABMgkIAhAhGAoYqwIyCQgDECEYChirAjIHCAQQIRiPAjIHCAUQIRiPAtIBCDkzMDRqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8
         divorce_date = datetime.datetime.strptime(divorce_date, "%Y-%m-%d")
         if divorce_date and divorce_date != "NA" and divorce_date < marriage_date:
-            print(f"ERROR: Divorce date in family {family['ID']} is before marriage date {marriage_date}")
+            print(f"ERROR: Divorce date {divorce_date.strftime('%Y-%m-%d')} is before marriage date {marriage_date.strftime('%Y-%m-%d')} for family {family['ID']}")
