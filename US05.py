@@ -25,5 +25,5 @@ def validate_marriage_before_death(individual_dict, family_dict):
             husband_death_date = datetime.datetime.strptime(husband_death_date, "%Y-%m-%d")
         if wife_death_date != "NA":
             wife_death_date = datetime.datetime.strptime(wife_death_date, "%Y-%m-%d")
-        if (husband_death_date and husband_death_date < marriage_date) or (wife_death_date and wife_death_date < marriage_date):
+        if (husband_death_date != "NA" and husband_death_date < marriage_date) or (wife_death_date != "NA" and wife_death_date < marriage_date):
             print(f"ERROR: Death date in family {family['ID']} is before marriage date {marriage_date}")
