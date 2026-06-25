@@ -45,5 +45,3 @@ def validate_marriage_after_14(individual_dict, family_dict):
 
         if wife_marriage_age < 14:
             print(f"ERROR: FAMILY: US10: {family['ID']}: Individual {individual_dict[wife]['Name']} was married before age 14.")
-
-        # TODO: also need main.py imports and unit tests as evidence that it works.
