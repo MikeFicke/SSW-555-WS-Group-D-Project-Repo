@@ -27,4 +27,15 @@ def validate_age_less_than_150(individuals):
 
         Note: Testing and output logs in main.py will be necessary as well.
         """
-    pass
+        birthday = individual["Birthday"]
+        birthday = datetime.strptime(birthday, "%Y-%m-%d").date()
+        
+        end_date = individual["Death"]
+        if not end_date or end_date == "NA":
+            end_date = datetime.date.today()  # not dead, end date is today's date
+        else:
+            end_date = datetime.strptime(end_date, "%Y-%m-%d").date() # individual is dead, end date is death date
+        
+        if end_date.year - birthday.year >= 150:
+            print(f"ERROR: INDIVIDUAL: {individual['ID']}: Age is 150 years or older")
+        
