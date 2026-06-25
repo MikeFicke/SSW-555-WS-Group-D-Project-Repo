@@ -34,16 +34,16 @@ def validate_marriage_after_14(individual_dict, family_dict):
         husband_birth = datetime.datetime.strptime(husband_birth, "%Y-%m-%d").date()
         wife_birth = datetime.datetime.strptime(wife_birth, "%Y-%m-%d").date()
         
-        # comparison of marriage_date to both spouses, checking at least 14 years old
-        # if not: print(f"ERROR: FAMILY: US10: {family['ID']}: Marriage occurs before both spouses are at least 14 years old")
         husband_age_diff = relativedelta(marriage_date, husband_birth)  # This value is a positive number if marriage is after birth, and negative if before
         husband_marriage_age = husband_age_diff.years
         
-        # TODO: do the same for the wife's age
+        wife_age_diff = relativedelta(marriage_date, wife_birth)  # This value is a positive number if marriage is after birth, and negative if before
+        wife_marriage_age = wife_age_diff.years
 
         if husband_marriage_age < 14:
             print(f"ERROR: FAMILY: US10: {family['ID']}: Individual {individual_dict[husband]['Name']} was married before age 14.")
 
-        # TODO: do the same for the wife's age
+        if wife_marriage_age < 14:
+            print(f"ERROR: FAMILY: US10: {family['ID']}: Individual {individual_dict[wife]['Name']} was married before age 14.")
 
         # TODO: also need main.py imports and unit tests as evidence that it works.
