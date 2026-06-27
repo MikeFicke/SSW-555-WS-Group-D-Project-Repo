@@ -49,17 +49,11 @@ def validate_birth_before_parent_death(individual_dict, families_dict):  # Note:
                 continue
 
             birth_date = datetime.datetime.strptime(birth_date, "%Y-%m-%d")
-
-            if mother_death_date != "NA":
-                mother_death_date = datetime.datetime.strptime(mother_death_date, "%Y-%m-%d")
             
-            if birth_date > mother_death_date:
+            if mother_death_date != "NA" and birth_date > mother_death_date:  # Needed to add more NA checks to avoid errors
                 print(f"ERROR: Child {child} was born after the death of their mother {wife_id} in family {family['ID']}")
-
-            if father_death_date != "NA":
-                 father_death_date = datetime.datetime.strptime(father_death_date, "%Y-%m-%d")
             
-            if birth_date > father_death_date + relativedelta(months=9):  # using relativedelta for more precise date checks
+            if father_death_date != "NA" and birth_date > father_death_date + relativedelta(months=9):  # using relativedelta for more precise date checks
                 print(f"ERROR: Child {child} was born more than 9 months after the death of their father {husband_id} in family {family['ID']}")
 
     # Note: called the function in main.py to test with test data.
