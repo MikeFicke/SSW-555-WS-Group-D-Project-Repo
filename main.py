@@ -6,18 +6,22 @@
 
 # citation: https://github.com/MikeFicke/SSW-555-WS-M2.B3
 
+import os
 import sys
+
+sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), "User Stories"))
+
 from pretty_print import parse_gedcom, print_people, print_families
-from birth_before_death import validate_birth_before_death
-from birth_before_marriage import validate_birth_before_marriage
+from US03_birth_before_death import validate_birth_before_death
+from US02_birth_before_marriage import validate_birth_before_marriage
 from US01_dates_before_current_date import validate_dates_before_current_date
-from US04 import validate_marriage_before_divorce
-from US05 import validate_marriage_before_death
+from US04_marriage_before_divorce import validate_marriage_before_divorce
+from US05_marriage_before_death import validate_marriage_before_death
 from US06_divorce_before_death import validate_divorce_before_death
 from US10_marriage_after_14 import validate_marriage_after_14
 from US07_less_than_150_years_old import validate_age_less_than_150
 from US11_no_bigamy import validate_no_bigamy
-from US09 import validate_birth_before_parent_death
+from US09_birth_before_parent_death import validate_birth_before_parent_death
 
 if __name__ == "__main__":
     try:
