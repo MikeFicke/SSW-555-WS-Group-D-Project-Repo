@@ -12,16 +12,17 @@ import sys
 sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), "User Stories"))
 
 from pretty_print import parse_gedcom, print_people, print_families
-from US03_birth_before_death import validate_birth_before_death
-from US02_birth_before_marriage import validate_birth_before_marriage
 from US01_dates_before_current_date import validate_dates_before_current_date
+from US02_birth_before_marriage import validate_birth_before_marriage
+from US03_birth_before_death import validate_birth_before_death
 from US04_marriage_before_divorce import validate_marriage_before_divorce
 from US05_marriage_before_death import validate_marriage_before_death
 from US06_divorce_before_death import validate_divorce_before_death
-from US10_marriage_after_14 import validate_marriage_after_14
 from US07_less_than_150_years_old import validate_age_less_than_150
-from US11_no_bigamy import validate_no_bigamy
+from US08_birth_after_marriage import validate_birth_after_marriage
 from US09_birth_before_parent_death import validate_birth_before_parent_death
+from US10_marriage_after_14 import validate_marriage_after_14
+from US11_no_bigamy import validate_no_bigamy
 
 if __name__ == "__main__":
     try:
@@ -48,6 +49,7 @@ if __name__ == "__main__":
         validate_age_less_than_150(individuals)
         validate_no_bigamy(individuals, families)
         validate_birth_before_parent_death(individuals, families)
+        validate_birth_after_marriage(individuals, families)
 
         # Save terminal output as a text file
         # citation: https://www.google.com/search?q=how+to+output+terminal+outputs+to+a+text+file+in+Python&sca_esv=7f84a317695edff8&rlz=1C1CHBF_enUS1023US1023&sxsrf=ANbL-n7W5Mn-MFzFwoi1yTcPZDPfeGxnUg%3A1781305106935&ei=Eo8saofcOM7-ptQP3-DV-Qk&biw=1536&bih=825&ved=0ahUKEwiHrYrR5oKVAxVOv4kEHV9wNZ8Q4dUDCBA&uact=5&oq=how+to+output+terminal+outputs+to+a+text+file+in+Python&gs_lp=Egxnd3Mtd2l6LXNlcnAiN2hvdyB0byBvdXRwdXQgdGVybWluYWwgb3V0cHV0cyB0byBhIHRleHQgZmlsZSBpbiBQeXRob24yChAhGAoYoAEYwwRImQ1Q-QZYsAtwAngBkAEAmAGJAaABpgaqAQM1LjO4AQPIAQD4AQGYAgWgAskCwgIKEAAYRxjWBBiwA5gDAIgGAZAGCJIHAzMuMqAHtSiyBwMxLjK4B7MCwgcHMC4xLjMuMcgHGYAIAQ&sclient=gws-wiz-serp
@@ -66,6 +68,7 @@ if __name__ == "__main__":
             validate_age_less_than_150(individuals)
             validate_no_bigamy(individuals, families)
             validate_birth_before_parent_death(individuals, families)
+            validate_birth_after_marriage(individuals, families)
             sys.stdout = output  # Restore to terminal
 
     except FileNotFoundError as fe:
