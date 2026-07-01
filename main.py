@@ -71,6 +71,7 @@ if __name__ == "__main__":
             validate_no_bigamy(individuals, families)
             validate_birth_before_parent_death(individuals, families)
             validate_birth_after_marriage(individuals, families)
+            validate_parents_not_too_old(individuals, families)
             sys.stdout = output  # Restore to terminal
 
     except FileNotFoundError as fe:
