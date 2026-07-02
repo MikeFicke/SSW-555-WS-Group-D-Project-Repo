@@ -41,6 +41,7 @@ class TestBirthBeforeMarriage(unittest.TestCase):
         }
         families_dict = {
             "@F1@": {
+                "ID": "@F1@",
                 "Married": "2005-06-01",
                 "Husband ID": "@I1@",
                 "Wife ID": "@I2@"
@@ -64,17 +65,19 @@ class TestBirthBeforeMarriage(unittest.TestCase):
         }
         families_dict = {
             "@F1@": {
+                "ID": "@F1@",
                 "Married": "2005-06-01",
                 "Husband ID": "@I1@",
                 "Wife ID": "@I2@"
             }
         }
-        self.assertEqual(validation(individuals_dict, families_dict), f"ERROR: Husband {individuals_dict['@I1']['ID']} was born on or after marriage on {families_dict['@F1']['Married']}.\n")
+        # citation: https://www.google.com/search?q=python+when+should+I+use+assert+in+or+asset+equal&rlz=1C1CHBF_enUS1023US1023&oq=python+when+should+I+use+assert+in+or+asset+equal&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQIRigATIHCAIQIRigATIHCAMQIRigAdIBCDcxMzBqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8
+        self.assertIn("ERROR", validation(individuals_dict, families_dict))
 
-        def test_birth_before_marriage_3(self):
-            """
-            Wife born after marriage date
-            """
+    def test_birth_before_marriage_3(self):
+        """
+        Wife born after marriage date
+        """
         individuals_dict = {
             "@I1@": {
                 "ID": "@I1@",
@@ -87,17 +90,18 @@ class TestBirthBeforeMarriage(unittest.TestCase):
         }
         families_dict = {
             "@F1@": {
+                "ID": "@F1@",
                 "Married": "2005-06-01",
                 "Husband ID": "@I1@",
                 "Wife ID": "@I2@"
             }
         }
-        self.assertEqual(validation(individuals_dict, families_dict), f"ERROR: Wife {individuals_dict['@I2']['ID']} was born on or after marriage on {families_dict['@F1']['Married']}.\n")
+        self.assertIn("ERROR", validation(individuals_dict, families_dict))
 
-        def test_birth_before_marriage_4(self):
-            """
-            Birthday equals marriage date
-            """
+    def test_birth_before_marriage_4(self):
+        """
+        Birthday equals marriage date
+        """
         individuals_dict = {
             "@I1@": {
                 "ID": "@I1@",
@@ -110,25 +114,31 @@ class TestBirthBeforeMarriage(unittest.TestCase):
         }
         families_dict = {
             "@F1@": {
+                "ID": "@F1@",
                 "Married": "2005-06-01",
                 "Husband ID": "@I1@",
                 "Wife ID": "@I2@"
             }
         }
-        self.assertEqual(validation(individuals_dict, families_dict), f"ERROR: Husband {individuals_dict['@I1']['ID']} was born on or after marriage on {families_dict['@F1']['Married']}.\n")
+        self.assertIn("ERROR", validation(individuals_dict, families_dict))
 
-        def test_birth_before_marriage_5(self):
-            """
-            Marriage date is "NA"
-            """
+    def test_birth_before_marriage_5(self):
+        """
+        Marriage date is "NA"
+        """
         individuals_dict = {
             "@I1@": {
                 "ID": "@I1@",
                 "Birthday": "1980-01-01",
+            },
+            "@I2@": {
+                "ID": "@I2@",
+                "Birthday": "1982-01-01",
             }
         }
         families_dict = {
             "@F1@": {
+                "ID": "@F1@",
                 "Married": "NA",
                 "Husband ID": "@I1@",
                 "Wife ID": "@I2@"

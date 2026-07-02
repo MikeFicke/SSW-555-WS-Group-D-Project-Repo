@@ -50,7 +50,7 @@ class TestAgeLessThan150(unittest.TestCase):
                 "Death": "NA",
             }
         }
-        self.assertEqual(validation(individuals_dict), f"ERROR: Living person {individuals_dict['@I1']['ID']} is older than 150 years\n.")
+        self.assertEqual(validation(individuals_dict), "ERROR: INDIVIDUAL: @I1@: Age is 150 years or older.\n")
 
     def test_age_less_than_150_3(self):
         """
@@ -76,7 +76,7 @@ class TestAgeLessThan150(unittest.TestCase):
                 "Death": "1960-01-01",
             }
         }
-        self.assertEqual(validation(individuals_dict), f"ERROR: Living person {individuals_dict['@I1']['ID']} is older than 150 years\n.")
+        self.assertEqual(validation(individuals_dict), "ERROR: INDIVIDUAL: @I1@: Age is 150 years or older.\n")
 
     def test_age_less_than_150_5(self):
         """

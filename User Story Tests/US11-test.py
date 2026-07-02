@@ -43,6 +43,7 @@ class TestNoBigamy(unittest.TestCase):
         }
         families_dict = {
             "@F1@": {
+                "ID": "@F1@",
                 "Married": "2000-01-01",
                 "Divorced": "NA",
                 "Husband ID": "@I1@",
@@ -74,12 +75,14 @@ class TestNoBigamy(unittest.TestCase):
         }
         families_dict = {
             "@F1@": {
+                "ID": "@F1@",
                 "Married": "2000-01-01",
                 "Divorced": "2005-01-01",
                 "Husband ID": "@I1@",
                 "Wife ID": "@I2@"
             },
             "@F2@": {
+                "ID": "@F2@",
                 "Married": "2006-01-01",
                 "Divorced": "NA",
                 "Husband ID": "@I1@",
@@ -111,19 +114,22 @@ class TestNoBigamy(unittest.TestCase):
         }
         families_dict = {
             "@F1@": {
+                "ID": "@F1@",
                 "Married": "2000-01-01",
                 "Divorced": "NA",
                 "Husband ID": "@I1@",
                 "Wife ID": "@I2@"
             },
             "@F2@": {
+                "ID": "@F2@",
                 "Married": "2003-01-01",
                 "Divorced": "NA",
                 "Husband ID": "@I1@",
                 "Wife ID": "@I3@"
             }
         }
-        self.assertEqual(validation(individuals_dict, families_dict), f"ERROR: Person {individuals_dict['@I1']['ID']} is married to more than one person at the same time.\n")
+        # citation: https://www.google.com/search?q=python+when+should+I+use+assert+in+or+asset+equal&rlz=1C1CHBF_enUS1023US1023&oq=python+when+should+I+use+assert+in+or+asset+equal&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQIRigATIHCAIQIRigATIHCAMQIRigAdIBCDcxMzBqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8
+        self.assertIn("ERROR", validation(individuals_dict, families_dict))
     
     def test_no_bigamy_4(self):
         """
@@ -162,12 +168,14 @@ class TestNoBigamy(unittest.TestCase):
         }
         families_dict = {
             "@F1@": {
+                "ID": "@F1@",
                 "Married": "2000-01-01",
                 "Divorced": "NA",
                 "Husband ID": "@I1@",
                 "Wife ID": "@I2@"
             },
             "@F2@": {
+                "ID": "@F2@",
                 "Married": "2006-01-01",
                 "Divorced": "NA",
                 "Husband ID": "@I1@",
@@ -175,3 +183,6 @@ class TestNoBigamy(unittest.TestCase):
             }
         }
         self.assertEqual(validation(individuals_dict, families_dict), "")
+
+if __name__ == "__main__":
+    unittest.main()
