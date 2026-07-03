@@ -90,6 +90,72 @@ class TestAgeLessThan150(unittest.TestCase):
             }
         }
         self.assertEqual(validation(individuals_dict), "")
+
+    def test_age_less_than_150_6(self):
+        """
+        Birthday is None.
+        """
+        individuals_dict = {
+            "@I1@": {
+                "ID": "@I1@",
+                "Birthday": None,
+                "Death": "NA",
+            }
+        }
+        self.assertEqual(validation(individuals_dict), "")
     
+    def test_age_less_than_150_7(self):
+        """
+        Birthday is an empty string
+        """
+        individuals_dict = {
+            "@I1@": {
+                "ID": "@I1@",
+                "Birthday": "",
+                "Death": "NA",
+            }
+        }
+        self.assertEqual(validation(individuals_dict), "")
+
+    def test_age_less_than_150_8(self):
+        """
+        Death date is None (Not "NA")
+        """
+        individuals_dict = {
+            "@I1@": {
+                "ID": "@I1@",
+                "Birthday": "2000-01-01",
+                "Death": None,
+            }
+        }
+        self.assertEqual(validation(individuals_dict), "")
+
+    def test_age_less_than_150_9(self):
+        """
+        Person is exactly 149 years old 
+        """
+        individuals_dict = {
+            "@I1@": {
+                "ID": "@I1@",
+                "Birthday": "1876-11-01",
+                "Death": "2025-11-01",
+            }
+        }
+        self.assertEqual(validation(individuals_dict), "")
+
+    def test_age_less_than_150_10(self):
+        """
+        Person is exactly 150 years old
+        """
+        individuals_dict = {
+            "@I1@": {
+                "ID": "@I1@",
+                "Birthday": "1875-11-01",
+                "Death": "2025-11-01",
+            }
+        }
+        self.assertEqual(validation(individuals_dict), "ERROR: INDIVIDUAL: @I1@: Age is 150 years or older.\n")
+
+
 if __name__ == "__main__":
     unittest.main()
