@@ -3,7 +3,28 @@
 # User Story: Birth before marriage
 # Birth should occur before marriage of an individual
 
+# Refactoring: Husband check and wife check contain nearly identical code.  Logic can be cleaned up to reduce the file size and make it more efficient.
+
+# Acknowledgement: IDE auto-complete was used for certain lines of code
+
 import datetime
+
+def check_spouse_birth_helper(individual_dict, spouse_id, marriage_date, family_id, role):
+    """
+    Helper function that checks if a spouse's birthday is before the marriage date.
+    """
+    if not spouse_id or spouse_id == "NA" or spouse_id not in individual_dict:
+        return  # Nothing to check, so skip
+
+    birthday = individual_dict[spouse_id]["Birthday"]
+    if not birthday or birthday == "NA":
+        return  # Nothing to check
+
+    # Convert to datetime
+    birthday = datetime.datetime.strptime(birthday, "%Y-%m-%d")
+
+    if birthday >= marriage_date:
+        print(f"ERROR: {role}'s birthday in family {family_id} is after marriage date {marriage_date}")
 
 def validate_birth_before_marriage(individual_dict, family_dict):
     """
@@ -18,17 +39,5 @@ def validate_birth_before_marriage(individual_dict, family_dict):
         marriage_date = datetime.datetime.strptime(marriage_date, "%Y-%m-%d")
         husband_id = family["Husband ID"]
         wife_id = family["Wife ID"]
-        if husband_id and husband_id != "NA" and husband_id in individual_dict:
-            husband_birthday = individual_dict[husband_id]["Birthday"]
-            if husband_birthday and husband_birthday != "NA":
-                # citation: https://www.google.com/search?q=python+how+to+convert+a+string+into+a+date&rlz=1C1CHBF_enUS1023US1023&oq=python+how+toconvert+a+string+into+a+date&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIICAEQABgWGB4yCAgCEAAYFhgeMggIAxAAGBYYHjIICAQQABgWGB4yCAgFEAAYFhgeMggIBhAAGBYYHjIICAcQABgWGB4yCAgIEAAYFhgeMggICRAAGBYYHtIBCDQ1MzJqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8
-                husband_birthday = datetime.datetime.strptime(husband_birthday, "%Y-%m-%d")
-                if husband_birthday >= marriage_date:
-                    print(f"ERROR: Husband's birthday in family {family['ID']} is after marriage date {marriage_date}")
-        if wife_id and wife_id != "NA" and wife_id in individual_dict:
-            wife_birthday = individual_dict[wife_id]["Birthday"]
-            if wife_birthday and wife_birthday != "NA":
-                # citation: https://www.google.com/search?q=python+how+to+convert+a+string+into+a+date&rlz=1C1CHBF_enUS1023US1023&oq=python+how+toconvert+a+string+into+a+date&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIICAEQABgWGB4yCAgCEAAYFhgeMggIAxAAGBYYHjIICAQQABgWGB4yCAgFEAAYFhgeMggIBhAAGBYYHjIICAcQABgWGB4yCAgIEAAYFhgeMggICRAAGBYYHtIBCDQ1MzJqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8
-                wife_birthday = datetime.datetime.strptime(wife_birthday, "%Y-%m-%d")
-                if wife_birthday >= marriage_date:
-                    print(f"ERROR: Wife's birthday in family {family['ID']} is after marriage date {marriage_date}")
+        check_spouse_birth_helper(individual_dict, husband_id, marriage_date, family['ID'], 'Husband')
+        check_spouse_birth_helper(individual_dict, wife_id, marriage_date, family['ID'], 'Wife')
