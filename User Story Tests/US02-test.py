@@ -146,5 +146,119 @@ class TestBirthBeforeMarriage(unittest.TestCase):
         }
         self.assertEqual(validation(individuals_dict, families_dict), "")
     
+    def test_birth_before_marriage_6(self):
+        """
+        Husband ID is "NA"
+        """
+        individuals_dict = {
+            "@I2@": {
+                "ID": "@I2@",
+                "Birthday": "1982-05-15",
+            }
+        }
+        families_dict = {
+            "@F1@": {
+                "ID": "@F1@",
+                "Married": "2005-06-01",
+                "Husband ID": "NA",
+                "Wife ID": "@I2@"
+            }
+        }
+        self.assertEqual(validation(individuals_dict, families_dict), "")
+
+    def test_birth_before_marriage_7(self):
+        """
+        Wife's birthday is "NA"
+        """
+        individuals_dict = {
+            "@I1@": {
+                "ID": "@I1@",
+                "Birthday": "1980-01-01",
+            },
+            "@I2@": {
+                "ID": "@I2@",
+                "Birthday": "NA",
+            }
+        }
+        families_dict = {
+            "@F1@": {
+                "ID": "@F1@",
+                "Married": "2005-06-01",
+                "Husband ID": "@I1@",
+                "Wife ID": "@I2@"
+            }
+        }
+        self.assertEqual(validation(individuals_dict, families_dict), "")
+    
+    def test_birth_before_marriage_8(self):
+        """
+        Both spouses born after marriage
+        """
+        individuals_dict = {
+            "@I1@": {
+                "ID": "@I1@",
+                "Birthday": "2010-03-01",
+            },
+            "@I2@": {
+                "ID": "@I2@",
+                "Birthday": "2012-07-15",
+            }
+        }
+        families_dict = {
+            "@F1@": {
+                "ID": "@F1@",
+                "Married": "2005-06-01",
+                "Husband ID": "@I1@",
+                "Wife ID": "@I2@"
+            }
+        }
+        # two errors printed here
+        error_output = validation(individuals_dict, families_dict)
+        self.assertEqual(error_output.count("ERROR"), 2)
+        
+    def test_birth_before_marriage_9(self):
+        """
+        Husband ID references a missing individual
+        """
+        individuals_dict = {  # ID1 is missing on purpose
+            "@I2@": {
+                "ID": "@I2@",
+                "Birthday": "1982-05-15",
+            }
+        }
+        families_dict = {
+            "@F1@": {
+                "ID": "@F1@",
+                "Married": "2005-06-01",
+                "Husband ID": "@I1@",
+                "Wife ID": "@I2@"
+            }
+        }
+        self.assertEqual(validation(individuals_dict, families_dict), "")
+
+    def test_birth_before_marriage_10(self):
+        """
+        Wife's birthday is an empty string
+        """
+        individuals_dict = { 
+            "@I1@": {
+                "ID": "@I1@",
+                "Birthday": "1980-01-01",
+            },
+            "@I2@": {
+                "ID": "@I2@",
+                "Birthday": "",
+            }
+        }
+        families_dict = {
+            "@F1@": {
+                "ID": "@F1@",
+                "Married": "2005-06-01",
+                "Husband ID": "@I1@",
+                "Wife ID": "@I2@"
+            }
+        }
+        self.assertEqual(validation(individuals_dict, families_dict), "")
+
 if __name__ == "__main__":
     unittest.main()
