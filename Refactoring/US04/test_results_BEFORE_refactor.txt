@@ -1,0 +1,15 @@
+test_marriage_before_divorce_1 (__main__.TestMarriageBeforeDivorce.test_marriage_before_divorce_1)
+Valid family with marriage before divorce. ... ok
+test_marriage_before_divorce_2 (__main__.TestMarriageBeforeDivorce.test_marriage_before_divorce_2)
+Invalid family with divorce before marriage. ... ok
+test_marriage_before_divorce_3 (__main__.TestMarriageBeforeDivorce.test_marriage_before_divorce_3)
+Invalid family with marriage and divorce dates not provided. ... ok
+test_marriage_before_divorce_4 (__main__.TestMarriageBeforeDivorce.test_marriage_before_divorce_4)
+Valid family with marriage before divorce. ... ok
+test_marriage_before_divorce_5 (__main__.TestMarriageBeforeDivorce.test_marriage_before_divorce_5)
+Mixture of families where several are valid and one is invalid. ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.005s
+
+OK

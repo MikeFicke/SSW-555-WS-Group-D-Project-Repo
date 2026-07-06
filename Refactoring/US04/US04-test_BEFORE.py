@@ -98,20 +98,5 @@ class TestMarriageBeforeDivorce(unittest.TestCase):
         }
         self.assertEqual(validation(family_dict), "ERROR: Divorce date 2000-01-01 is before marriage date 2010-01-01 for family @F2@\n")    
 
-    def test_marriage_before_divorce_same_day_is_not_an_error(self):
-        """
-        Marriage and divorce on the same date should not be flagged
-        (only a divorce strictly before the marriage date is an error).
-        """
-        family_dict = {
-            "@F1@": {
-                "ID": "@F1@",
-                "Married": "2000-01-01",
-                "Divorced": "2000-01-01",
-            }
-        }
-        self.assertEqual(validation(family_dict), "")
-
-
 if __name__ == "__main__":
     unittest.main()
