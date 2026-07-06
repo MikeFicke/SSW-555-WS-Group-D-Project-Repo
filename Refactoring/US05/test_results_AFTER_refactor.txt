@@ -1,0 +1,15 @@
+test_both_spouses_alive (__main__.TestMarriageBeforeDeath.test_both_spouses_alive) ... ok
+test_both_spouses_died_before_marriage_is_single_error (__main__.TestMarriageBeforeDeath.test_both_spouses_died_before_marriage_is_single_error)
+Both spouses' deaths predate the marriage - the check is an OR condition, ... ok
+test_death_same_day_as_marriage_is_not_an_error (__main__.TestMarriageBeforeDeath.test_death_same_day_as_marriage_is_not_an_error) ... ok
+test_husband_died_after_marriage (__main__.TestMarriageBeforeDeath.test_husband_died_after_marriage) ... ok
+test_husband_died_before_marriage (__main__.TestMarriageBeforeDeath.test_husband_died_before_marriage) ... ok
+test_marriage_date_na_is_skipped (__main__.TestMarriageBeforeDeath.test_marriage_date_na_is_skipped) ... ok
+test_missing_spouse_record_does_not_crash (__main__.TestMarriageBeforeDeath.test_missing_spouse_record_does_not_crash)
+Husband ID/Wife ID that isn't present in individual_dict should be treated ... ok
+test_wife_died_before_marriage (__main__.TestMarriageBeforeDeath.test_wife_died_before_marriage) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.006s
+
+OK
