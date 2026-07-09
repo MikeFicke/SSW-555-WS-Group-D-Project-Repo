@@ -17,14 +17,14 @@ def validate_multiple_births(individual_dict, family_dict):
         
         children_birthdays = {}
         for child in children_ids:
-            child_birthday = individual_dict[child].get("Birth")
+            child_birthday = individual_dict[child].get("Birthday")
             if child_birthday == "NA" or child_birthday == None:
                 # skip, there is no birthday to look at
                 continue
             if child_birthday in children_birthdays:
-                children_birthdays.append(child_birthday)
+                children_birthdays[child_birthday].append(child)
             else:
-                children_birthdays.append(child_birthday)
+                children_birthdays[child_birthday] = [child]
 
         for birthday, children in children_birthdays.items():
             if len(children) > 5:

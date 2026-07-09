@@ -12,13 +12,13 @@ from contextlib import redirect_stdout
 
 
 
-def validation(individuals_dict):
+def validation(individuals_dict, family_dict):
     """
     Capture the output string of the function we are unit testing for verification.
     """
     buffer = StringIO()
     with redirect_stdout(buffer):
-        validate_multiple_births(individuals_dict)
+        validate_multiple_births(individuals_dict, family_dict)
     output = buffer.getvalue()
     return output
 
@@ -29,18 +29,14 @@ class TestMultipleBirths(unittest.TestCase):
         Valid family, 3 children share a birthday
         """
         individuals_dict = {
-            "@I1@": {
-                "ID": "@I1@",
-                "Birthday": "1990-01-01",
-                "Death": "2020-01-01",
-            }
+            "@I1@": {"Birthday": "2000-06-15"},
+            "@I2@": {"Birthday": "2000-06-15"},
+            "@I3@": {"Birthday": "2000-06-15"}
         }
         family_dict = {
-            "@F1@": {
-                "ID": "@F1@",
-                "Children": ["@I1@", "@I2@", "@I3@"]
-            }
+            "@F1@": {"Children": ["@I1@", "@I2@", "@I3@"]}
         }
+        
         self.assertEqual(validation(individuals_dict, family_dict), "")
 
 
@@ -49,17 +45,14 @@ class TestMultipleBirths(unittest.TestCase):
         Valid family, exactly 5 children share a birthday
         """
         individuals_dict = {
-            "@I1@": {
-                "ID": "@I1@",
-                "Birthday": "1990-01-01",
-                "Death": "2020-01-01",
-            }
+            "@I1@": {"Birthday": "2000-06-15"},
+            "@I2@": {"Birthday": "2000-06-15"},
+            "@I3@": {"Birthday": "2000-06-15"},
+            "@I4@": {"Birthday": "2000-06-15"},
+            "@I5@": {"Birthday": "2000-06-15"}
         }
         family_dict = {
-            "@F1@": {
-                "ID": "@F1@",
-                "Children": ["@I1@", "@I2@", "@I3@", "@I4@", "@I5@", "@I6@"]
-            }
+            "@F1@": {"Children": ["@I1@", "@I2@", "@I3@", "@I4@", "@I5@"]}
         }
         self.assertEqual(validation(individuals_dict, family_dict), "")
         
@@ -69,18 +62,17 @@ class TestMultipleBirths(unittest.TestCase):
         Invalid family, 6 children share a birthday
         """
         individuals_dict = {
-            "@I1@": {
-                "ID": "@I1@",
-                "Birthday": "1990-01-01",
-                "Death": "2020-01-01",
-            }
+            "@I1@": {"Birthday": "2000-06-15"},
+            "@I2@": {"Birthday": "2000-06-15"},
+            "@I3@": {"Birthday": "2000-06-15"},
+            "@I4@": {"Birthday": "2000-06-15"},
+            "@I5@": {"Birthday": "2000-06-15"},
+            "@I6@": {"Birthday": "2000-06-15"}
         }
         family_dict = {
-            "@F1@": {
-                "ID": "@F1@",
-                "Children": ["@I1@", "@I2@", "@I3@", "@I4@", "@I5@", "@I6@", "@I7@"]
-            }
+            "@F1@": {"Children": ["@I1@", "@I2@", "@I3@", "@I4@", "@I5@", "@I6@"]}
         }
+        
         self.assertNotEqual(validation(individuals_dict, family_dict), "")
         
 
@@ -89,18 +81,11 @@ class TestMultipleBirths(unittest.TestCase):
         Family with no children
         """
         individuals_dict = {
-            "@I1@": {
-                "ID": "@I1@",
-                "Birthday": "1990-01-01",
-                "Death": "2020-01-01",
-            }
         }
         family_dict = {
-            "@F1@": {
-                "ID": "@F1@",
-                "Children": []
-            }
+            "@F1@": {"Children": []}
         }
+        
         self.assertEqual(validation(individuals_dict, family_dict), "")
         
 
@@ -109,19 +94,17 @@ class TestMultipleBirths(unittest.TestCase):
         Mixed family, some children share birthday, some don't
         """
         individuals_dict = {
-            "@I1@": {
-                "ID": "@I1@",
-                "Birthday": "1990-01-01",
-                "Death": "2020-01-01",
-            }
+            "@I1@": {"Birthday": "2000-06-15"},
+            "@I2@": {"Birthday": "2000-06-15"},
+            "@I3@": {"Birthday": "2000-06-15"},
+            "@I4@": {"Birthday": "2000-06-15"},
+            "@I5@": {"Birthday": "2000-06-15"},
+            "@I6@": {"Birthday": "2000-06-18"}
         }
         family_dict = {
-            "@F1@": {
-                "ID": "@F1@",
-                "Children": ["@I1@", "@I2@", "@I3@", "@I4@", "@I5@", "@I6@"]
-            }
+            "@F1@": {"Children": ["@I1@", "@I2@", "@I3@", "@I4@", "@I5@", "@I6@"]}
         }
-        self.assertNotEqual(validation(individuals_dict, family_dict), "")
+        self.assertEqual(validation(individuals_dict, family_dict), "")
 
 
 if __name__ == "__main__":
