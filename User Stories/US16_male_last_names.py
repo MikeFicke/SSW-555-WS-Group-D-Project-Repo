@@ -19,6 +19,7 @@ def get_last_name_helper(full_name):
     
     # Look for '/' characters to split the names since surnames are stored as "<first name> '/'<last name>/"
     if '/' in full_name:
+        # citation: https://www.geeksforgeeks.org/python/python-extract-substring-using-regex/
         extracted_name = re.search(r"/(.+)/", full_name)
         return extracted_name.group(1)
     else:
