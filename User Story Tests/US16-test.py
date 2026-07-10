@@ -22,93 +22,93 @@ def validation(individuals_dict, family_dict):
     return output
 
 
-class TestMultipleBirths(unittest.TestCase):
-    def test_multiple_births_1(self):
+class TestMaleLastNames(unittest.TestCase):
+    def test_male_last_names_1(self):
         """
         Valid family, all males share the father's last name
         """
         individuals = {
-            '@I1@': {'NAME': 'John /Smith/', 'SEX': 'M'},
-            '@I2@': {'NAME': 'Jane /Doe/', 'SEX': 'F'},
-            '@I3@': {'NAME': 'Michael /Smith/', 'SEX': 'M'},
-            '@I4@': {'NAME': 'David /Smith/', 'SEX': 'M'},
+            '@I1@': {'Name': 'John /Smith/', 'Gender': 'M'},
+            '@I2@': {'Name': 'Jane /Doe/', 'Gender': 'F'},
+            '@I3@': {'Name': 'Michael /Smith/', 'Gender': 'M'},
+            '@I4@': {'Name': 'David /Smith/', 'Gender': 'M'},
         }
         families = {
-            '@F1@': {'HUSB': '@I1@', 'WIFE': '@I2@', 'CHILDREN': ['@I3@', '@I4@']},
+            '@F1@': {'Husband ID': '@I1@', 'Wife ID': '@I2@', 'Children': ['@I3@', '@I4@']},
         }
 
         self.assertEqual(validation(individuals, families), "")
 
 
-    def test_multiple_births_2(self):
+    def test_male_last_names_2(self):
         """
         Invalid family, one male child has a different last name
         """
         individuals = {
-            '@I1@': {'NAME': 'John /Smith/', 'SEX': 'M'},
-            '@I2@': {'NAME': 'Jane /Doe/', 'SEX': 'F'},
-            '@I3@': {'NAME': 'Michael /Smith/', 'SEX': 'M'},
-            '@I4@': {'NAME': 'David /Doe/', 'SEX': 'M'},
+            '@I1@': {'Name': 'John /Smith/', 'Gender': 'M'},
+            '@I2@': {'Name': 'Jane /Doe/', 'Gender': 'F'},
+            '@I3@': {'Name': 'Michael /Smith/', 'Gender': 'M'},
+            '@I4@': {'Name': 'David /Doe/', 'Gender': 'M'},
         }
         families = {
-            '@F1@': {'HUSB': '@I1@', 'WIFE': '@I2@', 'CHILDREN': ['@I3@', '@I4@']},
+            '@F1@': {'Husband ID': '@I1@', 'Wife ID': '@I2@', 'Children': ['@I3@', '@I4@']},
         }
 
-        self.assertEqual(validation(individuals, families), "ERROR: US16: David /Doe/'s last name 'Doe' does not match the husband's last name 'Smith'")
+        self.assertEqual(validation(individuals, families), "ERROR: US16: David /Doe/'s last name 'Doe' does not match the husband's last name 'Smith'\n")
         
         
 
-    def test_multiple_births_3(self):
+    def test_male_last_names_3(self):
         """
         Family with only female children
         """
         individuals = {
-            '@I1@': {'NAME': 'John /Smith/', 'SEX': 'M'},
-            '@I2@': {'NAME': 'Jane /Doe/', 'SEX': 'F'},
-            '@I3@': {'NAME': 'Sarah /Smith/', 'SEX': 'F'},
-            '@I4@': {'NAME': 'Emily /Smith/', 'SEX': 'F'},
+            '@I1@': {'Name': 'John /Smith/', 'Gender': 'M'},
+            '@I2@': {'Name': 'Jane /Doe/', 'Gender': 'F'},
+            '@I3@': {'Name': 'Sarah /Smith/', 'Gender': 'F'},
+            '@I4@': {'Name': 'Emily /Smith/', 'Gender': 'F'},
         }
         families = {
-            '@F1@': {'HUSB': '@I1@', 'WIFE': '@I2@', 'CHILDREN': ['@I3@', '@I4@']},
+            '@F1@': {'Husband ID': '@I1@', 'Wife ID': '@I2@', 'Children': ['@I3@', '@I4@']},
         }
 
         self.assertEqual(validation(individuals, families), "")
         
         
 
-    def test_multiple_births_4(self):
+    def test_male_last_names_4(self):
         """
         Family with no children
         """
         individuals = {
-            '@I1@': {'NAME': 'John /Smith/', 'SEX': 'M'},
-            '@I2@': {'NAME': 'Jane /Doe/', 'SEX': 'F'},
+            '@I1@': {'Name': 'John /Smith/', 'Gender': 'M'},
+            '@I2@': {'Name': 'Jane /Doe/', 'Gender': 'F'},
         }
         families = {
-            '@F1@': {'HUSB': '@I1@', 'WIFE': '@I2@', 'CHILDREN': []},
+            '@F1@': {'Husband ID': '@I1@', 'Wife ID': '@I2@', 'Children': []},
         }
 
         self.assertEqual(validation(individuals, families), "")
         
         
 
-    def test_multiple_births_5(self):
+    def test_male_last_names_5(self):
         """
         Mixed family, some male children match, one does not
         """
         individuals = {
-            '@I1@': {'NAME': 'John /Smith/', 'SEX': 'M'},
-            '@I2@': {'NAME': 'Jane /Doe/', 'SEX': 'F'},
-            '@I3@': {'NAME': 'Michael /Smith/', 'SEX': 'M'},
-            '@I4@': {'NAME': 'David /Doe/', 'SEX': 'M'},
-            '@I5@': {'NAME': 'Sarah /Smith/', 'SEX': 'F'},
-            '@I6@': {'NAME': 'Emily /Doe/', 'SEX': 'F'},
+            '@I1@': {'Name': 'John /Smith/', 'Gender': 'M'},
+            '@I2@': {'Name': 'Jane /Doe/', 'Gender': 'F'},
+            '@I3@': {'Name': 'Michael /Smith/', 'Gender': 'M'},
+            '@I4@': {'Name': 'David /Doe/', 'Gender': 'M'},
+            '@I5@': {'Name': 'Sarah /Smith/', 'Gender': 'F'},
+            '@I6@': {'Name': 'Emily /Doe/', 'Gender': 'F'},
         }
         families = {
-            '@F1@': {'HUSB': '@I1@', 'WIFE': '@I2@', 'CHILDREN': ['@I3@', '@I4@', '@I5@', '@I6@']},
+            '@F1@': {'Husband ID': '@I1@', 'Wife ID': '@I2@', 'Children': ['@I3@', '@I4@', '@I5@', '@I6@']},
         }
 
-        self.assertEqual(validation(individuals, families), "ERROR: US16: David /Doe/'s last name 'Doe' does not match the husband's last name 'Smith'")        
+        self.assertEqual(validation(individuals, families), "ERROR: US16: David /Doe/'s last name 'Doe' does not match the husband's last name 'Smith'\n")        
 
 
 if __name__ == "__main__":
