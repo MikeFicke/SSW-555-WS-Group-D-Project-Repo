@@ -1,0 +1,31 @@
+0 HEAD
+1 GEDC
+2 VERS 5.5.1
+2 FORM LINEAGE-LINKED
+1 CHAR UTF-8
+0 @I1@ INDI
+1 NAME Parent1 /Original/
+0 @I2@ INDI
+1 NAME Parent2 /Original/
+0 @I3@ INDI
+1 NAME Sibling /A/
+1 FAMC @F1@
+0 @I4@ INDI
+1 NAME Sibling /B/
+1 FAMC @F1@
+0 @I5@ INDI
+1 NAME Unrelated /Spouse1/
+0 @I6@ INDI
+1 NAME Unrelated /Spouse2/
+0 @F1@ FAM
+1 HUSB @I1@
+1 WIFE @I2@
+1 CHIL @I3@
+1 CHIL @I4@
+0 @F2@ FAM
+1 HUSB @I3@
+1 WIFE @I4@
+0 @F3@ FAM
+1 HUSB @I5@
+1 WIFE @I6@
+0 TRLR

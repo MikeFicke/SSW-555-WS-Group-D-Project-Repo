@@ -82,6 +82,7 @@ Output is printed to the terminal and also saved to `output.txt`.
 | US11 | No bigamy                                                             |
 | US12 | Parents not too old                                                   |
 | US15 | Fewer than 15 siblings                                                |
+| US18 | Siblings should not marry one another                                |
 
 ## Team
 
