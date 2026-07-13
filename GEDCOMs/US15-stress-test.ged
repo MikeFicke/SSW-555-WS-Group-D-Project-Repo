@@ -1,0 +1,317 @@
+0 HEAD
+0 NOTE This file was AI-generated to test the US15 user story logic for fewer than 15 siblings
+1 SOUR Family Echo
+2 WWW http://www.familyecho.com/
+1 FILE US15-stress-test.ged
+1 DATE 12 JUL 2026
+1 DEST ANSTFILE
+1 GEDC
+2 VERS 5.5.1
+2 FORM LINEAGE-LINKED
+1 SUBN
+1 CHAR UTF-8
+0 @U1@ SUBM
+1 NAME Sam Bryan
+0 @I1@ INDI
+1 NAME Few /Husband/
+1 SEX M
+1 FAMS @F1@
+0 @I2@ INDI
+1 NAME Few /Wife/
+1 SEX F
+1 FAMS @F1@
+0 @I3@ INDI
+1 NAME Few /Child1/
+1 SEX M
+1 FAMC @F1@
+0 @I4@ INDI
+1 NAME Few /Child2/
+1 SEX F
+1 FAMC @F1@
+0 @I5@ INDI
+1 NAME Few /Child3/
+1 SEX M
+1 FAMC @F1@
+0 @I6@ INDI
+1 NAME Fourteen /Husband/
+1 SEX M
+1 FAMS @F2@
+0 @I7@ INDI
+1 NAME Fourteen /Wife/
+1 SEX F
+1 FAMS @F2@
+0 @I8@ INDI
+1 NAME Fourteen /Child1/
+1 SEX M
+1 FAMC @F2@
+0 @I9@ INDI
+1 NAME Fourteen /Child2/
+1 SEX F
+1 FAMC @F2@
+0 @I10@ INDI
+1 NAME Fourteen /Child3/
+1 SEX M
+1 FAMC @F2@
+0 @I11@ INDI
+1 NAME Fourteen /Child4/
+1 SEX F
+1 FAMC @F2@
+0 @I12@ INDI
+1 NAME Fourteen /Child5/
+1 SEX M
+1 FAMC @F2@
+0 @I13@ INDI
+1 NAME Fourteen /Child6/
+1 SEX F
+1 FAMC @F2@
+0 @I14@ INDI
+1 NAME Fourteen /Child7/
+1 SEX M
+1 FAMC @F2@
+0 @I15@ INDI
+1 NAME Fourteen /Child8/
+1 SEX F
+1 FAMC @F2@
+0 @I16@ INDI
+1 NAME Fourteen /Child9/
+1 SEX M
+1 FAMC @F2@
+0 @I17@ INDI
+1 NAME Fourteen /Child10/
+1 SEX F
+1 FAMC @F2@
+0 @I18@ INDI
+1 NAME Fourteen /Child11/
+1 SEX M
+1 FAMC @F2@
+0 @I19@ INDI
+1 NAME Fourteen /Child12/
+1 SEX F
+1 FAMC @F2@
+0 @I20@ INDI
+1 NAME Fourteen /Child13/
+1 SEX M
+1 FAMC @F2@
+0 @I21@ INDI
+1 NAME Fourteen /Child14/
+1 SEX F
+1 FAMC @F2@
+0 @I22@ INDI
+1 NAME Fifteen /Husband/
+1 SEX M
+1 FAMS @F3@
+0 @I23@ INDI
+1 NAME Fifteen /Wife/
+1 SEX F
+1 FAMS @F3@
+0 @I24@ INDI
+1 NAME Fifteen /Child1/
+1 SEX M
+1 FAMC @F3@
+0 @I25@ INDI
+1 NAME Fifteen /Child2/
+1 SEX F
+1 FAMC @F3@
+0 @I26@ INDI
+1 NAME Fifteen /Child3/
+1 SEX M
+1 FAMC @F3@
+0 @I27@ INDI
+1 NAME Fifteen /Child4/
+1 SEX F
+1 FAMC @F3@
+0 @I28@ INDI
+1 NAME Fifteen /Child5/
+1 SEX M
+1 FAMC @F3@
+0 @I29@ INDI
+1 NAME Fifteen /Child6/
+1 SEX F
+1 FAMC @F3@
+0 @I30@ INDI
+1 NAME Fifteen /Child7/
+1 SEX M
+1 FAMC @F3@
+0 @I31@ INDI
+1 NAME Fifteen /Child8/
+1 SEX F
+1 FAMC @F3@
+0 @I32@ INDI
+1 NAME Fifteen /Child9/
+1 SEX M
+1 FAMC @F3@
+0 @I33@ INDI
+1 NAME Fifteen /Child10/
+1 SEX F
+1 FAMC @F3@
+0 @I34@ INDI
+1 NAME Fifteen /Child11/
+1 SEX M
+1 FAMC @F3@
+0 @I35@ INDI
+1 NAME Fifteen /Child12/
+1 SEX F
+1 FAMC @F3@
+0 @I36@ INDI
+1 NAME Fifteen /Child13/
+1 SEX M
+1 FAMC @F3@
+0 @I37@ INDI
+1 NAME Fifteen /Child14/
+1 SEX F
+1 FAMC @F3@
+0 @I38@ INDI
+1 NAME Fifteen /Child15/
+1 SEX M
+1 FAMC @F3@
+0 @I39@ INDI
+1 NAME Many /Husband/
+1 SEX M
+1 FAMS @F4@
+0 @I40@ INDI
+1 NAME Many /Wife/
+1 SEX F
+1 FAMS @F4@
+0 @I41@ INDI
+1 NAME Many /Child1/
+1 SEX M
+1 FAMC @F4@
+0 @I42@ INDI
+1 NAME Many /Child2/
+1 SEX F
+1 FAMC @F4@
+0 @I43@ INDI
+1 NAME Many /Child3/
+1 SEX M
+1 FAMC @F4@
+0 @I44@ INDI
+1 NAME Many /Child4/
+1 SEX F
+1 FAMC @F4@
+0 @I45@ INDI
+1 NAME Many /Child5/
+1 SEX M
+1 FAMC @F4@
+0 @I46@ INDI
+1 NAME Many /Child6/
+1 SEX F
+1 FAMC @F4@
+0 @I47@ INDI
+1 NAME Many /Child7/
+1 SEX M
+1 FAMC @F4@
+0 @I48@ INDI
+1 NAME Many /Child8/
+1 SEX F
+1 FAMC @F4@
+0 @I49@ INDI
+1 NAME Many /Child9/
+1 SEX M
+1 FAMC @F4@
+0 @I50@ INDI
+1 NAME Many /Child10/
+1 SEX F
+1 FAMC @F4@
+0 @I51@ INDI
+1 NAME Many /Child11/
+1 SEX M
+1 FAMC @F4@
+0 @I52@ INDI
+1 NAME Many /Child12/
+1 SEX F
+1 FAMC @F4@
+0 @I53@ INDI
+1 NAME Many /Child13/
+1 SEX M
+1 FAMC @F4@
+0 @I54@ INDI
+1 NAME Many /Child14/
+1 SEX F
+1 FAMC @F4@
+0 @I55@ INDI
+1 NAME Many /Child15/
+1 SEX M
+1 FAMC @F4@
+0 @I56@ INDI
+1 NAME Many /Child16/
+1 SEX F
+1 FAMC @F4@
+0 @I57@ INDI
+1 NAME Many /Child17/
+1 SEX M
+1 FAMC @F4@
+0 @I58@ INDI
+1 NAME Many /Child18/
+1 SEX F
+1 FAMC @F4@
+0 @F1@ FAM
+1 HUSB @I1@
+1 WIFE @I2@
+1 MARR
+2 DATE 1 JAN 1990
+1 CHIL @I3@
+1 CHIL @I4@
+1 CHIL @I5@
+0 @F2@ FAM
+1 HUSB @I6@
+1 WIFE @I7@
+1 MARR
+2 DATE 1 JAN 1990
+1 CHIL @I8@
+1 CHIL @I9@
+1 CHIL @I10@
+1 CHIL @I11@
+1 CHIL @I12@
+1 CHIL @I13@
+1 CHIL @I14@
+1 CHIL @I15@
+1 CHIL @I16@
+1 CHIL @I17@
+1 CHIL @I18@
+1 CHIL @I19@
+1 CHIL @I20@
+1 CHIL @I21@
+0 @F3@ FAM
+1 HUSB @I22@
+1 WIFE @I23@
+1 MARR
+2 DATE 1 JAN 1990
+1 CHIL @I24@
+1 CHIL @I25@
+1 CHIL @I26@
+1 CHIL @I27@
+1 CHIL @I28@
+1 CHIL @I29@
+1 CHIL @I30@
+1 CHIL @I31@
+1 CHIL @I32@
+1 CHIL @I33@
+1 CHIL @I34@
+1 CHIL @I35@
+1 CHIL @I36@
+1 CHIL @I37@
+1 CHIL @I38@
+0 @F4@ FAM
+1 HUSB @I39@
+1 WIFE @I40@
+1 MARR
+2 DATE 1 JAN 1990
+1 CHIL @I41@
+1 CHIL @I42@
+1 CHIL @I43@
+1 CHIL @I44@
+1 CHIL @I45@
+1 CHIL @I46@
+1 CHIL @I47@
+1 CHIL @I48@
+1 CHIL @I49@
+1 CHIL @I50@
+1 CHIL @I51@
+1 CHIL @I52@
+1 CHIL @I53@
+1 CHIL @I54@
+1 CHIL @I55@
+1 CHIL @I56@
+1 CHIL @I57@
+1 CHIL @I58@
+0 TRLR
