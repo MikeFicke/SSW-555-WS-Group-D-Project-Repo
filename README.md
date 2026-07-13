@@ -45,6 +45,8 @@ Output is printed to the terminal and also saved to `output.txt`.
 │   ├── US09-stress-test.ged
 │   ├── US10-stress-test.ged
 │   ├── US11-stress-test.ged
+│   ├── US12-stress-test.ged
+│   ├── US15-stress-test.ged
 │   └── ...
 ├── User Stories/            # Validation logic (one file per user story)
 │   ├── US01_dates_before_current_date.py
@@ -57,7 +59,9 @@ Output is printed to the terminal and also saved to `output.txt`.
 │   ├── US08_birth_after_marriage.py
 │   ├── US09_birth_before_parent_death.py
 │   ├── US10_marriage_after_14.py
-│   └── US11_no_bigamy.py
+│   ├── US11_no_bigamy.py
+│   ├── US12_parents_not_too_old.py
+│   └── US15_fewer_than_15_siblings.py
 └── User Story Tests/        # Unit tests per user story
 ```
 
@@ -76,6 +80,8 @@ Output is printed to the terminal and also saved to `output.txt`.
 | US09 | Birth before death of parents (and within 9 months of father's death) |
 | US10 | Marriage after age 14                                                 |
 | US11 | No bigamy                                                             |
+| US12 | Parents not too old                                                   |
+| US15 | Fewer than 15 siblings                                                |
 
 ## Team
 
