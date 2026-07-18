@@ -34,4 +34,4 @@ def validate_siblings_spacing(individual_dict, family_dict):
 
             if (months_diff < 8 or (months_diff == 8 and sibling_diff.days == 0)) and (days_diff >= 2):
                 # sibling birthdays are 2 days to 8 months apart
-                print(f"ERROR: FAMILY: US13: {family["ID"]}: Siblings ({sibling1} and {sibling2}) have birthdays 2 days to 8 months apart")
+                print(f"ERROR: FAMILY: US13: {family['ID']}: Siblings ({sibling1} and {sibling2}) have birthdays 2 days to 8 months apart")
