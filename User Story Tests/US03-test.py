@@ -9,7 +9,7 @@
 # Acknowledgement: IDE autocomplete was used on certain lines of code.
 
 import unittest
-from birth_before_death import validate_birth_before_death
+from US03_birth_before_death import validate_birth_before_death
 from io import StringIO
 from contextlib import redirect_stdout
 
