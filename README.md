@@ -61,7 +61,16 @@ Output is printed to the terminal and also saved to `output.txt`.
 │   ├── US10_marriage_after_14.py
 │   ├── US11_no_bigamy.py
 │   ├── US12_parents_not_too_old.py
-│   └── US15_fewer_than_15_siblings.py
+│   ├── US13_siblings_spacing.py
+│   ├── US14_multiple_births.py
+│   ├── US15_fewer_than_15_siblings.py
+│   ├── US16_male_last_names.py
+│   ├── US17_no_marriages_to_descendants.py
+│   ├── US18_no_marriage_between_siblings.py
+│   ├── US19_no_marriage_between_first_cousins.py
+│   ├── US20_no_marriage_between_aunt_uncle_and_niece_nephew.py
+│   ├── US21_correct_gender_role.py
+│   └── US22_unique_ids.py
 └── User Story Tests/        # Unit tests per user story
 ```
 
@@ -81,8 +90,16 @@ Output is printed to the terminal and also saved to `output.txt`.
 | US10 | Marriage after age 14                                                 |
 | US11 | No bigamy                                                             |
 | US12 | Parents not too old                                                   |
+| US13 | Siblings spacing (at least 8 minutes apart, unless multiple birth)    |
+| US14 | Multiple births fewer than 5 siblings with same birthday              |
 | US15 | Fewer than 15 siblings                                                |
+| US16 | Male last names (children have same last name as father)             |
+| US17 | No marriages to descendants                                           |
 | US18 | Siblings should not marry one another                                |
+| US19 | First cousins should not marry one another                           |
+| US20 | Aunts and uncles should not marry their nieces or nephews             |
+| US21 | Correct gender for role (husband/wife)                                |
+| US22 | Unique individual and family IDs                                      |
 
 ## Team
 
