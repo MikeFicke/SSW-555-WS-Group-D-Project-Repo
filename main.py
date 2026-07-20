@@ -31,6 +31,7 @@ from US16_male_last_names import validate_male_last_names
 from US17_no_marriages_to_descendants import validate_no_marriages_to_descendants
 from US18_no_marriage_between_siblings import validate_no_marriage_between_siblings
 from US19_no_marriage_between_first_cousins import validate_no_marriage_between_first_cousins
+from US20_no_marriage_between_aunt_uncle_and_niece_nephew import validate_no_marriage_between_aunt_uncle_and_niece_nephew
 from US21_correct_gender_role import validate_correct_gender_role
 from US22_unique_ids import validate_unique_ids
 
@@ -71,6 +72,7 @@ if __name__ == "__main__":
         validate_no_marriages_to_descendants(families)
         validate_no_marriage_between_siblings(families)
         validate_no_marriage_between_first_cousins(families)
+        validate_no_marriage_between_aunt_uncle_and_niece_nephew(families)
         validate_correct_gender_role(individuals, families)
         validate_unique_ids(file_contents)
 
@@ -100,6 +102,7 @@ if __name__ == "__main__":
             validate_no_marriages_to_descendants(families)
             validate_no_marriage_between_siblings(families)
             validate_no_marriage_between_first_cousins(families)
+            validate_no_marriage_between_aunt_uncle_and_niece_nephew(families)
             validate_correct_gender_role(individuals, families)
             validate_unique_ids(file_contents)
             sys.stdout = output  # Restore to terminal
