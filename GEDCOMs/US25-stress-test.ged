@@ -1,0 +1,310 @@
+0 NOTE US25 Stress Test - Unique first names and birth dates in families
+0 NOTE https://github.com/MikeFicke/SSW-555-WS-Group-D-Project-Repo
+0 NOTE This file was AI-generated for testing purposes
+0 HEAD
+1 SOUR Stress Test
+1 FILE US25 Stress Test
+1 DATE 23 JUL 2026
+1 GEDC
+2 VERS 5.5.1
+2 FORM LINEAGE-LINKED
+1 CHAR UTF-8
+0 NOTE =========================================================
+0 NOTE FAMILY 1: CLEAN - All children have unique name+birthday
+0 NOTE =========================================================
+0 @I1@ INDI
+1 NAME Dad /Clean/
+1 SEX M
+1 BIRT
+2 DATE 1 JAN 1970
+1 FAMS @F1@
+0 @I2@ INDI
+1 NAME Mom /Clean/
+1 SEX F
+1 BIRT
+2 DATE 15 MAR 1972
+1 FAMS @F1@
+0 @I3@ INDI
+1 NAME Alice /Clean/
+1 SEX F
+1 BIRT
+2 DATE 10 JUN 2000
+1 FAMC @F1@
+0 @I4@ INDI
+1 NAME Bob /Clean/
+1 SEX M
+1 BIRT
+2 DATE 22 AUG 2002
+1 FAMC @F1@
+0 @I5@ INDI
+1 NAME Charlie /Clean/
+1 SEX M
+1 BIRT
+2 DATE 5 DEC 2005
+1 FAMC @F1@
+0 @F1@ FAM
+1 HUSB @I1@
+1 WIFE @I2@
+1 CHIL @I3@
+1 CHIL @I4@
+1 CHIL @I5@
+1 MARR
+2 DATE 20 JUN 1995
+0 NOTE =========================================================
+0 NOTE FAMILY 2: ERROR - Two children with SAME name AND birthday
+0 NOTE Should trigger US25 error for "Twin /Dup/" born 14 FEB 2001
+0 NOTE =========================================================
+0 @I6@ INDI
+1 NAME Father /Dup/
+1 SEX M
+1 BIRT
+2 DATE 3 MAR 1975
+1 FAMS @F2@
+0 @I7@ INDI
+1 NAME Mother /Dup/
+1 SEX F
+1 BIRT
+2 DATE 8 SEP 1977
+1 FAMS @F2@
+0 @I8@ INDI
+1 NAME Twin /Dup/
+1 SEX M
+1 BIRT
+2 DATE 14 FEB 2001
+1 FAMC @F2@
+0 @I9@ INDI
+1 NAME Twin /Dup/
+1 SEX M
+1 BIRT
+2 DATE 14 FEB 2001
+1 FAMC @F2@
+0 @F2@ FAM
+1 HUSB @I6@
+1 WIFE @I7@
+1 CHIL @I8@
+1 CHIL @I9@
+1 MARR
+2 DATE 1 JAN 1999
+0 NOTE =========================================================
+0 NOTE FAMILY 3: CLEAN - Same name but DIFFERENT birthdays (OK)
+0 NOTE =========================================================
+0 @I10@ INDI
+1 NAME Pop /SameName/
+1 SEX M
+1 BIRT
+2 DATE 11 NOV 1968
+1 FAMS @F3@
+0 @I11@ INDI
+1 NAME Mama /SameName/
+1 SEX F
+1 BIRT
+2 DATE 25 DEC 1970
+1 FAMS @F3@
+0 @I12@ INDI
+1 NAME Alex /SameName/
+1 SEX M
+1 BIRT
+2 DATE 1 MAR 2003
+1 FAMC @F3@
+0 @I13@ INDI
+1 NAME Alex /SameName/
+1 SEX M
+1 BIRT
+2 DATE 9 JUL 2006
+1 FAMC @F3@
+0 @F3@ FAM
+1 HUSB @I10@
+1 WIFE @I11@
+1 CHIL @I12@
+1 CHIL @I13@
+1 MARR
+2 DATE 15 APR 2000
+0 NOTE =========================================================
+0 NOTE FAMILY 4: CLEAN - Same birthday but DIFFERENT names (OK)
+0 NOTE =========================================================
+0 @I14@ INDI
+1 NAME Papa /SameDay/
+1 SEX M
+1 BIRT
+2 DATE 20 FEB 1980
+1 FAMS @F4@
+0 @I15@ INDI
+1 NAME Mum /SameDay/
+1 SEX F
+1 BIRT
+2 DATE 30 APR 1982
+1 FAMS @F4@
+0 @I16@ INDI
+1 NAME Emma /SameDay/
+1 SEX F
+1 BIRT
+2 DATE 25 DEC 2010
+1 FAMC @F4@
+0 @I17@ INDI
+1 NAME Ella /SameDay/
+1 SEX F
+1 BIRT
+2 DATE 25 DEC 2010
+1 FAMC @F4@
+0 @F4@ FAM
+1 HUSB @I14@
+1 WIFE @I15@
+1 CHIL @I16@
+1 CHIL @I17@
+1 MARR
+2 DATE 10 OCT 2008
+0 NOTE =========================================================
+0 NOTE FAMILY 5: ERROR - THREE children with same name+birthday
+0 NOTE Should trigger US25 error for "Triplet /Three/" born 1 APR 2015
+0 NOTE =========================================================
+0 @I18@ INDI
+1 NAME Dad /Three/
+1 SEX M
+1 BIRT
+2 DATE 5 MAY 1985
+1 FAMS @F5@
+0 @I19@ INDI
+1 NAME Mom /Three/
+1 SEX F
+1 BIRT
+2 DATE 12 JUL 1987
+1 FAMS @F5@
+0 @I20@ INDI
+1 NAME Triplet /Three/
+1 SEX M
+1 BIRT
+2 DATE 1 APR 2015
+1 FAMC @F5@
+0 @I21@ INDI
+1 NAME Triplet /Three/
+1 SEX M
+1 BIRT
+2 DATE 1 APR 2015
+1 FAMC @F5@
+0 @I22@ INDI
+1 NAME Triplet /Three/
+1 SEX M
+1 BIRT
+2 DATE 1 APR 2015
+1 FAMC @F5@
+0 @I23@ INDI
+1 NAME Unique /Three/
+1 SEX F
+1 BIRT
+2 DATE 3 MAR 2018
+1 FAMC @F5@
+0 @F5@ FAM
+1 HUSB @I18@
+1 WIFE @I19@
+1 CHIL @I20@
+1 CHIL @I21@
+1 CHIL @I22@
+1 CHIL @I23@
+1 MARR
+2 DATE 20 JUN 2014
+0 NOTE =========================================================
+0 NOTE FAMILY 6: ERROR - Two SEPARATE pairs of duplicates in one family
+0 NOTE Should trigger TWO US25 errors:
+0 NOTE   "Jake /Multi/" born 10 OCT 2012 (x2)
+0 NOTE   "Lily /Multi/" born 15 MAR 2014 (x2)
+0 NOTE =========================================================
+0 @I24@ INDI
+1 NAME Father /Multi/
+1 SEX M
+1 BIRT
+2 DATE 1 JAN 1980
+1 FAMS @F6@
+0 @I25@ INDI
+1 NAME Mother /Multi/
+1 SEX F
+1 BIRT
+2 DATE 1 JAN 1982
+1 FAMS @F6@
+0 @I26@ INDI
+1 NAME Jake /Multi/
+1 SEX M
+1 BIRT
+2 DATE 10 OCT 2012
+1 FAMC @F6@
+0 @I27@ INDI
+1 NAME Jake /Multi/
+1 SEX M
+1 BIRT
+2 DATE 10 OCT 2012
+1 FAMC @F6@
+0 @I28@ INDI
+1 NAME Lily /Multi/
+1 SEX F
+1 BIRT
+2 DATE 15 MAR 2014
+1 FAMC @F6@
+0 @I29@ INDI
+1 NAME Lily /Multi/
+1 SEX F
+1 BIRT
+2 DATE 15 MAR 2014
+1 FAMC @F6@
+0 @I30@ INDI
+1 NAME Solo /Multi/
+1 SEX M
+1 BIRT
+2 DATE 1 JAN 2016
+1 FAMC @F6@
+0 @F6@ FAM
+1 HUSB @I24@
+1 WIFE @I25@
+1 CHIL @I26@
+1 CHIL @I27@
+1 CHIL @I28@
+1 CHIL @I29@
+1 CHIL @I30@
+1 MARR
+2 DATE 5 MAY 2010
+0 NOTE =========================================================
+0 NOTE FAMILY 7: CLEAN - Only child (no possible duplicates)
+0 NOTE =========================================================
+0 @I31@ INDI
+1 NAME Solo /Dad/
+1 SEX M
+1 BIRT
+2 DATE 1 JAN 1990
+1 FAMS @F7@
+0 @I32@ INDI
+1 NAME Solo /Mom/
+1 SEX F
+1 BIRT
+2 DATE 1 JAN 1992
+1 FAMS @F7@
+0 @I33@ INDI
+1 NAME Only /Child/
+1 SEX M
+1 BIRT
+2 DATE 1 JAN 2020
+1 FAMC @F7@
+0 @F7@ FAM
+1 HUSB @I31@
+1 WIFE @I32@
+1 CHIL @I33@
+1 MARR
+2 DATE 1 JUN 2018
+0 NOTE =========================================================
+0 NOTE FAMILY 8: CLEAN - No children at all
+0 NOTE =========================================================
+0 @I34@ INDI
+1 NAME NoKids /Husband/
+1 SEX M
+1 BIRT
+2 DATE 15 MAY 1995
+1 FAMS @F8@
+0 @I35@ INDI
+1 NAME NoKids /Wife/
+1 SEX F
+1 BIRT
+2 DATE 20 NOV 1996
+1 FAMS @F8@
+0 @F8@ FAM
+1 HUSB @I34@
+1 WIFE @I35@
+1 MARR
+2 DATE 1 JAN 2020
+0 TRLR

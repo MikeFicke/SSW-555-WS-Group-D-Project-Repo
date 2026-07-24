@@ -1,0 +1,298 @@
+0 NOTE US26 Stress Test - Corresponding entries between individuals and families
+0 NOTE https://github.com/MikeFicke/SSW-555-WS-Group-D-Project-Repo
+0 NOTE This file was AI-generated for testing purposes
+0 HEAD
+1 SOUR Stress Test
+1 FILE US26 Stress Test
+1 DATE 23 JUL 2026
+1 GEDC
+2 VERS 5.5.1
+2 FORM LINEAGE-LINKED
+1 CHAR UTF-8
+0 NOTE =========================================================
+0 NOTE FAMILY 1: FULLY CONSISTENT - Everything cross-references perfectly
+0 NOTE =========================================================
+0 @I1@ INDI
+1 NAME Dad /Good/
+1 SEX M
+1 BIRT
+2 DATE 1 JAN 1970
+1 FAMS @F1@
+0 @I2@ INDI
+1 NAME Mom /Good/
+1 SEX F
+1 BIRT
+2 DATE 15 MAR 1972
+1 FAMS @F1@
+0 @I3@ INDI
+1 NAME Son /Good/
+1 SEX M
+1 BIRT
+2 DATE 10 JUN 2000
+1 FAMC @F1@
+0 @I4@ INDI
+1 NAME Daughter /Good/
+1 SEX F
+1 BIRT
+2 DATE 22 AUG 2002
+1 FAMC @F1@
+0 @F1@ FAM
+1 HUSB @I1@
+1 WIFE @I2@
+1 CHIL @I3@
+1 CHIL @I4@
+1 MARR
+2 DATE 20 JUN 1995
+0 NOTE =========================================================
+0 NOTE ERROR SCENARIO 1: Individual says FAMC @F3@ but family @F3@
+0 NOTE does NOT list them as a child.
+0 NOTE @I7@ says FAMC @F3@, but @F3@ only has @I8@ as child.
+0 NOTE =========================================================
+0 @I5@ INDI
+1 NAME Husband /MissingChild/
+1 SEX M
+1 BIRT
+2 DATE 1 JAN 1975
+1 FAMS @F3@
+0 @I6@ INDI
+1 NAME Wife /MissingChild/
+1 SEX F
+1 BIRT
+2 DATE 1 JAN 1977
+1 FAMS @F3@
+0 @I7@ INDI
+1 NAME Ghost /Child/
+1 SEX M
+1 BIRT
+2 DATE 1 JAN 2005
+1 FAMC @F3@
+0 @I8@ INDI
+1 NAME Real /Child/
+1 SEX F
+1 BIRT
+2 DATE 1 JAN 2007
+1 FAMC @F3@
+0 @F3@ FAM
+1 HUSB @I5@
+1 WIFE @I6@
+1 CHIL @I8@
+1 MARR
+2 DATE 1 JAN 2000
+0 NOTE =========================================================
+0 NOTE ERROR SCENARIO 2: Individual says FAMS @F4@ (spouse of family)
+0 NOTE but family @F4@ does NOT list them as husband or wife.
+0 NOTE @I11@ says FAMS @F4@, but @F4@ has @I9@ as HUSB and @I10@ as WIFE.
+0 NOTE =========================================================
+0 @I9@ INDI
+1 NAME Real /Husband/
+1 SEX M
+1 BIRT
+2 DATE 1 JAN 1980
+1 FAMS @F4@
+0 @I10@ INDI
+1 NAME Real /Wife/
+1 SEX F
+1 BIRT
+2 DATE 1 JAN 1982
+1 FAMS @F4@
+0 @I11@ INDI
+1 NAME Phantom /Spouse/
+1 SEX M
+1 BIRT
+2 DATE 1 JAN 1981
+1 FAMS @F4@
+0 @F4@ FAM
+1 HUSB @I9@
+1 WIFE @I10@
+1 MARR
+2 DATE 1 JAN 2005
+0 NOTE =========================================================
+0 NOTE ERROR SCENARIO 3: Family lists @I14@ as HUSB, but @I14@
+0 NOTE does NOT have FAMS @F5@ in their record.
+0 NOTE @I14@ has no FAMS at all.
+0 NOTE =========================================================
+0 @I12@ INDI
+1 NAME Wifey /NoRef/
+1 SEX F
+1 BIRT
+2 DATE 1 JAN 1985
+1 FAMS @F5@
+0 @I13@ INDI
+1 NAME Kid /NoRef/
+1 SEX M
+1 BIRT
+2 DATE 1 JAN 2010
+1 FAMC @F5@
+0 @I14@ INDI
+1 NAME Forgetful /Husband/
+1 SEX M
+1 BIRT
+2 DATE 1 JAN 1983
+0 @F5@ FAM
+1 HUSB @I14@
+1 WIFE @I12@
+1 CHIL @I13@
+1 MARR
+2 DATE 1 JAN 2008
+0 NOTE =========================================================
+0 NOTE ERROR SCENARIO 4: Family lists @I17@ as WIFE, but @I17@
+0 NOTE does NOT have FAMS @F6@ in their record.
+0 NOTE @I17@ has no FAMS at all.
+0 NOTE =========================================================
+0 @I15@ INDI
+1 NAME Hubby /NoWifeRef/
+1 SEX M
+1 BIRT
+2 DATE 1 JAN 1988
+1 FAMS @F6@
+0 @I16@ INDI
+1 NAME Child /NoWifeRef/
+1 SEX M
+1 BIRT
+2 DATE 1 JAN 2015
+1 FAMC @F6@
+0 @I17@ INDI
+1 NAME Forgetful /Wife/
+1 SEX F
+1 BIRT
+2 DATE 1 JAN 1990
+0 @F6@ FAM
+1 HUSB @I15@
+1 WIFE @I17@
+1 CHIL @I16@
+1 MARR
+2 DATE 1 JAN 2013
+0 NOTE =========================================================
+0 NOTE ERROR SCENARIO 5: Family lists @I20@ as CHIL, but @I20@
+0 NOTE does NOT have FAMC @F7@ — their FAMC points to a different family.
+0 NOTE =========================================================
+0 @I18@ INDI
+1 NAME Dad /WrongChild/
+1 SEX M
+1 BIRT
+2 DATE 1 JAN 1960
+1 FAMS @F7@
+1 FAMS @F8@
+0 @I19@ INDI
+1 NAME Mom /WrongChild/
+1 SEX F
+1 BIRT
+2 DATE 1 JAN 1962
+1 FAMS @F7@
+0 @I20@ INDI
+1 NAME Confused /Kid/
+1 SEX M
+1 BIRT
+2 DATE 1 JAN 1990
+1 FAMC @F8@
+0 @I21@ INDI
+1 NAME StepMom /Other/
+1 SEX F
+1 BIRT
+2 DATE 1 JAN 1965
+1 FAMS @F8@
+0 @F7@ FAM
+1 HUSB @I18@
+1 WIFE @I19@
+1 CHIL @I20@
+1 MARR
+2 DATE 1 JAN 1985
+0 @F8@ FAM
+1 HUSB @I18@
+1 WIFE @I21@
+1 CHIL @I20@
+1 MARR
+2 DATE 1 JAN 1995
+0 NOTE =========================================================
+0 NOTE ERROR SCENARIO 6: MULTIPLE errors in one family
+0 NOTE - @I24@ (husband) does NOT have FAMS @F9@
+0 NOTE - @I25@ (wife) does NOT have FAMS @F9@
+0 NOTE - @I26@ (child) does NOT have FAMC @F9@
+0 NOTE =========================================================
+0 @I22@ INDI
+1 NAME Normal /Guy/
+1 SEX M
+1 BIRT
+2 DATE 1 JAN 1950
+0 @I23@ INDI
+1 NAME Normal /Gal/
+1 SEX F
+1 BIRT
+2 DATE 1 JAN 1952
+0 @I24@ INDI
+1 NAME Orphan /Record/
+1 SEX M
+1 BIRT
+2 DATE 1 JAN 1975
+0 @I25@ INDI
+1 NAME Orphan /Wife/
+1 SEX F
+1 BIRT
+2 DATE 1 JAN 1977
+0 @I26@ INDI
+1 NAME Orphan /Child/
+1 SEX M
+1 BIRT
+2 DATE 1 JAN 2005
+0 @F9@ FAM
+1 HUSB @I24@
+1 WIFE @I25@
+1 CHIL @I26@
+1 MARR
+2 DATE 1 JAN 2000
+0 NOTE =========================================================
+0 NOTE FAMILY 10: FULLY CONSISTENT - Large family, all correct
+0 NOTE =========================================================
+0 @I27@ INDI
+1 NAME BigDad /Correct/
+1 SEX M
+1 BIRT
+2 DATE 1 JAN 1965
+1 FAMS @F10@
+0 @I28@ INDI
+1 NAME BigMom /Correct/
+1 SEX F
+1 BIRT
+2 DATE 1 JAN 1967
+1 FAMS @F10@
+0 @I29@ INDI
+1 NAME ChildA /Correct/
+1 SEX M
+1 BIRT
+2 DATE 1 JAN 1990
+1 FAMC @F10@
+0 @I30@ INDI
+1 NAME ChildB /Correct/
+1 SEX F
+1 BIRT
+2 DATE 1 JAN 1992
+1 FAMC @F10@
+0 @I31@ INDI
+1 NAME ChildC /Correct/
+1 SEX M
+1 BIRT
+2 DATE 1 JAN 1994
+1 FAMC @F10@
+0 @I32@ INDI
+1 NAME ChildD /Correct/
+1 SEX F
+1 BIRT
+2 DATE 1 JAN 1996
+1 FAMC @F10@
+0 @I33@ INDI
+1 NAME ChildE /Correct/
+1 SEX M
+1 BIRT
+2 DATE 1 JAN 1998
+1 FAMC @F10@
+0 @F10@ FAM
+1 HUSB @I27@
+1 WIFE @I28@
+1 CHIL @I29@
+1 CHIL @I30@
+1 CHIL @I31@
+1 CHIL @I32@
+1 CHIL @I33@
+1 MARR
+2 DATE 1 JAN 1988
+0 TRLR
