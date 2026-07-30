@@ -9,4 +9,4 @@ def validate_list_living_married(individual_dict):
         if individual["Alive"] and individual["Spouse"] != []:
             living_married.append(individual["ID"])
     if len(living_married) > 0:
-        print(f"US30: Living married individuals: ${", ".join(living_married)}")
+        print(f"US30: Living married individuals: {', '.join(living_married)}")

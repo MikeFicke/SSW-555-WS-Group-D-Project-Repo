@@ -9,4 +9,4 @@ def validate_list_deceased(individual_dict):
         if individual["Alive"] == False:
            deceased.append(individual["ID"])
     if len(deceased) > 0:
-        print(f"US29: Deceased Individuals: ${", ".join(deceased)}")
+        print(f"US29: Deceased Individuals: {', '.join(deceased)}")
