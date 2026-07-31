@@ -1,26 +1,40 @@
 Individuals
-+-------+---------------------------------+--------+------------+-----+-------+------------+-------+----------+
-|   ID  |               Name              | Gender |  Birthday  | Age | Alive |   Death    | Child |  Spouse  |
-+-------+---------------------------------+--------+------------+-----+-------+------------+-------+----------+
-|  @I1@ |         Birthday /Today/        |   F    | 1990-07-31 |  36 |  True |     NA     |   NA  | {'@F1@'} |
-|  @I2@ |       Birthday /Tomorrow/       |   M    | 1985-08-01 |  41 |  True |     NA     |   NA  | {'@F1@'} |
-|  @I3@ |      Birthday /TwoWeeksOut/     |   F    | 1978-08-14 |  48 |  True |     NA     |   NA  |    NA    |
-|  @I4@ |   Birthday /TwentyNineDaysOut/  |   M    | 1965-08-29 |  61 |  True |     NA     |   NA  |    NA    |
-|  @I5@ | Birthday /ExactlyThirtyDaysOut/ |   F    | 1972-08-30 |  54 |  True |     NA     |   NA  |    NA    |
-|  @I6@ |   Birthday /ThirtyOneDaysOut/   |   M    | 1980-08-31 |  46 |  True |     NA     |   NA  |    NA    |
-|  @I7@ |       Birthday /Yesterday/      |   F    | 1988-07-30 |  38 |  True |     NA     |   NA  |    NA    |
-|  @I8@ |     Deceased /UpcomingBday/     |   M    | 1940-08-10 |  80 | False | 2020-03-15 |   NA  |    NA    |
-|  @I9@ |          No /Birthday/          |   F    |     NA     |  NA |  True |     NA     |   NA  |    NA    |
-| @I10@ |        Birthday /FarAway/       |   M    | 1995-01-15 |  31 |  True |     NA     |   NA  |    NA    |
-+-------+---------------------------------+--------+------------+-----+-------+------------+-------+----------+
++-------+---------------------------+--------+------------+-----+-------+------------+-------+----------+
+|   ID  |            Name           | Gender |  Birthday  | Age | Alive |   Death    | Child |  Spouse  |
++-------+---------------------------+--------+------------+-----+-------+------------+-------+----------+
+|  @I1@ |     John /AnnivToday/     |   M    | 1970-03-05 |  56 |  True |     NA     |   NA  | {'@F1@'} |
+|  @I2@ |     Jane /AnnivToday/     |   F    | 1972-09-12 |  54 |  True |     NA     |   NA  | {'@F1@'} |
+|  @I3@ |    Bob /AnnivTwoWeeks/    |   M    | 1965-01-20 |  61 |  True |     NA     |   NA  | {'@F2@'} |
+|  @I4@ |   Alice /AnnivTwoWeeks/   |   F    | 1968-11-08 |  58 |  True |     NA     |   NA  | {'@F2@'} |
+|  @I5@ |   Tom /AnnivThirtyDays/   |   M    | 1980-07-03 |  46 |  True |     NA     |   NA  | {'@F3@'} |
+|  @I6@ |   Mary /AnnivThirtyDays/  |   F    | 1982-04-19 |  44 |  True |     NA     |   NA  | {'@F3@'} |
+|  @I7@ | Dave /AnnivThirtyOneDays/ |   M    | 1975-02-15 |  51 |  True |     NA     |   NA  | {'@F4@'} |
+|  @I8@ |  Sue /AnnivThirtyOneDays/ |   F    | 1977-10-28 |  49 |  True |     NA     |   NA  | {'@F4@'} |
+|  @I9@ |      Frank /Divorced/     |   M    | 1960-05-11 |  66 |  True |     NA     |   NA  | {'@F5@'} |
+| @I10@ |      Grace /Divorced/     |   F    | 1963-06-06 |  63 |  True |     NA     |   NA  | {'@F5@'} |
+| @I11@ |   Hank /DeceasedHusband/  |   M    | 1945-12-22 |  79 | False | 2024-02-01 |   NA  | {'@F6@'} |
+| @I12@ |    Irene /WidowedWife/    |   F    | 1948-08-09 |  78 |  True |     NA     |   NA  | {'@F6@'} |
+| @I13@ |    Jack /AnnivFarAway/    |   M    | 1985-03-17 |  41 |  True |     NA     |   NA  | {'@F7@'} |
+| @I14@ |    Karen /AnnivFarAway/   |   F    | 1987-12-04 |  39 |  True |     NA     |   NA  | {'@F7@'} |
+| @I15@ |    Leo /AnnivYesterday/   |   M    | 1955-04-30 |  71 |  True |     NA     |   NA  | {'@F8@'} |
+| @I16@ |   Mona /AnnivYesterday/   |   F    | 1958-09-25 |  68 |  True |     NA     |   NA  | {'@F8@'} |
++-------+---------------------------+--------+------------+-----+-------+------------+-------+----------+
 
 Families
-+------+------------+----------+------------+---------------------+---------+------------------+----------+
-|  ID  |  Married   | Divorced | Husband ID |     Husband Name    | Wife ID |    Wife Name     | Children |
-+------+------------+----------+------------+---------------------+---------+------------------+----------+
-| @F1@ | 2015-06-10 |    NA    |    @I2@    | Birthday /Tomorrow/ |   @I1@  | Birthday /Today/ |    []    |
-+------+------------+----------+------------+---------------------+---------+------------------+----------+
++------+------------+------------+------------+---------------------------+---------+--------------------------+----------+
+|  ID  |  Married   |  Divorced  | Husband ID |        Husband Name       | Wife ID |        Wife Name         | Children |
++------+------------+------------+------------+---------------------------+---------+--------------------------+----------+
+| @F1@ | 2000-07-31 |     NA     |    @I1@    |     John /AnnivToday/     |   @I2@  |    Jane /AnnivToday/     |    []    |
+| @F2@ | 1995-08-14 |     NA     |    @I3@    |    Bob /AnnivTwoWeeks/    |   @I4@  |  Alice /AnnivTwoWeeks/   |    []    |
+| @F3@ | 2010-08-30 |     NA     |    @I5@    |   Tom /AnnivThirtyDays/   |   @I6@  |  Mary /AnnivThirtyDays/  |    []    |
+| @F4@ | 2005-08-31 |     NA     |    @I7@    | Dave /AnnivThirtyOneDays/ |   @I8@  | Sue /AnnivThirtyOneDays/ |    []    |
+| @F5@ | 1990-08-10 | 2015-03-05 |    @I9@    |      Frank /Divorced/     |  @I10@  |     Grace /Divorced/     |    []    |
+| @F6@ | 1975-08-15 |     NA     |   @I11@    |   Hank /DeceasedHusband/  |  @I12@  |   Irene /WidowedWife/    |    []    |
+| @F7@ | 2012-01-20 |     NA     |   @I13@    |    Jack /AnnivFarAway/    |  @I14@  |   Karen /AnnivFarAway/   |    []    |
+| @F8@ | 1985-07-30 |     NA     |   @I15@    |    Leo /AnnivYesterday/   |  @I16@  |  Mona /AnnivYesterday/   |    []    |
++------+------------+------------+------------+---------------------------+---------+--------------------------+----------+
 
-US29: Deceased Individuals: @I8@
-US30: Living married individuals: @I1@, @I2@
-US38: Upcoming birthdays: @I1@, @I2@, @I3@, @I4@, @I5@
+US29: Deceased Individuals: @I11@
+US30: Living married individuals: @I1@, @I2@, @I3@, @I4@, @I5@, @I6@, @I7@, @I8@, @I9@, @I10@, @I12@, @I13@, @I14@, @I15@, @I16@
+US38: Upcoming birthdays: @I12@
+US39: Upcoming anniversaries: @F1@, @F2@, @F3@
