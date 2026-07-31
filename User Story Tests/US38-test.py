@@ -26,7 +26,6 @@ class TestForthcomingBirthdays(unittest.TestCase):
     def test_forthcoming_birthdays_1(self):
         """
         One living individual with a birthday in 10 days.
-        Uses a past birth year with the target month/day falling in the upcoming window.
         """
         # citation: https://www.google.com/search?q=how+to+use+timedelta+in+Python+to+calculate+days+apart+between+two+dates%3F
         future_date = datetime.today() + timedelta(days=10)
