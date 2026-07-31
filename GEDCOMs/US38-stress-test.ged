@@ -1,0 +1,79 @@
+0 HEAD
+0 NOTE This file was AI-generated for the purposes of testing US38
+1 GEDC
+2 VERS 5.5.1
+2 FORM LINEAGE-LINKED
+1 CHAR UTF-8
+1 NOTE US38 Stress Test - List Upcoming Birthdays (next 30 days)
+1 NOTE Test date baseline: 31 JUL 2026
+1 NOTE Next 30 days window: 31 JUL 2026 through 30 AUG 2026
+1 NOTE Expected US38 matches: @I1@, @I2@, @I3@, @I4@, @I5@
+1 NOTE Expected US38 non-matches: @I6@, @I7@, @I8@, @I9@, @I10@
+0 @I1@ INDI
+1 NAME Birthday /Today/
+1 SEX F
+1 BIRT
+2 DATE 31 JUL 1990
+1 NOTE SHOULD appear - birthday is today (Jul 31)
+1 FAMS @F1@
+0 @I2@ INDI
+1 NAME Birthday /Tomorrow/
+1 SEX M
+1 BIRT
+2 DATE 1 AUG 1985
+1 NOTE SHOULD appear - birthday is tomorrow (Aug 1)
+1 FAMS @F1@
+0 @I3@ INDI
+1 NAME Birthday /TwoWeeksOut/
+1 SEX F
+1 BIRT
+2 DATE 14 AUG 1978
+1 NOTE SHOULD appear - birthday in 14 days (Aug 14)
+0 @I4@ INDI
+1 NAME Birthday /TwentyNineDaysOut/
+1 SEX M
+1 BIRT
+2 DATE 29 AUG 1965
+1 NOTE SHOULD appear - birthday in 29 days (Aug 29)
+0 @I5@ INDI
+1 NAME Birthday /ExactlyThirtyDaysOut/
+1 SEX F
+1 BIRT
+2 DATE 30 AUG 1972
+1 NOTE SHOULD appear - birthday in exactly 30 days (Aug 30, boundary inclusive)
+0 @I6@ INDI
+1 NAME Birthday /ThirtyOneDaysOut/
+1 SEX M
+1 BIRT
+2 DATE 31 AUG 1980
+1 NOTE Should NOT appear - birthday in 31 days (just outside window)
+0 @I7@ INDI
+1 NAME Birthday /Yesterday/
+1 SEX F
+1 BIRT
+2 DATE 30 JUL 1988
+1 NOTE Should NOT appear - birthday was yesterday (already passed)
+0 @I8@ INDI
+1 NAME Deceased /UpcomingBday/
+1 SEX M
+1 BIRT
+2 DATE 10 AUG 1940
+1 DEAT Y
+2 DATE 15 MAR 2020
+1 NOTE Should NOT appear - birthday is upcoming but individual is deceased
+0 @I9@ INDI
+1 NAME No /Birthday/
+1 SEX F
+1 NOTE Should NOT appear - no birth date recorded
+0 @I10@ INDI
+1 NAME Birthday /FarAway/
+1 SEX M
+1 BIRT
+2 DATE 15 JAN 1995
+1 NOTE Should NOT appear - birthday is in January (months away)
+0 @F1@ FAM
+1 HUSB @I2@
+1 WIFE @I1@
+1 MARR
+2 DATE 10 JUN 2015
+0 TRLR

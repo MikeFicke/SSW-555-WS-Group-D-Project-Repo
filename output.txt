@@ -1,27 +1,26 @@
 Individuals
-+-------+------------------------+--------+------------+-----+-------+------------+-------+--------+
-|   ID  |          Name          | Gender |  Birthday  | Age | Alive |   Death    | Child | Spouse |
-+-------+------------------------+--------+------------+-----+-------+------------+-------+--------+
-|  @I1@ |     Young /Person/     |   M    | 2000-01-01 |  26 |  True |     NA     |   NA  |   NA   |
-|  @I2@ | Exactly /OneFortyNine/ |   F    | 1877-01-01 | 149 |  True |     NA     |   NA  |   NA   |
-|  @I3@ |   Exactly /OneFifty/   |   M    | 1876-01-01 | 150 |  True |     NA     |   NA  |   NA   |
-|  @I4@ |       Very /Old/       |   F    | 1800-01-01 | 226 |  True |     NA     |   NA  |   NA   |
-|  @I5@ |    Dead /Under150/     |   M    | 1900-01-01 | 120 | False | 2020-01-01 |   NA  |   NA   |
-|  @I6@ |     Dead /Over150/     |   F    | 1800-01-01 | 160 | False | 1960-01-01 |   NA  |   NA   |
-|  @I7@ |   Dead /Exactly150/    |   M    | 1800-01-01 | 150 | False | 1950-01-01 |   NA  |   NA   |
-|  @I8@ |     No /Birthday/      |   F    |     NA     |  NA |  True |     NA     |   NA  |   NA   |
-|  @I9@ |  Boundary /DeadAt149/  |   M    | 1800-12-31 | 150 | False | 1950-12-30 |   NA  |   NA   |
-| @I10@ |    Ancient /Person/    |   F    | 1700-01-01 | 200 | False | 1900-01-01 |   NA  |   NA   |
-+-------+------------------------+--------+------------+-----+-------+------------+-------+--------+
++-------+---------------------------------+--------+------------+-----+-------+------------+-------+----------+
+|   ID  |               Name              | Gender |  Birthday  | Age | Alive |   Death    | Child |  Spouse  |
++-------+---------------------------------+--------+------------+-----+-------+------------+-------+----------+
+|  @I1@ |         Birthday /Today/        |   F    | 1990-07-31 |  36 |  True |     NA     |   NA  | {'@F1@'} |
+|  @I2@ |       Birthday /Tomorrow/       |   M    | 1985-08-01 |  41 |  True |     NA     |   NA  | {'@F1@'} |
+|  @I3@ |      Birthday /TwoWeeksOut/     |   F    | 1978-08-14 |  48 |  True |     NA     |   NA  |    NA    |
+|  @I4@ |   Birthday /TwentyNineDaysOut/  |   M    | 1965-08-29 |  61 |  True |     NA     |   NA  |    NA    |
+|  @I5@ | Birthday /ExactlyThirtyDaysOut/ |   F    | 1972-08-30 |  54 |  True |     NA     |   NA  |    NA    |
+|  @I6@ |   Birthday /ThirtyOneDaysOut/   |   M    | 1980-08-31 |  46 |  True |     NA     |   NA  |    NA    |
+|  @I7@ |       Birthday /Yesterday/      |   F    | 1988-07-30 |  38 |  True |     NA     |   NA  |    NA    |
+|  @I8@ |     Deceased /UpcomingBday/     |   M    | 1940-08-10 |  80 | False | 2020-03-15 |   NA  |    NA    |
+|  @I9@ |          No /Birthday/          |   F    |     NA     |  NA |  True |     NA     |   NA  |    NA    |
+| @I10@ |        Birthday /FarAway/       |   M    | 1995-01-15 |  31 |  True |     NA     |   NA  |    NA    |
++-------+---------------------------------+--------+------------+-----+-------+------------+-------+----------+
 
 Families
-+----+---------+----------+------------+--------------+---------+-----------+----------+
-| ID | Married | Divorced | Husband ID | Husband Name | Wife ID | Wife Name | Children |
-+----+---------+----------+------------+--------------+---------+-----------+----------+
-+----+---------+----------+------------+--------------+---------+-----------+----------+
++------+------------+----------+------------+---------------------+---------+------------------+----------+
+|  ID  |  Married   | Divorced | Husband ID |     Husband Name    | Wife ID |    Wife Name     | Children |
++------+------------+----------+------------+---------------------+---------+------------------+----------+
+| @F1@ | 2015-06-10 |    NA    |    @I2@    | Birthday /Tomorrow/ |   @I1@  | Birthday /Today/ |    []    |
++------+------------+----------+------------+---------------------+---------+------------------+----------+
 
-ERROR: INDIVIDUAL: @I3@: Age is 150 years or older.
-ERROR: INDIVIDUAL: @I4@: Age is 150 years or older.
-ERROR: INDIVIDUAL: @I6@: Age is 150 years or older.
-ERROR: INDIVIDUAL: @I7@: Age is 150 years or older.
-ERROR: INDIVIDUAL: @I10@: Age is 150 years or older.
+US29: Deceased Individuals: @I8@
+US30: Living married individuals: @I1@, @I2@
+US38: Upcoming birthdays: @I1@, @I2@, @I3@, @I4@, @I5@
