@@ -1,0 +1,107 @@
+0 HEAD
+1 GEDC
+2 VERS 5.5.1
+2 FORM LINEAGE-LINKED
+1 CHAR UTF-8
+1 NOTE US37 Stress Test - List Living Spouses and Descendants of Recent Deaths
+1 NOTE Test date baseline: 01 AUG 2026
+1 NOTE Expected US37 matches: @I3@, @I5@
+1 NOTE Expected US37 non-matches: @I2@, @I4@, @I6@, @I8@, @I9@, @I10@
+0 @I1@ INDI
+1 NAME Husband /DiedRecently/
+1 SEX M
+1 BIRT
+2 DATE 10 MAR 1960
+1 DEAT Y
+2 DATE 22 JUL 2026
+1 FAMS @F1@
+1 NOTE Died 10 days ago; both spouse and self are deceased so no spouse is listed
+0 @I2@ INDI
+1 NAME Wife /DiedRecently/
+1 SEX F
+1 BIRT
+2 DATE 22 JUN 1962
+1 DEAT Y
+2 DATE 27 JUL 2026
+1 FAMS @F1@
+1 NOTE Also died recently (5 days ago); NOT listed since she is deceased, not living
+0 @I3@ INDI
+1 NAME Living /Child/
+1 SEX M
+1 BIRT
+2 DATE 5 SEP 1985
+1 FAMS @F2@
+1 FAMC @F1@
+1 NOTE SHOULD appear - living child (direct descendant) of both recently deceased parents
+0 @I4@ INDI
+1 NAME InLaw /Spouse/
+1 SEX F
+1 BIRT
+2 DATE 14 FEB 1987
+1 FAMS @F2@
+1 NOTE Should NOT appear - married to a descendant, but is not herself a spouse or descendant of a decedent
+0 @I5@ INDI
+1 NAME Living /Grandchild/
+1 SEX F
+1 BIRT
+2 DATE 1 JAN 2010
+1 FAMC @F2@
+1 NOTE SHOULD appear - living grandchild (descendant two generations down)
+0 @I6@ INDI
+1 NAME Deceased /Child/
+1 SEX M
+1 BIRT
+2 DATE 1 JAN 1988
+1 DEAT Y
+2 DATE 10 OCT 1990
+1 FAMC @F1@
+1 NOTE Should NOT appear - a descendant, but deceased (not living)
+0 @I7@ INDI
+1 NAME Husband /DiedTooLongAgo/
+1 SEX M
+1 BIRT
+2 DATE 3 JAN 1940
+1 DEAT Y
+2 DATE 17 JUN 2026
+1 FAMS @F3@
+1 NOTE Died 45 days ago - outside the 30-day window
+0 @I8@ INDI
+1 NAME Wife /OutsideWindow/
+1 SEX F
+1 BIRT
+2 DATE 15 MAR 1945
+1 FAMS @F3@
+1 NOTE Should NOT appear - living spouse, but decedent died outside the 30-day window
+0 @I9@ INDI
+1 NAME Died /NoRelatives/
+1 SEX M
+1 BIRT
+2 DATE 1 JAN 1950
+1 DEAT Y
+2 DATE 22 JUL 2026
+1 NOTE Died recently but has no spouse or children, so nothing is added for them
+0 @I10@ INDI
+1 NAME Unrelated /LivingPerson/
+1 SEX F
+1 BIRT
+2 DATE 1 JAN 1990
+1 NOTE Should NOT appear - alive and unrelated to any recent death
+0 @F1@ FAM
+1 HUSB @I1@
+1 WIFE @I2@
+1 MARR
+2 DATE 15 JUN 1984
+1 CHIL @I3@
+1 CHIL @I6@
+0 @F2@ FAM
+1 HUSB @I3@
+1 WIFE @I4@
+1 MARR
+2 DATE 10 AUG 2008
+1 CHIL @I5@
+0 @F3@ FAM
+1 HUSB @I7@
+1 WIFE @I8@
+1 MARR
+2 DATE 1 JUN 1965
+0 TRLR
