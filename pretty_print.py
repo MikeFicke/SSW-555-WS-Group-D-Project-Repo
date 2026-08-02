@@ -11,6 +11,7 @@ from prettytable import PrettyTable
 import datetime
 
 from US27_current_age import calculate_current_age
+from US28_siblings_by_age import sort_siblings_by_age
 
 # citation: https://github.com/MikeFicke/SSW-555-WS-M2.B3
 
@@ -124,6 +125,10 @@ def parse_gedcom(file_contents):
         indi["Alive"] = indi["Death"] == "NA"  # "Is this person's Death field still 'NA' ? "  Boolean check
         # US27: Calculate the individual's current age (or age at death), precise to the day.
         indi["Age"] = calculate_current_age(indi["Birthday"], indi["Death"])
+
+    # US28: Sort each family's children by decreasing age (oldest sibling first).
+    for fam in families.values():
+        fam["Children"] = sort_siblings_by_age(fam["Children"], individuals)
 
     return individuals, families
 

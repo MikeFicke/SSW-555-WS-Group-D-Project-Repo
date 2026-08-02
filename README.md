@@ -105,25 +105,32 @@ Output is printed to the terminal and also saved to `output.txt`.
 | US13 | Siblings spacing (at least 8 minutes apart, unless multiple birth)    |
 | US14 | Multiple births fewer than 5 siblings with same birthday              |
 | US15 | Fewer than 15 siblings                                                |
-| US16 | Male last names (children have same last name as father)             |
+| US16 | Male last names (children have same last name as father)              |
 | US17 | No marriages to descendants                                           |
-| US18 | Siblings should not marry one another                                |
-| US19 | First cousins should not marry one another                           |
+| US18 | Siblings should not marry one another                                 |
+| US19 | First cousins should not marry one another                            |
 | US20 | Aunts and uncles should not marry their nieces or nephews             |
 | US21 | Correct gender for role (husband/wife)                                |
 | US22 | Unique individual and family IDs                                      |
 | US23 | Unique name and birth date (no two individuals share both)            |
 | US24 | Unique families by spouses (name + marriage date)                     |
 | US25 | Unique first names and birth dates among children in a family         |
-| US26 | Corresponding entries (family/individual references match up)        |
-| US27 | Include individual's current age when listing individuals            |
-| US29 | List all deceased individuals                                        |
-| US30 | List all living married individuals                                  |
-| US31 | List living individuals over 30 who have never been married          |
-| US35 | List recent births (within the last 30 days)                         |
-| US36 | List recent deaths (within the last 30 days)                         |
-| US38 | List upcoming birthdays (within the next 30 days)                    |
-| US39 | List upcoming anniversaries (within the next 30 days)                |
+| US26 | Corresponding entries (family/individual references match up)         |
+| US27 | Include individual's current age when listing individuals             |
+| US29 | List all deceased individuals                                         |
+| US30 | List all living married individuals                                   |
+| US31 | List living individuals over 30 who have never been married           |
+| US35 | List recent births (within the last 30 days)                          |
+| US36 | List recent deaths (within the last 30 days)                          |
+| US38 | List upcoming birthdays (within the next 30 days)                     |
+| US39 | List upcoming anniversaries (within the next 30 days)                 |
+| US28 | List siblings in families by decreasing age (oldest first)            |
+| US29 | List all deceased individuals                                         |
+| US30 | List all living married individuals                                   |
+| US35 | List recent births (within the last 30 days)                          |
+| US36 | List recent deaths (within the last 30 days)                          |
+| US38 | List upcoming birthdays (within the next 30 days)                     |
+| US39 | List upcoming anniversaries (within the next 30 days)                 |
 
 ## Team
 
