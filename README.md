@@ -70,7 +70,9 @@ Output is printed to the terminal and also saved to `output.txt`.
 │   ├── US19_no_marriage_between_first_cousins.py
 │   ├── US20_no_marriage_between_aunt_uncle_and_niece_nephew.py
 │   ├── US21_correct_gender_role.py
-│   └── US22_unique_ids.py
+│   ├── US22_unique_ids.py
+│   ├── ...
+│   └── US27_current_age.py
 └── User Story Tests/        # Unit tests per user story
 ```
 
@@ -100,6 +102,7 @@ Output is printed to the terminal and also saved to `output.txt`.
 | US20 | Aunts and uncles should not marry their nieces or nephews             |
 | US21 | Correct gender for role (husband/wife)                                |
 | US22 | Unique individual and family IDs                                      |
+| US27 | Include individual's current age when listing individuals            |
 
 ## Team
 

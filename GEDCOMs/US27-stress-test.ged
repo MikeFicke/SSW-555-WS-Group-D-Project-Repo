@@ -1,0 +1,80 @@
+0 HEAD
+1 GEDC
+2 VERS 5.5.1
+2 FORM LINEAGE-LINKED
+1 CHAR UTF-8
+1 NOTE US27 Stress Test - Include Individual's Current Age When Listing Individuals
+1 NOTE Test date baseline: 01 AUG 2026
+1 NOTE Expected ages as of the baseline date are noted per individual below
+0 @I1@ INDI
+1 NAME Birthday /Today/
+1 SEX F
+1 BIRT
+2 DATE 1 AUG 1990
+1 NOTE Expected Age = 36 (birthday is today, so age has already incremented)
+1 FAMS @F1@
+0 @I2@ INDI
+1 NAME Birthday /Tomorrow/
+1 SEX M
+1 BIRT
+2 DATE 2 AUG 1985
+1 NOTE Expected Age = 40 (birthday is tomorrow, so age should NOT have incremented yet)
+1 FAMS @F1@
+0 @I3@ INDI
+1 NAME Birthday /Yesterday/
+1 SEX F
+1 BIRT
+2 DATE 31 JUL 1978
+1 NOTE Expected Age = 48 (birthday was yesterday, so age has already incremented)
+0 @I4@ INDI
+1 NAME Leap /Year/
+1 SEX M
+1 BIRT
+2 DATE 29 FEB 2000
+1 NOTE Expected Age = 26 (leap-day birthday, non-leap current year handled correctly)
+0 @I5@ INDI
+1 NAME Deceased /BeforeBirthdayInDeathYear/
+1 SEX M
+1 BIRT
+2 DATE 15 MAR 1930
+1 DEAT Y
+2 DATE 10 JAN 2010
+1 NOTE Expected Age = 79 (died before birthday in the year of death; age at death, not today)
+0 @I6@ INDI
+1 NAME Deceased /OnBirthday/
+1 SEX F
+1 BIRT
+2 DATE 5 MAY 1950
+1 DEAT Y
+2 DATE 5 MAY 2020
+1 NOTE Expected Age = 70 (died exactly on birthday)
+0 @I7@ INDI
+1 NAME Newborn /Today/
+1 SEX F
+1 BIRT
+2 DATE 1 AUG 2026
+1 NOTE Expected Age = 0 (born on the baseline date)
+0 @I8@ INDI
+1 NAME No /Birthday/
+1 SEX M
+1 NOTE Expected Age = NA (no birth date recorded)
+0 @I9@ INDI
+1 NAME Very /Old/
+1 SEX F
+1 BIRT
+2 DATE 1 JAN 1900
+1 NOTE Expected Age = 126 (long-lived, still under the 150-year US07 threshold)
+0 @I10@ INDI
+1 NAME Deceased /Infant/
+1 SEX M
+1 BIRT
+2 DATE 1 JAN 2020
+1 DEAT Y
+2 DATE 1 JAN 2021
+1 NOTE Expected Age = 1 (died exactly one year after birth)
+0 @F1@ FAM
+1 HUSB @I2@
+1 WIFE @I1@
+1 MARR
+2 DATE 10 JUN 2015
+0 TRLR
