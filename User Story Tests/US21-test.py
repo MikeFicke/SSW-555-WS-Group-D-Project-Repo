@@ -41,9 +41,9 @@ class TestCorrectGenderRole(unittest.TestCase):
         individuals = {'@I1@': {'Name': 'John /Doe/', 'Gender': 'F'}, 
         '@I2@': {'Name': 'Jane /Smith/', 'Gender': 'F'}}
 
-        families = {'@F1@': {'Husband ID': '@I1@', 'Wife ID': '@I2@'}}
+        families = {'@F1@': {'Husband ID': '@I1@', 'Wife ID': '@I2@', 'Line': 30}}
 
-        self.assertEqual(validation(individuals, families), "Error: Husband in family @F1@ is not male.\n")
+        self.assertEqual(validation(individuals, families), "Error: Husband in family @F1@ is not male. (Line 30)\n")
 
     def test_correct_gender_role_3(self):
         """
@@ -52,9 +52,9 @@ class TestCorrectGenderRole(unittest.TestCase):
         individuals = {'@I1@': {'Name': 'John /Doe/', 'Gender': 'M'}, 
         '@I2@': {'Name': 'Jane /Smith/', 'Gender': 'M'}}
 
-        families = {'@F1@': {'Husband ID': '@I1@', 'Wife ID': '@I2@'}}
+        families = {'@F1@': {'Husband ID': '@I1@', 'Wife ID': '@I2@', 'Line': 30}}
 
-        self.assertEqual(validation(individuals, families), "Error: Wife in family @F1@ is not female.\n")
+        self.assertEqual(validation(individuals, families), "Error: Wife in family @F1@ is not female. (Line 30)\n")
 
     def test_correct_gender_role_4(self):
         """
@@ -63,9 +63,9 @@ class TestCorrectGenderRole(unittest.TestCase):
         individuals = {'@I1@': {'Name': 'John /Doe/', 'Gender': 'F'}, 
         '@I2@': {'Name': 'Jane /Smith/', 'Gender': 'M'}}
 
-        families = {'@F1@': {'Husband ID': '@I1@', 'Wife ID': '@I2@'}}
+        families = {'@F1@': {'Husband ID': '@I1@', 'Wife ID': '@I2@', 'Line': 30}}
 
-        self.assertEqual(validation(individuals, families), "Error: Husband in family @F1@ is not male.\nError: Wife in family @F1@ is not female.\n")
+        self.assertEqual(validation(individuals, families), "Error: Husband in family @F1@ is not male. (Line 30)\nError: Wife in family @F1@ is not female. (Line 30)\n")
 
     def test_correct_gender_role_5(self):
         """

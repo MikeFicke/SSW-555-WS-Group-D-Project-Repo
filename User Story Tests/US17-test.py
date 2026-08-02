@@ -43,10 +43,11 @@ class Test(unittest.TestCase):
                 "ID": "@F1@",
                 "Husband ID": "@I1@",
                 "Wife ID": "@I2@",
-                "Children": ["@I2@"]
+                "Children": ["@I2@"],
+                "Line": 30
             }
         }
-        self.assertEqual(validation(families_dict), "ERROR: FAMILY: US17: @F1@: Husband (@I1@) married to descendant (@I2@)\n")
+        self.assertEqual(validation(families_dict), "ERROR: FAMILY: US17: @F1@: Husband (@I1@) married to descendant (@I2@) (Line 30)\n")
 
     def test3(self):
         """
@@ -58,10 +59,11 @@ class Test(unittest.TestCase):
                 "ID": "@F1@",
                 "Husband ID": "@I1@",
                 "Wife ID": "@I2@",
-                "Children": ["@I1@"]
+                "Children": ["@I1@"],
+                "Line": 30
             }
         }
-        self.assertEqual(validation(families_dict), "ERROR: FAMILY: US17: @F1@: Wife (@I2@) married to descendant (@I1@)\n")
+        self.assertEqual(validation(families_dict), "ERROR: FAMILY: US17: @F1@: Wife (@I2@) married to descendant (@I1@) (Line 30)\n")
 
     def test4(self):
         """
@@ -85,10 +87,11 @@ class Test(unittest.TestCase):
                 "ID": "@F3@",
                 "Husband ID": "@I5@",
                 "Wife ID": "@I2@",
-                "Children": []
+                "Children": [],
+                "Line": 50
             }
         }
-        self.assertEqual(validation(families_dict), "ERROR: FAMILY: US17: @F3@: Wife (@I2@) married to descendant (@I5@)\n")
+        self.assertEqual(validation(families_dict), "ERROR: FAMILY: US17: @F3@: Wife (@I2@) married to descendant (@I5@) (Line 50)\n")
 
     def test5(self):
         """
@@ -112,10 +115,11 @@ class Test(unittest.TestCase):
                 "ID": "@F3@",
                 "Husband ID": "@I1@",
                 "Wife ID": "@I5@",
-                "Children": []
+                "Children": [],
+                "Line": 50
             }
         }
-        self.assertEqual(validation(families_dict), "ERROR: FAMILY: US17: @F3@: Husband (@I1@) married to descendant (@I5@)\n")
+        self.assertEqual(validation(families_dict), "ERROR: FAMILY: US17: @F3@: Husband (@I1@) married to descendant (@I5@) (Line 50)\n")
 
 if __name__ == '__main__':
     unittest.main()

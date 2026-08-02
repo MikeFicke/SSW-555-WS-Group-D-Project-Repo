@@ -16,4 +16,4 @@ def validate_birth_before_death(individuals):
         birth_date = datetime.datetime.strptime(birthday, "%Y-%m-%d").date()
         death_date = datetime.datetime.strptime(death_date, "%Y-%m-%d").date()
         if birth_date >= death_date:
-            print(f"ERROR: Birth date {birth_date} is after or the same as death date {death_date} for individual {individual['ID']}")
+            print(f"ERROR: Birth date {birth_date} is after or the same as death date {death_date} for individual {individual['ID']} (Line {individual['Line']})")

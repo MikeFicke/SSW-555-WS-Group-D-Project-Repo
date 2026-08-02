@@ -26,7 +26,7 @@ class TestMarriageBeforeDeath(unittest.TestCase):
             "@I2@": {"ID": "@I2@", "Death": "NA"},
         }
         families = {
-            "@F1@": {"ID": "@F1@", "Married": "2000-01-01", "Husband ID": "@I1@", "Wife ID": "@I2@"}
+            "@F1@": {"ID": "@F1@", "Married": "2000-01-01", "Husband ID": "@I1@", "Wife ID": "@I2@", "Line": 30}
         }
         self.assertEqual(validation(individuals, families), "")
 
@@ -36,7 +36,7 @@ class TestMarriageBeforeDeath(unittest.TestCase):
             "@I2@": {"ID": "@I2@", "Death": "NA"},
         }
         families = {
-            "@F1@": {"ID": "@F1@", "Married": "2000-01-01", "Husband ID": "@I1@", "Wife ID": "@I2@"}
+            "@F1@": {"ID": "@F1@", "Married": "2000-01-01", "Husband ID": "@I1@", "Wife ID": "@I2@", "Line": 30}
         }
         self.assertEqual(validation(individuals, families), "")
 
@@ -46,11 +46,11 @@ class TestMarriageBeforeDeath(unittest.TestCase):
             "@I2@": {"ID": "@I2@", "Death": "NA"},
         }
         families = {
-            "@F1@": {"ID": "@F1@", "Married": "2000-01-01", "Husband ID": "@I1@", "Wife ID": "@I2@"}
+            "@F1@": {"ID": "@F1@", "Married": "2000-01-01", "Husband ID": "@I1@", "Wife ID": "@I2@", "Line": 30}
         }
         self.assertEqual(
             validation(individuals, families),
-            "ERROR: Death date in family @F1@ is before marriage date 2000-01-01 00:00:00\n",
+            "ERROR: Death date in family @F1@ is before marriage date 2000-01-01 00:00:00 (Line 30)\n",
         )
 
     def test_wife_died_before_marriage(self):
@@ -59,11 +59,11 @@ class TestMarriageBeforeDeath(unittest.TestCase):
             "@I2@": {"ID": "@I2@", "Death": "1990-01-01"},
         }
         families = {
-            "@F1@": {"ID": "@F1@", "Married": "2000-01-01", "Husband ID": "@I1@", "Wife ID": "@I2@"}
+            "@F1@": {"ID": "@F1@", "Married": "2000-01-01", "Husband ID": "@I1@", "Wife ID": "@I2@", "Line": 30}
         }
         self.assertEqual(
             validation(individuals, families),
-            "ERROR: Death date in family @F1@ is before marriage date 2000-01-01 00:00:00\n",
+            "ERROR: Death date in family @F1@ is before marriage date 2000-01-01 00:00:00 (Line 30)\n",
         )
 
     def test_both_spouses_died_before_marriage_is_single_error(self):
@@ -76,11 +76,11 @@ class TestMarriageBeforeDeath(unittest.TestCase):
             "@I2@": {"ID": "@I2@", "Death": "1991-01-01"},
         }
         families = {
-            "@F1@": {"ID": "@F1@", "Married": "2000-01-01", "Husband ID": "@I1@", "Wife ID": "@I2@"}
+            "@F1@": {"ID": "@F1@", "Married": "2000-01-01", "Husband ID": "@I1@", "Wife ID": "@I2@", "Line": 30}
         }
         self.assertEqual(
             validation(individuals, families),
-            "ERROR: Death date in family @F1@ is before marriage date 2000-01-01 00:00:00\n",
+            "ERROR: Death date in family @F1@ is before marriage date 2000-01-01 00:00:00 (Line 30)\n",
         )
 
     def test_marriage_date_na_is_skipped(self):
@@ -100,7 +100,7 @@ class TestMarriageBeforeDeath(unittest.TestCase):
         """
         individuals = {}
         families = {
-            "@F1@": {"ID": "@F1@", "Married": "2000-01-01", "Husband ID": "@I1@", "Wife ID": "@I2@"}
+            "@F1@": {"ID": "@F1@", "Married": "2000-01-01", "Husband ID": "@I1@", "Wife ID": "@I2@", "Line": 30}
         }
         self.assertEqual(validation(individuals, families), "")
 
@@ -110,7 +110,7 @@ class TestMarriageBeforeDeath(unittest.TestCase):
             "@I2@": {"ID": "@I2@", "Death": "NA"},
         }
         families = {
-            "@F1@": {"ID": "@F1@", "Married": "2000-01-01", "Husband ID": "@I1@", "Wife ID": "@I2@"}
+            "@F1@": {"ID": "@F1@", "Married": "2000-01-01", "Husband ID": "@I1@", "Wife ID": "@I2@", "Line": 30}
         }
         self.assertEqual(validation(individuals, families), "")
 

@@ -73,8 +73,8 @@ class TestUniqueFirstNamesAndDatesInFamily(unittest.TestCase):
         Invalid.  Two children share a name and a birthday.
         """
         individuals_dict = {
-            "@I1@": {"ID": "@I1@", "Name": "John /Doe/", "Birthday": "2000-01-01"},
-            "@I2@": {"ID": "@I2@", "Name": "John /Doe/", "Birthday": "2000-01-01"},
+            "@I1@": {"ID": "@I1@", "Name": "John /Doe/", "Birthday": "2000-01-01", "Line": 10},
+            "@I2@": {"ID": "@I2@", "Name": "John /Doe/", "Birthday": "2000-01-01", "Line": 20},
         }
         families_dict = {
             "@F1@": {"ID": "@F1@", "Children": ["@I1@", "@I2@"]},
@@ -89,8 +89,8 @@ class TestUniqueFirstNamesAndDatesInFamily(unittest.TestCase):
         individuals_dict = {
             "@I1@": {"ID": "@I1@", "Name": "John /Doe/", "Birthday": "2000-01-01"},
             "@I2@": {"ID": "@I2@", "Name": "Jane /Doe/", "Birthday": "2002-05-15"},
-            "@I3@": {"ID": "@I3@", "Name": "Tom /Smith/", "Birthday": "2005-03-10"},
-            "@I4@": {"ID": "@I4@", "Name": "Tom /Smith/", "Birthday": "2005-03-10"},
+            "@I3@": {"ID": "@I3@", "Name": "Tom /Smith/", "Birthday": "2005-03-10", "Line": 30},
+            "@I4@": {"ID": "@I4@", "Name": "Tom /Smith/", "Birthday": "2005-03-10", "Line": 40},
         }
         families_dict = {
             "@F1@": {"ID": "@F1@", "Children": ["@I1@", "@I2@"]},

@@ -19,4 +19,5 @@ def validate_unique_families_by_spouses(individual_dict, family_dict):
     for spouses_marriage in unique_spouse_marriages:
         if len(unique_spouse_marriages[spouses_marriage]) >= 2:
             fam_ids = ', '.join(unique_spouse_marriages[spouses_marriage])
-            print(f"ERROR: US23: FAMILIES ({fam_ids}): More than one family with the same husband ({spouses_marriage[0]}), wife ({spouses_marriage[1]}), and marriage date ({spouses_marriage[2]}).")
+            lines = ', '.join(str(family_dict[fam_id]['Line']) for fam_id in unique_spouse_marriages[spouses_marriage])
+            print(f"ERROR: US23: FAMILIES ({fam_ids}): More than one family with the same husband ({spouses_marriage[0]}), wife ({spouses_marriage[1]}), and marriage date ({spouses_marriage[2]}). (Lines {lines})")

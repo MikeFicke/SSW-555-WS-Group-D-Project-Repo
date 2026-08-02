@@ -70,9 +70,9 @@ class TestMultipleBirths(unittest.TestCase):
             "@I6@": {"Birthday": "2000-06-15"}
         }
         family_dict = {
-            "@F1@": {"Children": ["@I1@", "@I2@", "@I3@", "@I4@", "@I5@", "@I6@"]}
+            "@F1@": {"Children": ["@I1@", "@I2@", "@I3@", "@I4@", "@I5@", "@I6@"], "Line": 30}
         }
-        
+
         self.assertNotEqual(validation(individuals_dict, family_dict), "")
         
 

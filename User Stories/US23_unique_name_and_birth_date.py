@@ -17,4 +17,5 @@ def validate_unique_name_and_birth_date(individual_dict):
     for name_birth in unique_name_birth:
         if len(unique_name_birth[name_birth]) >= 2:
             ids = ', '.join(unique_name_birth[name_birth])
-            print(f"ERROR: US23: INDIVIDUALS ({ids}): More than one individual with name ({name_birth[0]}) and birth date ({name_birth[1]}).")
+            lines = ', '.join(str(individual_dict[id]['Line']) for id in unique_name_birth[name_birth])
+            print(f"ERROR: US23: INDIVIDUALS ({ids}): More than one individual with name ({name_birth[0]}) and birth date ({name_birth[1]}). (Lines {lines})")

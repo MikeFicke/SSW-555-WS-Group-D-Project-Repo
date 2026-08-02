@@ -159,16 +159,18 @@ class Test(unittest.TestCase):
                 "ID": "@F1@",
                 "Married": "2000-06-01",
                 "Husband ID": "@I1@",
-                "Wife ID": "@I2@"
+                "Wife ID": "@I2@",
+                "Line": 40
             },
             "@F2@": {
                 "ID": "@F2@",
                 "Married": "2000-06-01",
                 "Husband ID": "@I3@",
-                "Wife ID": "@I4@"
+                "Wife ID": "@I4@",
+                "Line": 50
             }
         }
-        self.assertEqual(validation(individuals_dict, families_dict), "ERROR: US23: FAMILIES (@F1@, @F2@): More than one family with the same husband (John /Doe/), wife (Jane /Doe/), and marriage date (2000-06-01).\n")
+        self.assertEqual(validation(individuals_dict, families_dict), "ERROR: US23: FAMILIES (@F1@, @F2@): More than one family with the same husband (John /Doe/), wife (Jane /Doe/), and marriage date (2000-06-01). (Lines 40, 50)\n")
 
     def test5(self):
         """
@@ -197,30 +199,34 @@ class Test(unittest.TestCase):
                 "ID": "@F1@",
                 "Married": "2000-06-01",
                 "Husband ID": "@I1@",
-                "Wife ID": "@I2@"
+                "Wife ID": "@I2@",
+                "Line": 40
             },
             "@F2@": {
                 "ID": "@F2@",
                 "Married": "2000-06-01",
                 "Husband ID": "@I3@",
-                "Wife ID": "@I4@"
+                "Wife ID": "@I4@",
+                "Line": 50
             },
             "@F3@": {
                 "ID": "@F3@",
                 "Married": "2015-03-20",
                 "Husband ID": "@I1@",
-                "Wife ID": "@I2@"
+                "Wife ID": "@I2@",
+                "Line": 60
             },
             "@F4@": {
                 "ID": "@F4@",
                 "Married": "2015-03-20",
                 "Husband ID": "@I3@",
-                "Wife ID": "@I4@"
+                "Wife ID": "@I4@",
+                "Line": 70
             }
         }
         self.assertEqual(validation(individuals_dict, families_dict),
-                        "ERROR: US23: FAMILIES (@F1@, @F2@): More than one family with the same husband (John /Doe/), wife (Jane /Doe/), and marriage date (2000-06-01).\n"
-                        "ERROR: US23: FAMILIES (@F3@, @F4@): More than one family with the same husband (John /Doe/), wife (Jane /Doe/), and marriage date (2015-03-20).\n")
+                        "ERROR: US23: FAMILIES (@F1@, @F2@): More than one family with the same husband (John /Doe/), wife (Jane /Doe/), and marriage date (2000-06-01). (Lines 40, 50)\n"
+                        "ERROR: US23: FAMILIES (@F3@, @F4@): More than one family with the same husband (John /Doe/), wife (Jane /Doe/), and marriage date (2015-03-20). (Lines 60, 70)\n")
 
 if __name__ == '__main__':
     unittest.main()

@@ -18,10 +18,10 @@ def validate_correct_gender_role(individual_dict, family_dict):
         if husband_id != "NA" and husband_id != "" and husband_id != None:
             husband_gender = individual_dict[husband_id]['Gender']
             if husband_gender != 'M':
-                print(f"Error: Husband in family {family_id} is not male.")
+                print(f"Error: Husband in family {family_id} is not male. (Line {family_dict[family_id]['Line']})")
 
         # Check to see if wife ID is null
         if wife_id != "NA" and wife_id != "" and wife_id != None:
             wife_gender = individual_dict[wife_id]['Gender']
             if wife_gender != 'F':
-                print(f"Error: Wife in family {family_id} is not female.")
+                print(f"Error: Wife in family {family_id} is not female. (Line {family_dict[family_id]['Line']})")

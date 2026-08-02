@@ -16,9 +16,9 @@ def validate_unique_ids(file_contents):
     """
     Check if there are any duplicate individual or family IDs by parsing through the raw GEDCOM data.
     """
-    individual_ids = []
-    family_ids = []
-    for line in file_contents:
+    individual_ids = []  # list of (id, line_number) tuples
+    family_ids = []  # list of (id, line_number) tuples
+    for line_number, line in enumerate(file_contents, start=1):
         # strip whitespace out and split into tokens
         no_whitespace_line = line.strip()
         tokenized_no_whitespace_line = no_whitespace_line.split()
@@ -27,7 +27,7 @@ def validate_unique_ids(file_contents):
         # Expected format is: "<level> <id> <tag>"
         if len(tokenized_no_whitespace_line) < 3:
             continue
-        
+
         level = tokenized_no_whitespace_line[0]
         individual_id = tokenized_no_whitespace_line[1]
         individual_tag = tokenized_no_whitespace_line[2]
@@ -37,27 +37,27 @@ def validate_unique_ids(file_contents):
             continue
 
         if individual_tag == "INDI":
-            individual_ids.append(individual_id)
+            individual_ids.append((individual_id, line_number))
         elif individual_tag == "FAM":
-            family_ids.append(individual_id)
+            family_ids.append((individual_id, line_number))
         else:
             # skip
             continue
 
     # Check for duplicate individual IDS using a set, as a set does not contain duplicates
     known_individual_ids = set()
-    
-    for id in individual_ids:
+
+    for id, line_number in individual_ids:
         if id in known_individual_ids:
-            print(f"ERROR: Individual ID {id} appears more than once in the GEDCOM file.")
+            print(f"ERROR: Individual ID {id} appears more than once in the GEDCOM file. (Line {line_number})")
         else:
             known_individual_ids.add(id)
-    
+
     # Similar logic for family IDs
     known_family_ids = set()
 
-    for id in family_ids:
+    for id, line_number in family_ids:
         if id in known_family_ids:
-            print(f"ERROR: Family ID {id} appears more than once in the GEDCOM file.")
+            print(f"ERROR: Family ID {id} appears more than once in the GEDCOM file. (Line {line_number})")
         else:
             known_family_ids.add(id)

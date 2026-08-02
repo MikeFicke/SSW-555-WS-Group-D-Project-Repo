@@ -32,8 +32,9 @@ class TestParentsNotTooOld(unittest.TestCase):
                 "Birthday": "1990-01-01"
             },
             "@I3@": {
-                "ID": "@I3@",         
-                "Birthday": "2020-01-01"
+                "ID": "@I3@",
+                "Birthday": "2020-01-01",
+                "Line": 30
             }
         }
         families_dict = {
@@ -60,8 +61,9 @@ class TestParentsNotTooOld(unittest.TestCase):
                 "Birthday": "1950-01-01"
             },
             "@I3@": {
-                "ID": "@I3@",         
-                "Birthday": "2020-01-01"
+                "ID": "@I3@",
+                "Birthday": "2020-01-01",
+                "Line": 30
             }
         }
         families_dict = {
@@ -72,7 +74,7 @@ class TestParentsNotTooOld(unittest.TestCase):
                 "Children": ["@I3@"]
             }
         }
-        self.assertEqual(validation(individuals_dict, families_dict), "ERROR: US12: Mother (@I2@) is 60 or more years older than child (@I3@)\n")
+        self.assertEqual(validation(individuals_dict, families_dict), "ERROR: US12: Mother (@I2@) is 60 or more years older than child (@I3@) (Line 30)\n")
 
     def test3(self):
         """
@@ -88,8 +90,9 @@ class TestParentsNotTooOld(unittest.TestCase):
                 "Birthday": "1970-01-01"
             },
             "@I3@": {
-                "ID": "@I3@",         
-                "Birthday": "2020-01-01"
+                "ID": "@I3@",
+                "Birthday": "2020-01-01",
+                "Line": 30
             }
         }
         families_dict = {
@@ -100,7 +103,7 @@ class TestParentsNotTooOld(unittest.TestCase):
                 "Children": ["@I3@"]
             }
         }
-        self.assertEqual(validation(individuals_dict, families_dict), "ERROR: US12: Father (@I1@) is 80 or more years older than child (@I3@)\n")
+        self.assertEqual(validation(individuals_dict, families_dict), "ERROR: US12: Father (@I1@) is 80 or more years older than child (@I3@) (Line 30)\n")
 
     def test4(self):
         """
@@ -116,8 +119,9 @@ class TestParentsNotTooOld(unittest.TestCase):
                 "Birthday": "1950-01-01"
             },
             "@I3@": {
-                "ID": "@I3@",         
-                "Birthday": "2020-01-01"
+                "ID": "@I3@",
+                "Birthday": "2020-01-01",
+                "Line": 30
             }
         }
         families_dict = {
@@ -129,8 +133,8 @@ class TestParentsNotTooOld(unittest.TestCase):
             }
         }
         self.assertEqual(validation(individuals_dict, families_dict),
-                        "ERROR: US12: Father (@I1@) is 80 or more years older than child (@I3@)\n" \
-                        "ERROR: US12: Mother (@I2@) is 60 or more years older than child (@I3@)\n")
+                        "ERROR: US12: Father (@I1@) is 80 or more years older than child (@I3@) (Line 30)\n" \
+                        "ERROR: US12: Mother (@I2@) is 60 or more years older than child (@I3@) (Line 30)\n")
 
     def test5(self):
         """
@@ -151,7 +155,8 @@ class TestParentsNotTooOld(unittest.TestCase):
             },
             "@I4@": {
                 "ID": "@I4@",
-                "Birthday": "2020-01-01"
+                "Birthday": "2020-01-01",
+                "Line": 40
             }
         }
         families_dict = {
@@ -163,8 +168,8 @@ class TestParentsNotTooOld(unittest.TestCase):
             }
         }
         self.assertEqual(validation(individuals_dict, families_dict),
-                        "ERROR: US12: Father (@I1@) is 80 or more years older than child (@I4@)\n" \
-                        "ERROR: US12: Mother (@I2@) is 60 or more years older than child (@I4@)\n")
+                        "ERROR: US12: Father (@I1@) is 80 or more years older than child (@I4@) (Line 40)\n" \
+                        "ERROR: US12: Mother (@I2@) is 60 or more years older than child (@I4@) (Line 40)\n")
 
 if __name__ == '__main__':
     unittest.main()

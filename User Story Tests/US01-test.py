@@ -24,12 +24,13 @@ class TestDatesBeforeCurrentDate(unittest.TestCase):
         """
         individuals_dict = {
             "@I1@": {
-                "ID": "@I1@",         
+                "ID": "@I1@",
                 "Birthday": "2000-06-01",
-                "Death": "2020-06-01"
+                "Death": "2020-06-01",
+                "Line": 10,
             }
         }
-        families_dict = {} 
+        families_dict = {}
         self.assertEqual(validation(individuals_dict, families_dict), "")
 
     def test2(self):
@@ -40,11 +41,12 @@ class TestDatesBeforeCurrentDate(unittest.TestCase):
             "@I1@": {
                 "ID": "@I1@",
                 "Birthday": "2030-06-01",
-                "Death": "2020-06-01"
+                "Death": "2020-06-01",
+                "Line": 10,
             }
         }
         families_dict = {}
-        self.assertEqual(validation(individuals_dict, families_dict), "ERROR: INDIVIDUAL: US01: @I1@: Birthday 2030-06-01 occurs in the future\n")
+        self.assertEqual(validation(individuals_dict, families_dict), "ERROR: INDIVIDUAL: US01: @I1@: Birthday 2030-06-01 occurs in the future (Line 10)\n")
 
     def test3(self):
         """
@@ -54,11 +56,12 @@ class TestDatesBeforeCurrentDate(unittest.TestCase):
             "@I1@": {
                 "ID": "@I1@",
                 "Birthday": "2000-06-01",
-                "Death": "2030-06-01"
+                "Death": "2030-06-01",
+                "Line": 10,
             }
         }
         families_dict = {}
-        self.assertEqual(validation(individuals_dict, families_dict), "ERROR: INDIVIDUAL: US01: @I1@: Death 2030-06-01 occurs in the future\n")
+        self.assertEqual(validation(individuals_dict, families_dict), "ERROR: INDIVIDUAL: US01: @I1@: Death 2030-06-01 occurs in the future (Line 10)\n")
 
     def test4(self):
         """
@@ -69,10 +72,11 @@ class TestDatesBeforeCurrentDate(unittest.TestCase):
             "@F1@": {
                 "ID": "@F1@",
                 "Married": "2030-06-01",
-                "Divorced": "2000-06-01"
+                "Divorced": "2000-06-01",
+                "Line": 30,
             }
         }
-        self.assertEqual(validation(individuals_dict, families_dict), "ERROR: FAMILY: US01: @F1@: Marriage date 2030-06-01 occurs in the future\n")
+        self.assertEqual(validation(individuals_dict, families_dict), "ERROR: FAMILY: US01: @F1@: Marriage date 2030-06-01 occurs in the future (Line 30)\n")
 
     def test5(self):
         """
@@ -83,10 +87,11 @@ class TestDatesBeforeCurrentDate(unittest.TestCase):
             "@F1@": {
                 "ID": "@F1@",
                 "Married": "2000-06-01",
-                "Divorced": "2030-06-01"
+                "Divorced": "2030-06-01",
+                "Line": 30,
             }
         }
-        self.assertEqual(validation(individuals_dict, families_dict), "ERROR: FAMILY: US01: @F1@: Divorce date 2030-06-01 occurs in the future\n")
+        self.assertEqual(validation(individuals_dict, families_dict), "ERROR: FAMILY: US01: @F1@: Divorce date 2030-06-01 occurs in the future (Line 30)\n")
 
 if __name__ == '__main__':
     unittest.main()

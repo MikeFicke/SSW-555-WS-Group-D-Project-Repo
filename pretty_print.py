@@ -32,7 +32,7 @@ def parse_gedcom(file_contents):
     current_type = None
     current_event = None
 
-    for line in file_contents:
+    for line_number, line in enumerate(file_contents, start=1):
         # Split into words, strip whitespace, skip blank lines
         stripped_line = line.strip()
         line_tokens = stripped_line.split()
@@ -67,11 +67,13 @@ def parse_gedcom(file_contents):
             if tag == "INDI":
                 current_id = args
                 current_type = "INDI"
-                individuals[current_id] = {"ID": current_id, "Name": "NA", "Gender": "NA", "Birthday": "NA", "Death": "NA", "Child": "NA", "Spouse": []}
+                # US41: Record the source line number so errors can cite where a record came from.
+                individuals[current_id] = {"ID": current_id, "Name": "NA", "Gender": "NA", "Birthday": "NA", "Death": "NA", "Child": "NA", "Spouse": [], "Line": line_number}
             elif tag == "FAM":
                 current_id = args
                 current_type = "FAM"
-                families[current_id] = {"ID": current_id, "Married": "NA", "Divorced": "NA", "Husband ID": "NA", "Wife ID": "NA", "Children": []}
+                # US41: Record the source line number so errors can cite where a record came from.
+                families[current_id] = {"ID": current_id, "Married": "NA", "Divorced": "NA", "Husband ID": "NA", "Wife ID": "NA", "Children": [], "Line": line_number}
             else:
                 current_id = None
                 current_type = None

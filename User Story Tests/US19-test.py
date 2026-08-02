@@ -71,12 +71,13 @@ class Test(unittest.TestCase):
                 "ID": "@F4@",
                 "Husband ID": "@I3@",
                 "Wife ID": "@I6@",
-                "Children": []
+                "Children": [],
+                "Line": 70
             }
         }
         self.assertEqual(
             validation(families_dict),
-            "ERROR: FAMILY: US19: @F4@: Husband (@I3@) and Wife (@I6@) are first cousins\n"
+            "ERROR: FAMILY: US19: @F4@: Husband (@I3@) and Wife (@I6@) are first cousins (Line 70)\n"
         )
 
     def test3(self):
@@ -126,7 +127,8 @@ class Test(unittest.TestCase):
                 "ID": "@F4@",
                 "Husband ID": "@I3@",
                 "Wife ID": "@I6@",
-                "Children": []
+                "Children": [],
+                "Line": 70
             },
             "@F5@": {
                 "ID": "@F5@",
@@ -150,13 +152,14 @@ class Test(unittest.TestCase):
                 "ID": "@F8@",
                 "Husband ID": "@I13@",
                 "Wife ID": "@I16@",
-                "Children": []
+                "Children": [],
+                "Line": 150
             }
         }
         self.assertEqual(
             validation(families_dict),
-            "ERROR: FAMILY: US19: @F4@: Husband (@I3@) and Wife (@I6@) are first cousins\n"
-            "ERROR: FAMILY: US19: @F8@: Husband (@I13@) and Wife (@I16@) are first cousins\n"
+            "ERROR: FAMILY: US19: @F4@: Husband (@I3@) and Wife (@I6@) are first cousins (Line 70)\n"
+            "ERROR: FAMILY: US19: @F8@: Husband (@I13@) and Wife (@I16@) are first cousins (Line 150)\n"
         )
 
     def test5(self):

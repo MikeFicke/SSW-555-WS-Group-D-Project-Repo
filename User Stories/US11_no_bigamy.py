@@ -70,6 +70,6 @@ def validate_no_bigamy(individuals, families):
                 # The logic is that if two date ranges overlap (start1 < end 2 AND start2 < end1), then there is bigamy
                 # We check for nulls here in case there are marriages that have not ended yet to address that edge case, which will fail if not considered
                 if ((end_date_2 is None) or start_date_1 < end_date_2) and ((end_date_1 is None) or start_date_2 < end_date_1):
-                    print(f"ERROR: Bigamy found. Individual {individual['ID']} has two overlapping marriages {family_id_1} and {family_id_2}.")
+                    print(f"ERROR: Bigamy found. Individual {individual['ID']} has two overlapping marriages {family_id_1} and {family_id_2}. (Line {individual['Line']})")
                 j += 1
             i += 1

@@ -53,10 +53,11 @@ class Test(unittest.TestCase):
                 "ID": "@F2@",
                 "Husband ID": "@I3@",
                 "Wife ID": "@I4@",
-                "Children": []
+                "Children": [],
+                "Line": 40
             }
         }
-        self.assertEqual(validation(families_dict), "ERROR: FAMILY: US18: @F2@: Husband (@I3@) and Wife (@I4@) are siblings from family (@F1@)\n")
+        self.assertEqual(validation(families_dict), "ERROR: FAMILY: US18: @F2@: Husband (@I3@) and Wife (@I4@) are siblings from family (@F1@) (Line 40)\n")
 
     def test3(self):
         """
@@ -105,19 +106,21 @@ class Test(unittest.TestCase):
                 "ID": "@F3@",
                 "Husband ID": "@I3@",
                 "Wife ID": "@I4@",
-                "Children": []
+                "Children": [],
+                "Line": 50
             },
             "@F4@": {
                 "ID": "@F4@",
                 "Husband ID": "@I7@",
                 "Wife ID": "@I8@",
-                "Children": []
+                "Children": [],
+                "Line": 60
             }
         }
         self.assertEqual(
             validation(families_dict),
-            "ERROR: FAMILY: US18: @F3@: Husband (@I3@) and Wife (@I4@) are siblings from family (@F1@)\n"
-            "ERROR: FAMILY: US18: @F4@: Husband (@I7@) and Wife (@I8@) are siblings from family (@F2@)\n"
+            "ERROR: FAMILY: US18: @F3@: Husband (@I3@) and Wife (@I4@) are siblings from family (@F1@) (Line 50)\n"
+            "ERROR: FAMILY: US18: @F4@: Husband (@I7@) and Wife (@I8@) are siblings from family (@F2@) (Line 60)\n"
         )
 
     def test5(self):

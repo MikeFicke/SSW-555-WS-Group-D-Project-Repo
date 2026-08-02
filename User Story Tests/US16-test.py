@@ -48,13 +48,13 @@ class TestMaleLastNames(unittest.TestCase):
             '@I1@': {'Name': 'John /Smith/', 'Gender': 'M'},
             '@I2@': {'Name': 'Jane /Doe/', 'Gender': 'F'},
             '@I3@': {'Name': 'Michael /Smith/', 'Gender': 'M'},
-            '@I4@': {'Name': 'David /Doe/', 'Gender': 'M'},
+            '@I4@': {'Name': 'David /Doe/', 'Gender': 'M', 'Line': 40},
         }
         families = {
             '@F1@': {'Husband ID': '@I1@', 'Wife ID': '@I2@', 'Children': ['@I3@', '@I4@']},
         }
 
-        self.assertEqual(validation(individuals, families), "ERROR: US16: David /Doe/'s last name 'Doe' does not match the husband's last name 'Smith'\n")
+        self.assertEqual(validation(individuals, families), "ERROR: US16: David /Doe/'s last name 'Doe' does not match the husband's last name 'Smith' (Line 40)\n")
         
         
 
@@ -100,7 +100,7 @@ class TestMaleLastNames(unittest.TestCase):
             '@I1@': {'Name': 'John /Smith/', 'Gender': 'M'},
             '@I2@': {'Name': 'Jane /Doe/', 'Gender': 'F'},
             '@I3@': {'Name': 'Michael /Smith/', 'Gender': 'M'},
-            '@I4@': {'Name': 'David /Doe/', 'Gender': 'M'},
+            '@I4@': {'Name': 'David /Doe/', 'Gender': 'M', 'Line': 40},
             '@I5@': {'Name': 'Sarah /Smith/', 'Gender': 'F'},
             '@I6@': {'Name': 'Emily /Doe/', 'Gender': 'F'},
         }
@@ -108,7 +108,7 @@ class TestMaleLastNames(unittest.TestCase):
             '@F1@': {'Husband ID': '@I1@', 'Wife ID': '@I2@', 'Children': ['@I3@', '@I4@', '@I5@', '@I6@']},
         }
 
-        self.assertEqual(validation(individuals, families), "ERROR: US16: David /Doe/'s last name 'Doe' does not match the husband's last name 'Smith'\n")        
+        self.assertEqual(validation(individuals, families), "ERROR: US16: David /Doe/'s last name 'Doe' does not match the husband's last name 'Smith' (Line 40)\n")        
 
 
 if __name__ == "__main__":

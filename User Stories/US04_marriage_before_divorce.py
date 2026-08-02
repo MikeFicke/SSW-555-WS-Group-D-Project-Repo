@@ -21,4 +21,4 @@ def validate_marriage_before_divorce(family_dict):
             continue  # there is no data, skip
         divorce_date = datetime.datetime.strptime(divorce_date, "%Y-%m-%d")
         if divorce_date < marriage_date:
-            print(f"ERROR: Divorce date {divorce_date.strftime('%Y-%m-%d')} is before marriage date {marriage_date.strftime('%Y-%m-%d')} for family {family['ID']}")
+            print(f"ERROR: Divorce date {divorce_date.strftime('%Y-%m-%d')} is before marriage date {marriage_date.strftime('%Y-%m-%d')} for family {family['ID']} (Line {family['Line']})")

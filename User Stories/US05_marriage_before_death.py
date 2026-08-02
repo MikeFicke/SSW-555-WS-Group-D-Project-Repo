@@ -32,4 +32,4 @@ def validate_marriage_before_death(individual_dict, family_dict):
         wife_death_date = individual_dict.get(family["Wife ID"], {}).get("Death", "NA")
 
         if _died_before(husband_death_date, marriage_date) or _died_before(wife_death_date, marriage_date):
-            print(f"ERROR: Death date in family {family['ID']} is before marriage date {marriage_date}")
+            print(f"ERROR: Death date in family {family['ID']} is before marriage date {marriage_date} (Line {family['Line']})")

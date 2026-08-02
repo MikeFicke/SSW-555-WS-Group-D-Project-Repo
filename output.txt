@@ -1,33 +1,21 @@
 Individuals
-+-------+--------------------------+--------+------------+-----+-------+------------+-------+----------+
-|   ID  |           Name           | Gender |  Birthday  | Age | Alive |   Death    | Child |  Spouse  |
-+-------+--------------------------+--------+------------+-----+-------+------------+-------+----------+
-|  @I1@ |  Husband /DiedRecently/  |   M    | 1960-03-10 |  66 | False | 2026-07-22 |   NA  | {'@F1@'} |
-|  @I2@ |   Wife /DiedRecently/    |   F    | 1962-06-22 |  64 | False | 2026-07-27 |   NA  | {'@F1@'} |
-|  @I3@ |      Living /Child/      |   M    | 1985-09-05 |  40 |  True |     NA     |  @F1@ | {'@F2@'} |
-|  @I4@ |      InLaw /Spouse/      |   F    | 1987-02-14 |  39 |  True |     NA     |   NA  | {'@F2@'} |
-|  @I5@ |   Living /Grandchild/    |   F    | 2010-01-01 |  16 |  True |     NA     |  @F2@ |    NA    |
-|  @I6@ |     Deceased /Child/     |   M    | 1988-01-01 |  2  | False | 1990-10-10 |  @F1@ |    NA    |
-|  @I7@ | Husband /DiedTooLongAgo/ |   M    | 1940-01-03 |  86 | False | 2026-06-17 |   NA  | {'@F3@'} |
-|  @I8@ |   Wife /OutsideWindow/   |   F    | 1945-03-15 |  81 |  True |     NA     |   NA  | {'@F3@'} |
-|  @I9@ |    Died /NoRelatives/    |   M    | 1950-01-01 |  76 | False | 2026-07-22 |   NA  |    NA    |
-| @I10@ | Unrelated /LivingPerson/ |   F    | 1990-01-01 |  36 |  True |     NA     |   NA  |    NA    |
-+-------+--------------------------+--------+------------+-----+-------+------------+-------+----------+
++------+-----------------------+--------+------------+-----+-------+-------+-------+----------+
+|  ID  |          Name         | Gender |  Birthday  | Age | Alive | Death | Child |  Spouse  |
++------+-----------------------+--------+------------+-----+-------+-------+-------+----------+
+| @I1@ |    Ancient /Person/   |   M    | 1800-01-01 | 226 |  True |   NA  |   NA  |    NA    |
+| @I2@ |    Husband /Parent/   |   M    | 1960-01-01 |  66 |  True |   NA  |   NA  | {'@F1@'} |
+| @I3@ |     Wife /Parent/     |   F    | 1962-01-01 |  64 |  True |   NA  |   NA  | {'@F1@'} |
+| @I4@ | Mismatched /LastName/ |   M    | 1990-01-01 |  36 |  True |   NA  |  @F1@ |    NA    |
++------+-----------------------+--------+------------+-----+-------+-------+-------+----------+
 
 Families
-+------+------------+----------+------------+--------------------------+---------+----------------------+------------------+
-|  ID  |  Married   | Divorced | Husband ID |       Husband Name       | Wife ID |      Wife Name       |     Children     |
-+------+------------+----------+------------+--------------------------+---------+----------------------+------------------+
-| @F1@ | 1984-06-15 |    NA    |    @I1@    |  Husband /DiedRecently/  |   @I2@  | Wife /DiedRecently/  | ['@I3@', '@I6@'] |
-| @F2@ | 2008-08-10 |    NA    |    @I3@    |      Living /Child/      |   @I4@  |    InLaw /Spouse/    |     ['@I5@']     |
-| @F3@ | 1965-06-01 |    NA    |    @I7@    | Husband /DiedTooLongAgo/ |   @I8@  | Wife /OutsideWindow/ |        []        |
-+------+------------+----------+------------+--------------------------+---------+----------------------+------------------+
++------+------------+----------+------------+------------------+---------+---------------+----------+
+|  ID  |  Married   | Divorced | Husband ID |   Husband Name   | Wife ID |   Wife Name   | Children |
++------+------------+----------+------------+------------------+---------+---------------+----------+
+| @F1@ | 1985-06-01 |    NA    |    @I2@    | Husband /Parent/ |   @I3@  | Wife /Parent/ | ['@I4@'] |
++------+------------+----------+------------+------------------+---------+---------------+----------+
 
-ERROR: US16: Living /Child/'s last name 'Child' does not match the husband's last name 'DiedRecently'
-ERROR: US16: Deceased /Child/'s last name 'Child' does not match the husband's last name 'DiedRecently'
-US29: Deceased Individuals: @I1@, @I2@, @I6@, @I7@, @I9@
-US30: Living married individuals: @I3@, @I4@, @I8@
-US31: Living individuals over 30 who have never been married: @I10@
-US36: Recent deaths: @I1@, @I2@, @I9@
-US37: Living spouses and descendants of recently deceased individuals: @I3@, @I5@
-US39: Upcoming anniversaries: @F2@
+ERROR: INDIVIDUAL: @I1@: Age is 150 years or older. (Line 9)
+ERROR: US16: Mismatched /LastName/'s last name 'LastName' does not match the husband's last name 'Parent' (Line 27)
+US30: Living married individuals: @I2@, @I3@
+US31: Living individuals over 30 who have never been married: @I1@, @I4@

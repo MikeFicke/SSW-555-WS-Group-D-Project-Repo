@@ -39,4 +39,4 @@ def validate_age_less_than_150(individuals):
         # bug caught: imprecision when handling date calculations, especially with leap years.
         # citation: https://www.google.com/search?q=how+to+calculate+years+in+Python+using+relativedelta+precisely&rlz=1C1CHBF_enUS1023US1023&oq=how+to+calculate+years+in+Python+using+relativedelta+precisely&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQIRigATIHCAIQIRigATIHCAMQIRigATIHCAQQIRigATIHCAUQIRigATIHCAYQIRiPAjIHCAcQIRiPAtIBCDk2NzJqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8
         if relativedelta(end_date, birthday).years >= 150:
-            print(f"ERROR: INDIVIDUAL: {individual['ID']}: Age is 150 years or older.")
+            print(f"ERROR: INDIVIDUAL: {individual['ID']}: Age is 150 years or older. (Line {individual['Line']})")

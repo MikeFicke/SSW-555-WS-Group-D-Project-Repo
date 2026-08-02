@@ -38,6 +38,7 @@ class TestBirthBeforeDeath(unittest.TestCase):
                 "ID": "@I1@",
                 "Birthday": "1990-01-01",
                 "Death": "2020-01-01",
+                "Line": 10,
             }
         }
         self.assertEqual(validation(individuals_dict), "")
@@ -51,9 +52,10 @@ class TestBirthBeforeDeath(unittest.TestCase):
                 "ID": "@I1@",
                 "Birthday": "2020-01-01",
                 "Death": "2010-01-01",
+                "Line": 10,
             }
         }
-        self.assertEqual(validation(individuals_dict), "ERROR: Birth date 2020-01-01 is after or the same as death date 2010-01-01 for individual @I1@\n")
+        self.assertEqual(validation(individuals_dict), "ERROR: Birth date 2020-01-01 is after or the same as death date 2010-01-01 for individual @I1@ (Line 10)\n")
 
     def test_birth_before_death_3(self):
         """
@@ -64,9 +66,10 @@ class TestBirthBeforeDeath(unittest.TestCase):
                 "ID": "@I1@",
                 "Birthday": "1990-01-01",
                 "Death": "1990-01-01",
+                "Line": 10,
             }
         }
-        self.assertEqual(validation(individuals_dict), "ERROR: Birth date 1990-01-01 is after or the same as death date 1990-01-01 for individual @I1@\n")
+        self.assertEqual(validation(individuals_dict), "ERROR: Birth date 1990-01-01 is after or the same as death date 1990-01-01 for individual @I1@ (Line 10)\n")
 
     def test_birth_before_death_4(self):
         """
@@ -76,7 +79,8 @@ class TestBirthBeforeDeath(unittest.TestCase):
             "@I1@": {
                 "ID": "@I1@",
                 "Birthday": "1985-01-01",
-                "Death": "NA"
+                "Death": "NA",
+                "Line": 10,
             }
         }
         self.assertEqual(validation(individuals_dict), "")
@@ -90,19 +94,22 @@ class TestBirthBeforeDeath(unittest.TestCase):
                 "ID": "@I1@",
                 "Birthday": "2010-01-01",
                 "Death": "2020-01-01",
+                "Line": 10,
             },
             "@I2@": {
                 "ID": "@I2@",
                 "Birthday": "1990-01-01",
                 "Death": "2020-01-01",
+                "Line": 20,
             },
             "@I3@": {
                 "ID": "@I3@",
                 "Birthday": "2020-01-01",
                 "Death": "2010-01-01",
+                "Line": 30,
             }
         }
-        self.assertEqual(validation(individuals_dict), "ERROR: Birth date 2020-01-01 is after or the same as death date 2010-01-01 for individual @I3@\n")
+        self.assertEqual(validation(individuals_dict), "ERROR: Birth date 2020-01-01 is after or the same as death date 2010-01-01 for individual @I3@ (Line 30)\n")
 
 if __name__ == "__main__":
     unittest.main()

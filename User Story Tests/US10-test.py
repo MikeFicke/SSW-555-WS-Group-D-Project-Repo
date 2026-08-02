@@ -37,7 +37,8 @@ class TestMarriageAfter14(unittest.TestCase):
                 "ID": "@F1@",
                 "Married": "2020-01-01",
                 "Husband ID": "@I1@",
-                "Wife ID": "@I2@"
+                "Wife ID": "@I2@",
+                "Line": 30
             }
         }
         self.assertEqual(validation(individuals_dict, families_dict), "")
@@ -63,10 +64,11 @@ class TestMarriageAfter14(unittest.TestCase):
                 "ID": "@F1@",
                 "Married": "2020-01-01",
                 "Husband ID": "@I1@",
-                "Wife ID": "@I2@"
+                "Wife ID": "@I2@",
+                "Line": 30
             }
         }
-        self.assertEqual(validation(individuals_dict, families_dict), "ERROR: FAMILY: US10: @F1@: Individual John /Doe/ was married before age 14.\n")
+        self.assertEqual(validation(individuals_dict, families_dict), "ERROR: FAMILY: US10: @F1@: Individual John /Doe/ was married before age 14. (Line 30)\n")
 
     def test3(self):
         """
@@ -89,10 +91,11 @@ class TestMarriageAfter14(unittest.TestCase):
                 "ID": "@F1@",
                 "Married": "2020-01-01",
                 "Husband ID": "@I1@",
-                "Wife ID": "@I2@"
+                "Wife ID": "@I2@",
+                "Line": 30
             }
         }
-        self.assertEqual(validation(individuals_dict, families_dict), "ERROR: FAMILY: US10: @F1@: Individual Jane /Doe/ was married before age 14.\n")
+        self.assertEqual(validation(individuals_dict, families_dict), "ERROR: FAMILY: US10: @F1@: Individual Jane /Doe/ was married before age 14. (Line 30)\n")
 
     def test4(self):
         """
@@ -115,12 +118,13 @@ class TestMarriageAfter14(unittest.TestCase):
                 "ID": "@F1@",
                 "Married": "2020-01-01",
                 "Husband ID": "@I1@",
-                "Wife ID": "@I2@"
+                "Wife ID": "@I2@",
+                "Line": 30
             }
         }
         self.assertEqual(validation(individuals_dict, families_dict),
-                        "ERROR: FAMILY: US10: @F1@: Individual John /Doe/ was married before age 14.\n" \
-                        "ERROR: FAMILY: US10: @F1@: Individual Jane /Doe/ was married before age 14.\n")
+                        "ERROR: FAMILY: US10: @F1@: Individual John /Doe/ was married before age 14. (Line 30)\n" \
+                        "ERROR: FAMILY: US10: @F1@: Individual Jane /Doe/ was married before age 14. (Line 30)\n")
 
     def test5(self):
         """
@@ -143,7 +147,8 @@ class TestMarriageAfter14(unittest.TestCase):
                 "ID": "@F1@",
                 "Married": "2020-01-01",
                 "Husband ID": "@I1@",
-                "Wife ID": "@I2@"
+                "Wife ID": "@I2@",
+                "Line": 30
             }
         }
         self.assertEqual(validation(individuals_dict, families_dict), "")

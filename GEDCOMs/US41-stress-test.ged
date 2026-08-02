@@ -1,0 +1,39 @@
+0 HEAD
+1 GEDC
+2 VERS 5.5.1
+2 FORM LINEAGE-LINKED
+1 CHAR UTF-8
+1 NOTE US41 Stress Test - List Line Numbers From GEDCOM Source File When Reporting Errors
+1 NOTE Each error below should cite the line number of the record that triggered it.
+1 NOTE @I1@'s INDI record starts on line 9; expect a US07 (150+ years old) error citing Line 9.
+0 @I1@ INDI
+1 NAME Ancient /Person/
+1 SEX M
+1 BIRT
+2 DATE 1 JAN 1800
+0 @I2@ INDI
+1 NAME Husband /Parent/
+1 SEX M
+1 BIRT
+2 DATE 1 JAN 1960
+1 FAMS @F1@
+0 @I3@ INDI
+1 NAME Wife /Parent/
+1 SEX F
+1 BIRT
+2 DATE 1 JAN 1962
+1 FAMS @F1@
+1 NOTE @I4@'s INDI record starts on line 27; expect a US16 (last name mismatch) error citing Line 27.
+0 @I4@ INDI
+1 NAME Mismatched /LastName/
+1 SEX M
+1 BIRT
+2 DATE 1 JAN 1990
+1 FAMC @F1@
+0 @F1@ FAM
+1 HUSB @I2@
+1 WIFE @I3@
+1 MARR
+2 DATE 1 JUN 1985
+1 CHIL @I4@
+0 TRLR

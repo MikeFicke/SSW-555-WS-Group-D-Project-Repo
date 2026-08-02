@@ -41,7 +41,7 @@ def validate_marriage_after_14(individual_dict, family_dict):
         wife_marriage_age = wife_age_diff.years
 
         if husband_marriage_age < 14:
-            print(f"ERROR: FAMILY: US10: {family['ID']}: Individual {individual_dict[husband]['Name']} was married before age 14.")
+            print(f"ERROR: FAMILY: US10: {family['ID']}: Individual {individual_dict[husband]['Name']} was married before age 14. (Line {family['Line']})")
 
         if wife_marriage_age < 14:
-            print(f"ERROR: FAMILY: US10: {family['ID']}: Individual {individual_dict[wife]['Name']} was married before age 14.")
+            print(f"ERROR: FAMILY: US10: {family['ID']}: Individual {individual_dict[wife]['Name']} was married before age 14. (Line {family['Line']})")

@@ -34,4 +34,5 @@ def validate_unique_first_names_and_dates_in_family(individuals, families):
         for (name, birthday), ids in children.items():
             if len(ids) >= 2:  # Duplicates found
                 id_list = ', '.join(ids)  # Format the list of duplicate IDs for the error message
-                print(f"ERROR: US25: FAMILY ({family['ID']}): Children ({id_list}) share the same name ({name}) and birth date ({birthday}).")
+                lines = ', '.join(str(individuals[child_id]['Line']) for child_id in ids)
+                print(f"ERROR: US25: FAMILY ({family['ID']}): Children ({id_list}) share the same name ({name}) and birth date ({birthday}). (Lines {lines})")

@@ -42,9 +42,9 @@ def validate_birth_after_marriage(individual_dict, families_dict):
             birth_date = datetime.datetime.strptime(birth_date, "%Y-%m-%d")
 
             if birth_date < marriage_date_parsed:
-                print(f"ERROR: Child {child} was born before the marriage of their parents in family {family['ID']}")
+                print(f"ERROR: Child {child} was born before the marriage of their parents in family {family['ID']} (Line {individual_dict[child]['Line']})")
 
             if divorce_date_parsed is not None and birth_date > divorce_date_parsed + relativedelta(months=9):
-                print(f"ERROR: Child {child} was born more than 9 months after the divorce of their parents in family {family['ID']}")
+                print(f"ERROR: Child {child} was born more than 9 months after the divorce of their parents in family {family['ID']} (Line {individual_dict[child]['Line']})")
 
     # Note: called the function in main.py to test with test data.

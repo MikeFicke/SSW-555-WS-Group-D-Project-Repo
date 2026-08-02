@@ -34,6 +34,7 @@ class TestAgeLessThan150(unittest.TestCase):
                 "ID": "@I1@",
                 "Birthday": "2000-01-01",
                 "Death": "NA",
+                "Line": 10,
             }
         }
         
@@ -48,9 +49,10 @@ class TestAgeLessThan150(unittest.TestCase):
                 "ID": "@I1@",
                 "Birthday": "1750-01-01",
                 "Death": "NA",
+                "Line": 10,
             }
         }
-        self.assertEqual(validation(individuals_dict), "ERROR: INDIVIDUAL: @I1@: Age is 150 years or older.\n")
+        self.assertEqual(validation(individuals_dict), "ERROR: INDIVIDUAL: @I1@: Age is 150 years or older. (Line 10)\n")
 
     def test_age_less_than_150_3(self):
         """
@@ -74,9 +76,10 @@ class TestAgeLessThan150(unittest.TestCase):
                 "ID": "@I1@",
                 "Birthday": "1800-01-01",
                 "Death": "1960-01-01",
+                "Line": 10,
             }
         }
-        self.assertEqual(validation(individuals_dict), "ERROR: INDIVIDUAL: @I1@: Age is 150 years or older.\n")
+        self.assertEqual(validation(individuals_dict), "ERROR: INDIVIDUAL: @I1@: Age is 150 years or older. (Line 10)\n")
 
     def test_age_less_than_150_5(self):
         """
@@ -152,9 +155,10 @@ class TestAgeLessThan150(unittest.TestCase):
                 "ID": "@I1@",
                 "Birthday": "1875-11-01",
                 "Death": "2025-11-01",
+                "Line": 10,
             }
         }
-        self.assertEqual(validation(individuals_dict), "ERROR: INDIVIDUAL: @I1@: Age is 150 years or older.\n")
+        self.assertEqual(validation(individuals_dict), "ERROR: INDIVIDUAL: @I1@: Age is 150 years or older. (Line 10)\n")
 
 
 if __name__ == "__main__":

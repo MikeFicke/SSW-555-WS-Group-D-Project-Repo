@@ -130,6 +130,7 @@ Output is printed to the terminal and also saved to `output.txt`.
 | US37 | List living spouses and descendants of people who died in the last 30 days                            |
 | US38 | List upcoming birthdays (within the next 30 days)                                                     |
 | US39 | List upcoming anniversaries (within the next 30 days)                                                 |
+| US41 | List line numbers from the GEDCOM source file when reporting errors                                   |
 
 ## Team
 

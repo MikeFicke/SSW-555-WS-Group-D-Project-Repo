@@ -18,9 +18,9 @@ def validate_divorce_before_death(individual_dict, family_dict):
         if husband_death and husband_death != "NA":
             husband_death = datetime.datetime.strptime(husband_death, "%Y-%m-%d").date()
             if husband_death < divorce_date:
-                print(f"ERROR: FAMILY: US06: {family['ID']}: Divorced {divorce_date} after husband's ({husband}) death on {husband_death}")
+                print(f"ERROR: FAMILY: US06: {family['ID']}: Divorced {divorce_date} after husband's ({husband}) death on {husband_death} (Line {family['Line']})")
         if wife_death and wife_death != "NA":
             wife_death = datetime.datetime.strptime(wife_death, "%Y-%m-%d").date()
             if wife_death < divorce_date:
-                print(f"ERROR: FAMILY: US06: {family['ID']}: Divorced {divorce_date} after wife's ({wife}) death on {wife_death}")
+                print(f"ERROR: FAMILY: US06: {family['ID']}: Divorced {divorce_date} after wife's ({wife}) death on {wife_death} (Line {family['Line']})")
         
