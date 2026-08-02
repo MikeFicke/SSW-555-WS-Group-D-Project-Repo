@@ -76,9 +76,11 @@ Output is printed to the terminal and also saved to `output.txt`.
 │   ├── US25_unique_first_names_and_dates_in_family.py
 │   ├── US26_corresponding_entries.py
 │   ├── US27_current_age.py
+│   ├── US28_siblings_by_age.py
 │   ├── US29_list_deceased.py
 │   ├── US30_list_living_married.py
 │   ├── US31_list_living_single_over_30.py
+│   ├── US34_large_age_gap_married_couples.py
 │   ├── US35_list_recent_births.py
 │   ├── US36_list_recent_deaths.py
 │   ├── US38_list_upcoming_birthdays.py
@@ -108,7 +110,7 @@ Output is printed to the terminal and also saved to `output.txt`.
 | US16 | Male last names (children have same last name as father)              |
 | US17 | No marriages to descendants                                           |
 | US18 | Siblings should not marry one another                                 |
-| US19 | First cousins should not marry one another                            |
+| US19 | First cousins should not marry one another                           |
 | US20 | Aunts and uncles should not marry their nieces or nephews             |
 | US21 | Correct gender for role (husband/wife)                                |
 | US22 | Unique individual and family IDs                                      |
@@ -117,16 +119,11 @@ Output is printed to the terminal and also saved to `output.txt`.
 | US25 | Unique first names and birth dates among children in a family         |
 | US26 | Corresponding entries (family/individual references match up)         |
 | US27 | Include individual's current age when listing individuals             |
-| US29 | List all deceased individuals                                         |
-| US30 | List all living married individuals                                   |
-| US31 | List living individuals over 30 who have never been married           |
-| US35 | List recent births (within the last 30 days)                          |
-| US36 | List recent deaths (within the last 30 days)                          |
-| US38 | List upcoming birthdays (within the next 30 days)                     |
-| US39 | List upcoming anniversaries (within the next 30 days)                 |
 | US28 | List siblings in families by decreasing age (oldest first)            |
 | US29 | List all deceased individuals                                         |
 | US30 | List all living married individuals                                   |
+| US31 | List living individuals over 30 who have never been married           |
+| US34 | List married couples where the older spouse is more than twice the younger spouse's age (at marriage) |
 | US35 | List recent births (within the last 30 days)                          |
 | US36 | List recent deaths (within the last 30 days)                          |
 | US38 | List upcoming birthdays (within the next 30 days)                     |
