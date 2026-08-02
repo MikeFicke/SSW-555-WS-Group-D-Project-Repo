@@ -39,6 +39,7 @@ from US24_unique_families_by_spouses import validate_unique_families_by_spouses
 from US29_list_deceased import validate_list_deceased
 from US30_list_living_married import validate_list_living_married
 from US31_list_living_single_over_30 import validate_list_living_single_over_30
+from US34_large_age_gap_married_couples import validate_large_age_gap_married_couples
 from US25_unique_first_names_and_dates_in_family import validate_unique_first_names_and_dates_in_family
 from US26_corresponding_entries import validate_corresponding_entries
 from US35_list_recent_births import validate_recent_births
@@ -91,6 +92,7 @@ if __name__ == "__main__":
         validate_list_deceased(individuals)
         validate_list_living_married(individuals)
         validate_list_living_single_over_30(individuals)
+        validate_large_age_gap_married_couples(individuals, families)
         validate_unique_first_names_and_dates_in_family(individuals, families)
         validate_corresponding_entries(individuals, families)
         validate_recent_births(individuals)
@@ -132,6 +134,7 @@ if __name__ == "__main__":
             validate_list_deceased(individuals)
             validate_list_living_married(individuals)
             validate_list_living_single_over_30(individuals)
+            validate_large_age_gap_married_couples(individuals, families)
             validate_unique_first_names_and_dates_in_family(individuals, families)
             validate_corresponding_entries(individuals, families)
             validate_recent_births(individuals)
