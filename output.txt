@@ -1,36 +1,27 @@
 Individuals
-+-------+-----------+--------+------------+-----+-------+------------+-------+------------------+
-|   ID  |    Name   | Gender |  Birthday  | Age | Alive |   Death    | Child |      Spouse      |
-+-------+-----------+--------+------------+-----+-------+------------+-------+------------------+
-|  @I1@ |    Mike   |   M    | 1955-07-04 |  71 |  True |     NA     |  @F2@ |     {'@F1@'}     |
-|  @I2@ |   Maria   |   F    | 1963-01-08 |  63 |  True |     NA     |  @F3@ |     {'@F1@'}     |
-|  @I3@ |  Michael  |   M    | 1998-01-08 |  28 |  True |     NA     |  @F1@ |        NA        |
-|  @I4@ |   Alexa   |   F    | 1993-03-08 |  33 |  True |     NA     |  @F1@ |        NA        |
-|  @I5@ |   Louis   |   M    | 1935-12-12 |  72 | False | 2008-07-03 |   NA  |     {'@F3@'}     |
-|  @I6@ |   Violet  |   F    | 1940-11-11 |  77 | False | 2018-04-04 |   NA  |     {'@F3@'}     |
-|  @I7@ |  Valerie  |   F    | 1960-09-07 |  47 | False | 2007-11-11 |  @F3@ |     {'@F4@'}     |
-|  @I8@ |    Bill   |   M    | 1958-02-05 |  66 | False | 2025-01-01 |   NA  | {'@F5@', '@F4@'} |
-|  @I9@ |  Kristen  |   F    | 1985-02-13 |  41 |  True |     NA     |  @F4@ |        NA        |
-| @I10@ |   Steven  |   M    | 1990-04-08 |  36 |  True |     NA     |  @F4@ |        NA        |
-| @I11@ |   Sarah   |   F    | 1973-10-19 |  52 |  True |     NA     |   NA  |     {'@F5@'}     |
-| @I12@ | Christina |   F    | 2010-05-10 |  16 |  True |     NA     |  @F5@ |        NA        |
-| @I13@ |   Martin  |   M    | 1930-10-22 |  74 | False | 2005-10-08 |   NA  |     {'@F2@'}     |
-| @I14@ |    Joan   |   F    | 1924-12-25 | 101 |  True |     NA     |   NA  |     {'@F2@'}     |
-+-------+-----------+--------+------------+-----+-------+------------+-------+------------------+
++------+-----------------------------+--------+------------+-----+-------+------------+-------+----------+
+|  ID  |             Name            | Gender |  Birthday  | Age | Alive |   Death    | Child |  Spouse  |
++------+-----------------------------+--------+------------+-----+-------+------------+-------+----------+
+| @I1@ |     Single /OverThirty/     |   F    | 1990-08-01 |  36 |  True |     NA     |   NA  |    NA    |
+| @I2@ |      JustOver /Thirty/      |   M    | 1995-07-31 |  31 |  True |     NA     |   NA  |    NA    |
+| @I3@ |       Exactly /Thirty/      |   F    | 1996-08-01 |  30 |  True |     NA     |   NA  |    NA    |
+| @I4@ |     Single /UnderThirty/    |   M    | 2000-08-01 |  26 |  True |     NA     |   NA  |    NA    |
+| @I5@ |     Married /OverThirty/    |   F    | 1980-08-01 |  46 |  True |     NA     |   NA  | {'@F1@'} |
+| @I6@ | Deceased /OverThirtySingle/ |   M    | 1970-08-01 |  49 | False | 2020-01-01 |   NA  |    NA    |
+| @I7@ |     Widowed /OverThirty/    |   F    | 1975-08-01 |  51 |  True |     NA     |   NA  | {'@F2@'} |
+| @I8@ |      Married /Husband/      |   M    | 1978-08-01 |  48 |  True |     NA     |   NA  | {'@F1@'} |
+| @I9@ |      Deceased /Husband/     |   M    | 1972-08-01 |  42 | False | 2015-01-01 |   NA  | {'@F2@'} |
++------+-----------------------------+--------+------------+-----+-------+------------+-------+----------+
 
 Families
-+------+------------+----------+------------+--------------+---------+-----------+-------------------+
-|  ID  |  Married   | Divorced | Husband ID | Husband Name | Wife ID | Wife Name |      Children     |
-+------+------------+----------+------------+--------------+---------+-----------+-------------------+
-| @F1@ | 1990-04-21 |    NA    |    @I1@    |     Mike     |   @I2@  |   Maria   |  ['@I4@', '@I3@'] |
-| @F2@ | 1952-06-12 |    NA    |   @I13@    |    Martin    |  @I14@  |    Joan   |      ['@I1@']     |
-| @F3@ | 1959-05-05 |    NA    |    @I5@    |    Louis     |   @I6@  |   Violet  |  ['@I7@', '@I2@'] |
-| @F4@ | 1983-05-14 |    NA    |    @I8@    |     Bill     |   @I7@  |  Valerie  | ['@I9@', '@I10@'] |
-| @F5@ | 2009-08-18 |    NA    |    @I8@    |     Bill     |  @I11@  |   Sarah   |     ['@I12@']     |
-+------+------------+----------+------------+--------------+---------+-----------+-------------------+
++------+------------+----------+------------+--------------------+---------+----------------------+----------+
+|  ID  |  Married   | Divorced | Husband ID |    Husband Name    | Wife ID |      Wife Name       | Children |
++------+------------+----------+------------+--------------------+---------+----------------------+----------+
+| @F1@ | 2005-06-10 |    NA    |    @I8@    | Married /Husband/  |   @I5@  | Married /OverThirty/ |    []    |
+| @F2@ | 2000-05-05 |    NA    |    @I9@    | Deceased /Husband/ |   @I7@  | Widowed /OverThirty/ |    []    |
++------+------------+----------+------------+--------------------+---------+----------------------+----------+
 
-ERROR: US16: Michael's last name 'Michael' does not match the husband's last name 'Mike'
-ERROR: US16: Mike's last name 'Mike' does not match the husband's last name 'Martin'
-ERROR: US16: Steven's last name 'Steven' does not match the husband's last name 'Bill'
-US29: Deceased Individuals: @I5@, @I6@, @I7@, @I8@, @I13@
-US30: Living married individuals: @I1@, @I2@, @I11@, @I14@
+US29: Deceased Individuals: @I6@, @I9@
+US30: Living married individuals: @I5@, @I7@, @I8@
+US31: Living individuals over 30 who have never been married: @I1@, @I2@
+US38: Upcoming birthdays: @I1@, @I3@, @I4@, @I5@, @I7@, @I8@
