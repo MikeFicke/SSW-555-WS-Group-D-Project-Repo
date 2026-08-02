@@ -71,8 +71,18 @@ Output is printed to the terminal and also saved to `output.txt`.
 │   ├── US20_no_marriage_between_aunt_uncle_and_niece_nephew.py
 │   ├── US21_correct_gender_role.py
 │   ├── US22_unique_ids.py
-│   ├── ...
-│   └── US27_current_age.py
+│   ├── US23_unique_name_and_birth_date.py
+│   ├── US24_unique_families_by_spouses.py
+│   ├── US25_unique_first_names_and_dates_in_family.py
+│   ├── US26_corresponding_entries.py
+│   ├── US27_current_age.py
+│   ├── US28_siblings_by_age.py
+│   ├── US29_list_deceased.py
+│   ├── US30_list_living_married.py
+│   ├── US35_list_recent_births.py
+│   ├── US36_list_recent_deaths.py
+│   ├── US38_list_upcoming_birthdays.py
+│   └── US39_list_upcoming_anniversaries.py
 └── User Story Tests/        # Unit tests per user story
 ```
 
@@ -102,7 +112,18 @@ Output is printed to the terminal and also saved to `output.txt`.
 | US20 | Aunts and uncles should not marry their nieces or nephews             |
 | US21 | Correct gender for role (husband/wife)                                |
 | US22 | Unique individual and family IDs                                      |
+| US23 | Unique name and birth date (no two individuals share both)            |
+| US24 | Unique families by spouses (name + marriage date)                     |
+| US25 | Unique first names and birth dates among children in a family         |
+| US26 | Corresponding entries (family/individual references match up)        |
 | US27 | Include individual's current age when listing individuals            |
+| US28 | List siblings in families by decreasing age (oldest first)            |
+| US29 | List all deceased individuals                                        |
+| US30 | List all living married individuals                                  |
+| US35 | List recent births (within the last 30 days)                         |
+| US36 | List recent deaths (within the last 30 days)                         |
+| US38 | List upcoming birthdays (within the next 30 days)                    |
+| US39 | List upcoming anniversaries (within the next 30 days)                |
 
 ## Team
 
