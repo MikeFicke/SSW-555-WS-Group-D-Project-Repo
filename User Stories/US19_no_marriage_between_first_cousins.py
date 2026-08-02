@@ -41,4 +41,4 @@ def validate_no_marriage_between_first_cousins(family_dict):
         )
 
         if is_first_cousins:
-            print(f"ERROR: FAMILY: US19: {family['ID']}: Husband ({husband}) and Wife ({wife}) are first cousins")
+            print(f"ERROR: FAMILY: US19: {family['ID']}: Husband ({husband}) and Wife ({wife}) are first cousins (Line {family['Line']})")

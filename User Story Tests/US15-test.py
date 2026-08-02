@@ -65,7 +65,8 @@ class TestFewerThan15Siblings(unittest.TestCase):
         families_dict = {
             "@F1@": {
                 "ID": "@F1@",
-                "Children": [f"@I{i}@" for i in range(15)]
+                "Children": [f"@I{i}@" for i in range(15)],
+                "Line": 30
             }
         }
         self.assertIn("ERROR", validation(families_dict))
@@ -77,7 +78,8 @@ class TestFewerThan15Siblings(unittest.TestCase):
         families_dict = {
             "@F1@": {
                 "ID": "@F1@",
-                "Children": [f"@I{i}@" for i in range(20)]
+                "Children": [f"@I{i}@" for i in range(20)],
+                "Line": 30
             }
         }
         self.assertIn("ERROR", validation(families_dict))
@@ -93,7 +95,8 @@ class TestFewerThan15Siblings(unittest.TestCase):
             },
             "@F2@": {
                 "ID": "@F2@",
-                "Children": [f"@I{i}@" for i in range(16)]
+                "Children": [f"@I{i}@" for i in range(16)],
+                "Line": 40
             }
         }
         output = validation(families_dict)

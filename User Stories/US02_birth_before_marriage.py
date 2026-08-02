@@ -24,7 +24,7 @@ def check_spouse_birth_helper(individual_dict, spouse_id, marriage_date, family_
     birthday = datetime.datetime.strptime(birthday, "%Y-%m-%d")
 
     if birthday >= marriage_date:
-        print(f"ERROR: {role}'s birthday in family {family_id} is after marriage date {marriage_date}")
+        print(f"ERROR: {role}'s birthday in family {family_id} is after marriage date {marriage_date} (Line {individual_dict[spouse_id]['Line']})")
 
 def validate_birth_before_marriage(individual_dict, family_dict):
     """

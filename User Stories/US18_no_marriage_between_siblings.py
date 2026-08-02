@@ -17,4 +17,4 @@ def validate_no_marriage_between_siblings(family_dict):
 
         for sibling_family_id, siblings in siblings_by_family.items():
             if husband in siblings and wife in siblings:
-                print(f"ERROR: FAMILY: US18: {family['ID']}: Husband ({husband}) and Wife ({wife}) are siblings from family ({sibling_family_id})")
+                print(f"ERROR: FAMILY: US18: {family['ID']}: Husband ({husband}) and Wife ({wife}) are siblings from family ({sibling_family_id}) (Line {family['Line']})")

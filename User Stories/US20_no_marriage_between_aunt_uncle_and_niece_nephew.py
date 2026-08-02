@@ -34,4 +34,4 @@ def validate_no_marriage_between_aunt_uncle_and_niece_nephew(family_dict):
         wife = family["Wife ID"]
 
         if is_aunt_or_uncle_of(husband, wife) or is_aunt_or_uncle_of(wife, husband):
-            print(f"ERROR: FAMILY: US20: {family['ID']}: Husband ({husband}) and Wife ({wife}) are aunt/uncle and niece/nephew")
+            print(f"ERROR: FAMILY: US20: {family['ID']}: Husband ({husband}) and Wife ({wife}) are aunt/uncle and niece/nephew (Line {family['Line']})")

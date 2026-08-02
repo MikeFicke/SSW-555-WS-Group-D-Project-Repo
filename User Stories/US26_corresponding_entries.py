@@ -29,20 +29,20 @@ def validate_corresponding_entries(individuals, families):
         if child_family_id != "NA":
             # We first checked to make sure that the value existed.  Now, we check to make sure that it matches
             if child_family_id not in families:
-                print(f"ERROR: US26: Family ({child_family_id}) referenced by individual ({individual_id}) does not exist.")
+                print(f"ERROR: US26: Family ({child_family_id}) referenced by individual ({individual_id}) does not exist. (Line {individual['Line']})")
             else:
                 # Check the ID with the list of children
                 if individual_id not in families[child_family_id]["Children"]:
-                    print(f"ERROR: US26: Individual ({individual_id}) says they are a child of family ({child_family_id}), but that family does not list them.")
-        
+                    print(f"ERROR: US26: Individual ({individual_id}) says they are a child of family ({child_family_id}), but that family does not list them. (Line {individual['Line']})")
+
         # Check 2: Individual is a spouse in a certain family
         for spouse_family_id in individual["Spouse"]:
             if spouse_family_id not in families:
-                print(f"ERROR: US26: Family ({spouse_family_id}) referenced by individual ({individual_id}) does not exist.")
+                print(f"ERROR: US26: Family ({spouse_family_id}) referenced by individual ({individual_id}) does not exist. (Line {individual['Line']})")
             else:
                 # Check the ID with the spouse fields
                 if individual_id != families[spouse_family_id]["Husband ID"] and individual_id != families[spouse_family_id]["Wife ID"]:
-                    print(f"ERROR: US26: Individual ({individual_id}) says they are a spouse in family ({spouse_family_id}), but that family does not list them as husband or wife.")
+                    print(f"ERROR: US26: Individual ({individual_id}) says they are a spouse in family ({spouse_family_id}), but that family does not list them as husband or wife. (Line {individual['Line']})")
         
     # Now we are looking a the family instead of the individual
     for family in families.values():
@@ -52,27 +52,27 @@ def validate_corresponding_entries(individuals, families):
         husband_id = family["Husband ID"]
         if husband_id != "NA":
             if husband_id not in individuals:
-                print(f"ERROR: US26: Individual ({husband_id}) referenced as husband in family ({family_id}) does not exist.")
+                print(f"ERROR: US26: Individual ({husband_id}) referenced as husband in family ({family_id}) does not exist. (Line {family['Line']})")
             else:
                 # Check the individual's Spouse list references this family
                 if family_id not in individuals[husband_id]["Spouse"]:
-                    print(f"ERROR: US26: Family ({family_id}) lists ({husband_id}) as husband, but that individual does not list this family as a spouse.")
+                    print(f"ERROR: US26: Family ({family_id}) lists ({husband_id}) as husband, but that individual does not list this family as a spouse. (Line {family['Line']})")
 
         # Check 4: Wife check
         wife_id = family["Wife ID"]
         if wife_id != "NA":
             if wife_id not in individuals:
-                print(f"ERROR: US26: Individual ({wife_id}) referenced as wife in family ({family_id}) does not exist.")
+                print(f"ERROR: US26: Individual ({wife_id}) referenced as wife in family ({family_id}) does not exist. (Line {family['Line']})")
             else:
                 # Check the individual's Spouse list references this family
                 if family_id not in individuals[wife_id]["Spouse"]:
-                    print(f"ERROR: US26: Family ({family_id}) lists ({wife_id}) as wife, but that individual does not list this family as a spouse.")
+                    print(f"ERROR: US26: Family ({family_id}) lists ({wife_id}) as wife, but that individual does not list this family as a spouse. (Line {family['Line']})")
 
         # Check 5: Children check
         for child_id in family["Children"]:
             if child_id not in individuals:
-                print(f"ERROR: US26: Individual ({child_id}) referenced as child in family ({family_id}) does not exist.")
+                print(f"ERROR: US26: Individual ({child_id}) referenced as child in family ({family_id}) does not exist. (Line {family['Line']})")
             else:
                 # Check the individual's Child field references this family
                 if individuals[child_id]["Child"] != family_id:
-                    print(f"ERROR: US26: Family ({family_id}) lists ({child_id}) as a child, but that individual does not list this family as their child.")
+                    print(f"ERROR: US26: Family ({family_id}) lists ({child_id}) as a child, but that individual does not list this family as their child. (Line {family['Line']})")

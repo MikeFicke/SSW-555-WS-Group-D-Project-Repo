@@ -37,6 +37,7 @@ class TestMarriageBeforeDivorce(unittest.TestCase):
                 "ID": "@F1@",
                 "Married": "2000-01-01",
                 "Divorced": "2010-01-01",
+                "Line": 30,
             }
         }
         self.assertEqual(validation(family_dict), "")
@@ -50,9 +51,10 @@ class TestMarriageBeforeDivorce(unittest.TestCase):
                 "ID": "@F1@",
                 "Married": "2010-01-01",
                 "Divorced": "2000-01-01",
+                "Line": 30,
             }
         }
-        self.assertEqual(validation(family_dict), "ERROR: Divorce date 2000-01-01 is before marriage date 2010-01-01 for family @F1@\n")
+        self.assertEqual(validation(family_dict), "ERROR: Divorce date 2000-01-01 is before marriage date 2010-01-01 for family @F1@ (Line 30)\n")
 
     def test_marriage_before_divorce_3(self):
         """
@@ -63,6 +65,7 @@ class TestMarriageBeforeDivorce(unittest.TestCase):
                 "ID": "@F1@",
                 "Married": "NA",
                 "Divorced": "NA",
+                "Line": 30,
             }
         }
         self.assertEqual(validation(family_dict), "")
@@ -76,6 +79,7 @@ class TestMarriageBeforeDivorce(unittest.TestCase):
                 "ID": "@F1@",
                 "Married": "2000-01-01",
                 "Divorced": "2010-01-01",
+                "Line": 30,
             }
         }
         self.assertEqual(validation(family_dict), "")
@@ -89,14 +93,16 @@ class TestMarriageBeforeDivorce(unittest.TestCase):
                 "ID": "@F1@",
                 "Married": "2000-01-01",
                 "Divorced": "2010-01-01",
+                "Line": 30,
             },
             "@F2@": {
                 "ID": "@F2@",
                 "Married": "2010-01-01",
                 "Divorced": "2000-01-01",
+                "Line": 40,
             }
         }
-        self.assertEqual(validation(family_dict), "ERROR: Divorce date 2000-01-01 is before marriage date 2010-01-01 for family @F2@\n")    
+        self.assertEqual(validation(family_dict), "ERROR: Divorce date 2000-01-01 is before marriage date 2010-01-01 for family @F2@ (Line 40)\n")
 
     def test_marriage_before_divorce_same_day_is_not_an_error(self):
         """

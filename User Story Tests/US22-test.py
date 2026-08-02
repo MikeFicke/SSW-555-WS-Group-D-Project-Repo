@@ -51,7 +51,7 @@ class TestUniqueIDs(unittest.TestCase):
             "0 @F1@ FAM"
         ]
 
-        self.assertEqual(validation(file_contents), "ERROR: Individual ID @I1@ appears more than once in the GEDCOM file.\n")
+        self.assertEqual(validation(file_contents), "ERROR: Individual ID @I1@ appears more than once in the GEDCOM file. (Line 3)\n")
 
     def test_unique_ids_3(self):
         """
@@ -66,7 +66,7 @@ class TestUniqueIDs(unittest.TestCase):
             "1 HUSB @I2@"
         ]
 
-        self.assertEqual(validation(file_contents), "ERROR: Family ID @F1@ appears more than once in the GEDCOM file.\n")
+        self.assertEqual(validation(file_contents), "ERROR: Family ID @F1@ appears more than once in the GEDCOM file. (Line 5)\n")
 
     def test_unique_ids_4(self):
         """
@@ -79,7 +79,7 @@ class TestUniqueIDs(unittest.TestCase):
             "0 @F1@ FAM"
         ]
 
-        self.assertEqual(validation(file_contents), "ERROR: Individual ID @I1@ appears more than once in the GEDCOM file.\nERROR: Family ID @F1@ appears more than once in the GEDCOM file.\n")
+        self.assertEqual(validation(file_contents), "ERROR: Individual ID @I1@ appears more than once in the GEDCOM file. (Line 2)\nERROR: Family ID @F1@ appears more than once in the GEDCOM file. (Line 4)\n")
 
     def test_unique_ids_5(self):
         """

@@ -100,6 +100,7 @@ class TestNoBigamy(unittest.TestCase):
                 "ID": "@I1@",
                 "Spouse": ["@F1@", "@F2@"],
                 "Death": "NA",
+                "Line": 10,
             },
             "@I2@": {
                 "ID": "@I2@",
@@ -130,6 +131,7 @@ class TestNoBigamy(unittest.TestCase):
         }
         # citation: https://www.google.com/search?q=python+when+should+I+use+assert+in+or+asset+equal&rlz=1C1CHBF_enUS1023US1023&oq=python+when+should+I+use+assert+in+or+asset+equal&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQIRigATIHCAIQIRigATIHCAMQIRigAdIBCDcxMzBqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8
         self.assertIn("ERROR", validation(individuals_dict, families_dict))
+        self.assertIn("(Line 10)", validation(individuals_dict, families_dict))
     
     def test_no_bigamy_4(self):
         """

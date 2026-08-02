@@ -37,9 +37,9 @@ def validate_parents_not_too_old(individual_dict, family_dict):
             father_diff = relativedelta(child_birth, father_birth)
 
             if father_diff.years >= 80:
-                print(f"ERROR: US12: Father ({father}) is 80 or more years older than child ({child})")
+                print(f"ERROR: US12: Father ({father}) is 80 or more years older than child ({child}) (Line {individual_dict[child]['Line']})")
 
             mother_diff = relativedelta(child_birth, mother_birth)
 
             if mother_diff.years >= 60:
-                print(f"ERROR: US12: Mother ({mother}) is 60 or more years older than child ({child})")
+                print(f"ERROR: US12: Mother ({mother}) is 60 or more years older than child ({child}) (Line {individual_dict[child]['Line']})")

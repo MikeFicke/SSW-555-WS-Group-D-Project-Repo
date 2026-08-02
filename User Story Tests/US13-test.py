@@ -35,6 +35,7 @@ class Test(unittest.TestCase):
         families_dict = {
             "@F1@": {
                 "ID": "@F1@",
+                "Line": 30,
                 "Children": ["@I1@", "@I2@"]
             }
         }
@@ -57,6 +58,7 @@ class Test(unittest.TestCase):
         families_dict = {
             "@F1@": {
                 "ID": "@F1@",
+                "Line": 30,
                 "Children": ["@I1@", "@I2@"]
             }
         }
@@ -79,10 +81,11 @@ class Test(unittest.TestCase):
         families_dict = {
             "@F1@": {
                 "ID": "@F1@",
+                "Line": 30,
                 "Children": ["@I1@", "@I2@"]
             }
         }
-        self.assertEqual(validation(individuals_dict, families_dict), "ERROR: FAMILY: US13: @F1@: Siblings (@I1@ and @I2@) have birthdays 2 days to 8 months apart\n")
+        self.assertEqual(validation(individuals_dict, families_dict), "ERROR: FAMILY: US13: @F1@: Siblings (@I1@ and @I2@) have birthdays 2 days to 8 months apart (Line 30)\n")
 
     def test4(self):
         """
@@ -109,14 +112,15 @@ class Test(unittest.TestCase):
         families_dict = {
             "@F1@": {
                 "ID": "@F1@",
+                "Line": 30,
                 "Children": ["@I1@", "@I2@", "@I3@", "@I4@"]
             }
         }
         self.assertEqual(validation(individuals_dict, families_dict),
-                        "ERROR: FAMILY: US13: @F1@: Siblings (@I1@ and @I3@) have birthdays 2 days to 8 months apart\n" \
-                        "ERROR: FAMILY: US13: @F1@: Siblings (@I1@ and @I4@) have birthdays 2 days to 8 months apart\n" \
-                        "ERROR: FAMILY: US13: @F1@: Siblings (@I2@ and @I3@) have birthdays 2 days to 8 months apart\n" \
-                        "ERROR: FAMILY: US13: @F1@: Siblings (@I2@ and @I4@) have birthdays 2 days to 8 months apart\n")
+                        "ERROR: FAMILY: US13: @F1@: Siblings (@I1@ and @I3@) have birthdays 2 days to 8 months apart (Line 30)\n" \
+                        "ERROR: FAMILY: US13: @F1@: Siblings (@I1@ and @I4@) have birthdays 2 days to 8 months apart (Line 30)\n" \
+                        "ERROR: FAMILY: US13: @F1@: Siblings (@I2@ and @I3@) have birthdays 2 days to 8 months apart (Line 30)\n" \
+                        "ERROR: FAMILY: US13: @F1@: Siblings (@I2@ and @I4@) have birthdays 2 days to 8 months apart (Line 30)\n")
 
     def test5(self):
         """
@@ -139,10 +143,11 @@ class Test(unittest.TestCase):
         families_dict = {
             "@F1@": {
                 "ID": "@F1@",
+                "Line": 30,
                 "Children": ["@I1@", "@I2@", "@I3@"]
             }
         }
-        self.assertEqual(validation(individuals_dict, families_dict), "ERROR: FAMILY: US13: @F1@: Siblings (@I2@ and @I3@) have birthdays 2 days to 8 months apart\n")
+        self.assertEqual(validation(individuals_dict, families_dict), "ERROR: FAMILY: US13: @F1@: Siblings (@I2@ and @I3@) have birthdays 2 days to 8 months apart (Line 30)\n")
 
 if __name__ == '__main__':
     unittest.main()

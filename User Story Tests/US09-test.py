@@ -69,6 +69,7 @@ class TestBirthBeforeParentDeath(unittest.TestCase):
             "@I3@": {
                 "ID": "@I3@",
                 "Birthday": "2001-01-01",
+                "Line": 40,
             }
         }
         families_dict = {
@@ -81,7 +82,7 @@ class TestBirthBeforeParentDeath(unittest.TestCase):
         }
         self.assertEqual(
             validation(individuals_dict, families_dict),
-            "ERROR: Child @I3@ was born after the death of their mother @I2@ in family @F1@\n"
+            "ERROR: Child @I3@ was born after the death of their mother @I2@ in family @F1@ (Line 40)\n"
         )
 
     def test_birth_before_parent_death_3(self):
@@ -100,6 +101,7 @@ class TestBirthBeforeParentDeath(unittest.TestCase):
             "@I3@": {
                 "ID": "@I3@",
                 "Birthday": "2001-06-01",
+                "Line": 40,
             }
         }
         families_dict = {
@@ -112,7 +114,7 @@ class TestBirthBeforeParentDeath(unittest.TestCase):
         }
         self.assertEqual(
             validation(individuals_dict, families_dict),
-            "ERROR: Child @I3@ was born more than 9 months after the death of their father @I1@ in family @F1@\n"
+            "ERROR: Child @I3@ was born more than 9 months after the death of their father @I1@ in family @F1@ (Line 40)\n"
         )
 
     def test_birth_before_parent_death_4(self):

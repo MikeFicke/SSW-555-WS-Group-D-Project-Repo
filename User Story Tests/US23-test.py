@@ -84,15 +84,17 @@ class Test(unittest.TestCase):
                 "ID": "@I1@",
                 "Name": "John /Doe/",
                 "Birthday": "2000-06-01",
+                "Line": 10,
             },
             "@I2@": {
                 "ID": "@I2@",
                 "Name": "John /Doe/",
                 "Birthday": "2000-06-01",
+                "Line": 20,
             }
         }
         families_dict = {}
-        self.assertEqual(validation(individuals_dict), "ERROR: US23: INDIVIDUALS (@I1@, @I2@): More than one individual with name (John /Doe/) and birth date (2000-06-01).\n")
+        self.assertEqual(validation(individuals_dict), "ERROR: US23: INDIVIDUALS (@I1@, @I2@): More than one individual with name (John /Doe/) and birth date (2000-06-01). (Lines 10, 20)\n")
 
     def test5(self):
         """
@@ -103,27 +105,31 @@ class Test(unittest.TestCase):
                 "ID": "@I1@",
                 "Name": "John /Doe/",
                 "Birthday": "2000-06-01",
+                "Line": 10,
             },
             "@I2@": {
                 "ID": "@I2@",
                 "Name": "John /Doe/",
                 "Birthday": "2000-06-01",
+                "Line": 20,
             },
             "@I3@": {
                 "ID": "@I3@",
                 "Name": "Jane /Doe/",
                 "Birthday": "2000-06-01",
+                "Line": 30,
             },
             "@I4@": {
                 "ID": "@I4@",
                 "Name": "Jane /Doe/",
                 "Birthday": "2000-06-01",
+                "Line": 40,
             }
         }
         families_dict = {}
-        self.assertEqual(validation(individuals_dict), 
-                        "ERROR: US23: INDIVIDUALS (@I1@, @I2@): More than one individual with name (John /Doe/) and birth date (2000-06-01).\n"
-                        "ERROR: US23: INDIVIDUALS (@I3@, @I4@): More than one individual with name (Jane /Doe/) and birth date (2000-06-01).\n")
+        self.assertEqual(validation(individuals_dict),
+                        "ERROR: US23: INDIVIDUALS (@I1@, @I2@): More than one individual with name (John /Doe/) and birth date (2000-06-01). (Lines 10, 20)\n"
+                        "ERROR: US23: INDIVIDUALS (@I3@, @I4@): More than one individual with name (Jane /Doe/) and birth date (2000-06-01). (Lines 30, 40)\n")
 
 if __name__ == '__main__':
     unittest.main()

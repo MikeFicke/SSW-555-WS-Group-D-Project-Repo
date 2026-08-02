@@ -41,8 +41,8 @@ def validate_no_marriages_to_descendants(family_dict):
 
         husband_descendants = get_descendants(husband, all_children)
         if wife in husband_descendants:
-            print(f"ERROR: FAMILY: US17: {family['ID']}: Husband ({husband}) married to descendant ({wife})")
+            print(f"ERROR: FAMILY: US17: {family['ID']}: Husband ({husband}) married to descendant ({wife}) (Line {family['Line']})")
 
         wife_descendants = get_descendants(wife, all_children)
         if husband in wife_descendants:
-            print(f"ERROR: FAMILY: US17: {family['ID']}: Wife ({wife}) married to descendant ({husband})")
+            print(f"ERROR: FAMILY: US17: {family['ID']}: Wife ({wife}) married to descendant ({husband}) (Line {family['Line']})")

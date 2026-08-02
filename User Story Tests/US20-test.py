@@ -59,12 +59,13 @@ class Test(unittest.TestCase):
                 "ID": "@F3@",
                 "Husband ID": "@I2@",
                 "Wife ID": "@I6@",
-                "Children": []
+                "Children": [],
+                "Line": 60
             }
         }
         self.assertEqual(
             validation(families_dict),
-            "ERROR: FAMILY: US20: @F3@: Husband (@I2@) and Wife (@I6@) are aunt/uncle and niece/nephew\n"
+            "ERROR: FAMILY: US20: @F3@: Husband (@I2@) and Wife (@I6@) are aunt/uncle and niece/nephew (Line 60)\n"
         )
 
     def test3(self):
@@ -88,12 +89,13 @@ class Test(unittest.TestCase):
                 "ID": "@F3@",
                 "Husband ID": "@I6@",
                 "Wife ID": "@I2@",
-                "Children": []
+                "Children": [],
+                "Line": 60
             }
         }
         self.assertEqual(
             validation(families_dict),
-            "ERROR: FAMILY: US20: @F3@: Husband (@I6@) and Wife (@I2@) are aunt/uncle and niece/nephew\n"
+            "ERROR: FAMILY: US20: @F3@: Husband (@I6@) and Wife (@I2@) are aunt/uncle and niece/nephew (Line 60)\n"
         )
 
     def test4(self):
@@ -149,7 +151,8 @@ class Test(unittest.TestCase):
                 "ID": "@F3@",
                 "Husband ID": "@I2@",
                 "Wife ID": "@I6@",
-                "Children": []
+                "Children": [],
+                "Line": 60
             },
             "@F4@": {
                 "ID": "@F4@",
@@ -167,13 +170,14 @@ class Test(unittest.TestCase):
                 "ID": "@F6@",
                 "Husband ID": "@I16@",
                 "Wife ID": "@I12@",
-                "Children": []
+                "Children": [],
+                "Line": 120
             }
         }
         self.assertEqual(
             validation(families_dict),
-            "ERROR: FAMILY: US20: @F3@: Husband (@I2@) and Wife (@I6@) are aunt/uncle and niece/nephew\n"
-            "ERROR: FAMILY: US20: @F6@: Husband (@I16@) and Wife (@I12@) are aunt/uncle and niece/nephew\n"
+            "ERROR: FAMILY: US20: @F3@: Husband (@I2@) and Wife (@I6@) are aunt/uncle and niece/nephew (Line 60)\n"
+            "ERROR: FAMILY: US20: @F6@: Husband (@I16@) and Wife (@I12@) are aunt/uncle and niece/nephew (Line 120)\n"
         )
 
     def test6(self):

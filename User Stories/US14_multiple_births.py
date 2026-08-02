@@ -28,4 +28,4 @@ def validate_multiple_births(individual_dict, family_dict):
 
         for birthday, children in children_birthdays.items():
             if len(children) > 5:
-                print(f"ERROR: US14: Family {family} has more than 5 children born on the same day ({birthday})")
+                print(f"ERROR: US14: Family {family} has more than 5 children born on the same day ({birthday}) (Line {family_dict[family]['Line']})")

@@ -12,4 +12,4 @@ def validate_fewer_than_15_siblings(family_dict):
         siblings = family["Children"]
 
         if len(siblings) >= 15:
-            print(f"ERROR: US15: Family ({family['ID']}) has {len(siblings)} siblings, which is 15 or more")
+            print(f"ERROR: US15: Family ({family['ID']}) has {len(siblings)} siblings, which is 15 or more (Line {family['Line']})")

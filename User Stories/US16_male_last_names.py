@@ -77,5 +77,5 @@ def validate_male_last_names(individual_dict, family_dict):
                 continue
             
             if child_last_name != husband_last_name:
-                print(f"ERROR: US16: {child_name}'s last name '{child_last_name}' does not match the husband's last name '{husband_last_name}'")
+                print(f"ERROR: US16: {child_name}'s last name '{child_last_name}' does not match the husband's last name '{husband_last_name}' (Line {individual_dict[child]['Line']})")
             

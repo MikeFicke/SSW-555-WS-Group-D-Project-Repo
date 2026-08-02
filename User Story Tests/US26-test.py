@@ -28,10 +28,10 @@ class TestCorrespondingEntries(unittest.TestCase):
         Valid.  All individuals and families are fully consistent.
         """
         individuals_dict = {
-            "@I1@": {"ID": "@I1@", "Name": "John /Doe/", "Birthday": "2000-01-01", "Child": "NA", "Spouse": ["@F1@"]},
-            "@I2@": {"ID": "@I2@", "Name": "Jane /Doe/", "Birthday": "2002-05-15", "Child": "NA", "Spouse": ["@F1@"]},
-            "@I3@": {"ID": "@I3@", "Name": "Tom /Doe/", "Birthday": "2005-03-10", "Child": "@F1@", "Spouse": []},
-            "@I4@": {"ID": "@I4@", "Name": "Sara /Doe/", "Birthday": "2007-08-20", "Child": "@F1@", "Spouse": []},
+            "@I1@": {"ID": "@I1@", "Name": "John /Doe/", "Birthday": "2000-01-01", "Child": "NA", "Spouse": ["@F1@"], "Line": 10},
+            "@I2@": {"ID": "@I2@", "Name": "Jane /Doe/", "Birthday": "2002-05-15", "Child": "NA", "Spouse": ["@F1@"], "Line": 10},
+            "@I3@": {"ID": "@I3@", "Name": "Tom /Doe/", "Birthday": "2005-03-10", "Child": "@F1@", "Spouse": [], "Line": 30},
+            "@I4@": {"ID": "@I4@", "Name": "Sara /Doe/", "Birthday": "2007-08-20", "Child": "@F1@", "Spouse": [], "Line": 30},
         }
         families_dict = {
             "@F1@": {"ID": "@F1@", "Husband ID": "@I1@", "Wife ID": "@I2@", "Children": ["@I3@", "@I4@"]},
@@ -44,12 +44,12 @@ class TestCorrespondingEntries(unittest.TestCase):
         Invalid.  Individual says Child = @F1@, but family @F1@ does not list them in Children.
         """
         individuals_dict = {
-            "@I1@": {"ID": "@I1@", "Name": "John /Doe/", "Birthday": "2000-01-01", "Child": "NA", "Spouse": ["@F1@"]},
-            "@I2@": {"ID": "@I2@", "Name": "Jane /Doe/", "Birthday": "2002-05-15", "Child": "NA", "Spouse": ["@F1@"]},
-            "@I3@": {"ID": "@I3@", "Name": "Tom /Doe/", "Birthday": "2005-03-10", "Child": "@F1@", "Spouse": []},
+            "@I1@": {"ID": "@I1@", "Name": "John /Doe/", "Birthday": "2000-01-01", "Child": "NA", "Spouse": ["@F1@"], "Line": 10},
+            "@I2@": {"ID": "@I2@", "Name": "Jane /Doe/", "Birthday": "2002-05-15", "Child": "NA", "Spouse": ["@F1@"], "Line": 10},
+            "@I3@": {"ID": "@I3@", "Name": "Tom /Doe/", "Birthday": "2005-03-10", "Child": "@F1@", "Spouse": [], "Line": 30},
         }
         families_dict = {
-            "@F1@": {"ID": "@F1@", "Husband ID": "@I1@", "Wife ID": "@I2@", "Children": []},
+            "@F1@": {"ID": "@F1@", "Husband ID": "@I1@", "Wife ID": "@I2@", "Children": [], "Line": 40},
         }
 
         self.assertNotEqual(validation(individuals_dict, families_dict), "")
@@ -59,12 +59,12 @@ class TestCorrespondingEntries(unittest.TestCase):
         Invalid.  Individual says Spouse = [@F1@], but family @F1@ does not list them as husband or wife.
         """
         individuals_dict = {
-            "@I1@": {"ID": "@I1@", "Name": "John /Doe/", "Birthday": "2000-01-01", "Child": "NA", "Spouse": ["@F1@"]},
-            "@I2@": {"ID": "@I2@", "Name": "Jane /Doe/", "Birthday": "2002-05-15", "Child": "NA", "Spouse": ["@F1@"]},
-            "@I3@": {"ID": "@I3@", "Name": "Tom /Doe/", "Birthday": "2005-03-10", "Child": "NA", "Spouse": ["@F1@"]},
+            "@I1@": {"ID": "@I1@", "Name": "John /Doe/", "Birthday": "2000-01-01", "Child": "NA", "Spouse": ["@F1@"], "Line": 10},
+            "@I2@": {"ID": "@I2@", "Name": "Jane /Doe/", "Birthday": "2002-05-15", "Child": "NA", "Spouse": ["@F1@"], "Line": 10},
+            "@I3@": {"ID": "@I3@", "Name": "Tom /Doe/", "Birthday": "2005-03-10", "Child": "NA", "Spouse": ["@F1@"], "Line": 10},
         }
         families_dict = {
-            "@F1@": {"ID": "@F1@", "Husband ID": "@I1@", "Wife ID": "@I2@", "Children": []},
+            "@F1@": {"ID": "@F1@", "Husband ID": "@I1@", "Wife ID": "@I2@", "Children": [], "Line": 40},
         }
 
         self.assertNotEqual(validation(individuals_dict, families_dict), "")
@@ -74,12 +74,12 @@ class TestCorrespondingEntries(unittest.TestCase):
         Invalid.  Family lists a child @I3@, but that individual's Child field does not point back.
         """
         individuals_dict = {
-            "@I1@": {"ID": "@I1@", "Name": "John /Doe/", "Birthday": "2000-01-01", "Child": "NA", "Spouse": ["@F1@"]},
-            "@I2@": {"ID": "@I2@", "Name": "Jane /Doe/", "Birthday": "2002-05-15", "Child": "NA", "Spouse": ["@F1@"]},
-            "@I3@": {"ID": "@I3@", "Name": "Tom /Doe/", "Birthday": "2005-03-10", "Child": "NA", "Spouse": []},
+            "@I1@": {"ID": "@I1@", "Name": "John /Doe/", "Birthday": "2000-01-01", "Child": "NA", "Spouse": ["@F1@"], "Line": 10},
+            "@I2@": {"ID": "@I2@", "Name": "Jane /Doe/", "Birthday": "2002-05-15", "Child": "NA", "Spouse": ["@F1@"], "Line": 10},
+            "@I3@": {"ID": "@I3@", "Name": "Tom /Doe/", "Birthday": "2005-03-10", "Child": "NA", "Spouse": [], "Line": 20},
         }
         families_dict = {
-            "@F1@": {"ID": "@F1@", "Husband ID": "@I1@", "Wife ID": "@I2@", "Children": ["@I3@"]},
+            "@F1@": {"ID": "@F1@", "Husband ID": "@I1@", "Wife ID": "@I2@", "Children": ["@I3@"], "Line": 40},
         }
 
         self.assertNotEqual(validation(individuals_dict, families_dict), "")
@@ -89,11 +89,11 @@ class TestCorrespondingEntries(unittest.TestCase):
         Invalid.  Family lists @I1@ as husband, but @I1@'s Spouse list does not reference that family.
         """
         individuals_dict = {
-            "@I1@": {"ID": "@I1@", "Name": "John /Doe/", "Birthday": "2000-01-01", "Child": "NA", "Spouse": []},
-            "@I2@": {"ID": "@I2@", "Name": "Jane /Doe/", "Birthday": "2002-05-15", "Child": "NA", "Spouse": ["@F1@"]},
+            "@I1@": {"ID": "@I1@", "Name": "John /Doe/", "Birthday": "2000-01-01", "Child": "NA", "Spouse": [], "Line": 20},
+            "@I2@": {"ID": "@I2@", "Name": "Jane /Doe/", "Birthday": "2002-05-15", "Child": "NA", "Spouse": ["@F1@"], "Line": 10},
         }
         families_dict = {
-            "@F1@": {"ID": "@F1@", "Husband ID": "@I1@", "Wife ID": "@I2@", "Children": []},
+            "@F1@": {"ID": "@F1@", "Husband ID": "@I1@", "Wife ID": "@I2@", "Children": [], "Line": 40},
         }
 
         self.assertNotEqual(validation(individuals_dict, families_dict), "")
@@ -103,12 +103,12 @@ class TestCorrespondingEntries(unittest.TestCase):
         Invalid.  Multiple errors: husband not referencing family, and child not referencing family.
         """
         individuals_dict = {
-            "@I1@": {"ID": "@I1@", "Name": "John /Doe/", "Birthday": "2000-01-01", "Child": "NA", "Spouse": []},
-            "@I2@": {"ID": "@I2@", "Name": "Jane /Doe/", "Birthday": "2002-05-15", "Child": "NA", "Spouse": ["@F1@"]},
-            "@I3@": {"ID": "@I3@", "Name": "Tom /Doe/", "Birthday": "2005-03-10", "Child": "NA", "Spouse": []},
+            "@I1@": {"ID": "@I1@", "Name": "John /Doe/", "Birthday": "2000-01-01", "Child": "NA", "Spouse": [], "Line": 20},
+            "@I2@": {"ID": "@I2@", "Name": "Jane /Doe/", "Birthday": "2002-05-15", "Child": "NA", "Spouse": ["@F1@"], "Line": 10},
+            "@I3@": {"ID": "@I3@", "Name": "Tom /Doe/", "Birthday": "2005-03-10", "Child": "NA", "Spouse": [], "Line": 20},
         }
         families_dict = {
-            "@F1@": {"ID": "@F1@", "Husband ID": "@I1@", "Wife ID": "@I2@", "Children": ["@I3@"]},
+            "@F1@": {"ID": "@F1@", "Husband ID": "@I1@", "Wife ID": "@I2@", "Children": ["@I3@"], "Line": 40},
         }
 
         self.assertNotEqual(validation(individuals_dict, families_dict), "")

@@ -37,7 +37,8 @@ class TestDivorceBeforeDeath(unittest.TestCase):
                 "ID": "@F1@",
                 "Divorced": "1990-01-01",
                 "Husband ID": "@I1@",
-                "Wife ID": "@I2@"
+                "Wife ID": "@I2@",
+                "Line": 30
             }
         }
         self.assertEqual(validation(individuals_dict, families_dict), "")
@@ -61,10 +62,11 @@ class TestDivorceBeforeDeath(unittest.TestCase):
                 "ID": "@F1@",
                 "Divorced": "2022-05-14",
                 "Husband ID": "@I1@",
-                "Wife ID": "@I2@"
+                "Wife ID": "@I2@",
+                "Line": 30
             }
         }
-        self.assertEqual(validation(individuals_dict, families_dict), "ERROR: FAMILY: US06: @F1@: Divorced 2022-05-14 after husband's (@I1@) death on 2020-06-01\n")
+        self.assertEqual(validation(individuals_dict, families_dict), "ERROR: FAMILY: US06: @F1@: Divorced 2022-05-14 after husband's (@I1@) death on 2020-06-01 (Line 30)\n")
 
     def test3(self):
         """
@@ -85,10 +87,11 @@ class TestDivorceBeforeDeath(unittest.TestCase):
                 "ID": "@F1@",
                 "Divorced": "2022-06-01",
                 "Husband ID": "@I1@",
-                "Wife ID": "@I2@"
+                "Wife ID": "@I2@",
+                "Line": 30
             }
         }
-        self.assertEqual(validation(individuals_dict, families_dict), "ERROR: FAMILY: US06: @F1@: Divorced 2022-06-01 after wife's (@I2@) death on 2020-06-01\n")
+        self.assertEqual(validation(individuals_dict, families_dict), "ERROR: FAMILY: US06: @F1@: Divorced 2022-06-01 after wife's (@I2@) death on 2020-06-01 (Line 30)\n")
 
     def test4(self):
         """
@@ -109,12 +112,13 @@ class TestDivorceBeforeDeath(unittest.TestCase):
                 "ID": "@F1@",
                 "Divorced": "2022-06-01",
                 "Husband ID": "@I1@",
-                "Wife ID": "@I2@"
+                "Wife ID": "@I2@",
+                "Line": 30
             }
         }
         self.assertEqual(validation(individuals_dict, families_dict),
-                        "ERROR: FAMILY: US06: @F1@: Divorced 2022-06-01 after husband's (@I1@) death on 2020-06-01\n" \
-                        "ERROR: FAMILY: US06: @F1@: Divorced 2022-06-01 after wife's (@I2@) death on 2015-01-03\n")
+                        "ERROR: FAMILY: US06: @F1@: Divorced 2022-06-01 after husband's (@I1@) death on 2020-06-01 (Line 30)\n" \
+                        "ERROR: FAMILY: US06: @F1@: Divorced 2022-06-01 after wife's (@I2@) death on 2015-01-03 (Line 30)\n")
 
     def test5(self):
         """
@@ -135,7 +139,8 @@ class TestDivorceBeforeDeath(unittest.TestCase):
                 "ID": "@F1@",
                 "Divorced": "2010-08-15",
                 "Husband ID": "@I1@",
-                "Wife ID": "@I2@"
+                "Wife ID": "@I2@",
+                "Line": 30
             }
         }
         self.assertEqual(validation(individuals_dict, families_dict), "")
@@ -159,7 +164,8 @@ class TestDivorceBeforeDeath(unittest.TestCase):
                 "ID": "@F1@",
                 "Divorced": "2010-08-15",
                 "Husband ID": "@I1@",
-                "Wife ID": "@I2@"
+                "Wife ID": "@I2@",
+                "Line": 30
             }
         }
         self.assertEqual(validation(individuals_dict, families_dict), "")

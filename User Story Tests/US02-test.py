@@ -33,10 +33,12 @@ class TestBirthBeforeMarriage(unittest.TestCase):
             "@I1@": {
                 "ID": "@I1@",
                 "Birthday": "1980-01-01",
+                "Line": 10,
             },
             "@I2@": {
                 "ID": "@I2@",
                 "Birthday": "1982-05-15",
+                "Line": 20,
             }
         }
         families_dict = {
@@ -57,10 +59,12 @@ class TestBirthBeforeMarriage(unittest.TestCase):
             "@I1@": {
                 "ID": "@I1@",
                 "Birthday": "2010-03-01",
+                "Line": 10,
             },
             "@I2@": {
                 "ID": "@I2@",
                 "Birthday": "1985-01-01",
+                "Line": 20,
             }
         }
         families_dict = {
@@ -73,6 +77,7 @@ class TestBirthBeforeMarriage(unittest.TestCase):
         }
         # citation: https://www.google.com/search?q=python+when+should+I+use+assert+in+or+asset+equal&rlz=1C1CHBF_enUS1023US1023&oq=python+when+should+I+use+assert+in+or+asset+equal&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQIRigATIHCAIQIRigATIHCAMQIRigAdIBCDcxMzBqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8
         self.assertIn("ERROR", validation(individuals_dict, families_dict))
+        self.assertIn("(Line 10)", validation(individuals_dict, families_dict))
 
     def test_birth_before_marriage_3(self):
         """
@@ -82,10 +87,12 @@ class TestBirthBeforeMarriage(unittest.TestCase):
             "@I1@": {
                 "ID": "@I1@",
                 "Birthday": "1980-01-01",
+                "Line": 10,
             },
             "@I2@": {
                 "ID": "@I2@",
                 "Birthday": "2010-03-01",
+                "Line": 20,
             }
         }
         families_dict = {
@@ -97,6 +104,7 @@ class TestBirthBeforeMarriage(unittest.TestCase):
             }
         }
         self.assertIn("ERROR", validation(individuals_dict, families_dict))
+        self.assertIn("(Line 20)", validation(individuals_dict, families_dict))
 
     def test_birth_before_marriage_4(self):
         """
@@ -106,10 +114,12 @@ class TestBirthBeforeMarriage(unittest.TestCase):
             "@I1@": {
                 "ID": "@I1@",
                 "Birthday": "2005-06-01",
+                "Line": 10,
             },
             "@I2@": {
                 "ID": "@I2@",
                 "Birthday": "1980-01-01",
+                "Line": 20,
             }
         }
         families_dict = {
@@ -130,10 +140,12 @@ class TestBirthBeforeMarriage(unittest.TestCase):
             "@I1@": {
                 "ID": "@I1@",
                 "Birthday": "1980-01-01",
+                "Line": 10,
             },
             "@I2@": {
                 "ID": "@I2@",
                 "Birthday": "1982-01-01",
+                "Line": 20,
             }
         }
         families_dict = {
@@ -145,7 +157,7 @@ class TestBirthBeforeMarriage(unittest.TestCase):
             }
         }
         self.assertEqual(validation(individuals_dict, families_dict), "")
-    
+
     def test_birth_before_marriage_6(self):
         """
         Husband ID is "NA"
@@ -154,6 +166,7 @@ class TestBirthBeforeMarriage(unittest.TestCase):
             "@I2@": {
                 "ID": "@I2@",
                 "Birthday": "1982-05-15",
+                "Line": 20,
             }
         }
         families_dict = {
@@ -174,10 +187,12 @@ class TestBirthBeforeMarriage(unittest.TestCase):
             "@I1@": {
                 "ID": "@I1@",
                 "Birthday": "1980-01-01",
+                "Line": 10,
             },
             "@I2@": {
                 "ID": "@I2@",
                 "Birthday": "NA",
+                "Line": 20,
             }
         }
         families_dict = {
@@ -189,7 +204,7 @@ class TestBirthBeforeMarriage(unittest.TestCase):
             }
         }
         self.assertEqual(validation(individuals_dict, families_dict), "")
-    
+
     def test_birth_before_marriage_8(self):
         """
         Both spouses born after marriage
@@ -198,10 +213,12 @@ class TestBirthBeforeMarriage(unittest.TestCase):
             "@I1@": {
                 "ID": "@I1@",
                 "Birthday": "2010-03-01",
+                "Line": 10,
             },
             "@I2@": {
                 "ID": "@I2@",
                 "Birthday": "2012-07-15",
+                "Line": 20,
             }
         }
         families_dict = {
@@ -215,7 +232,7 @@ class TestBirthBeforeMarriage(unittest.TestCase):
         # two errors printed here
         error_output = validation(individuals_dict, families_dict)
         self.assertEqual(error_output.count("ERROR"), 2)
-        
+
     def test_birth_before_marriage_9(self):
         """
         Husband ID references a missing individual
@@ -224,6 +241,7 @@ class TestBirthBeforeMarriage(unittest.TestCase):
             "@I2@": {
                 "ID": "@I2@",
                 "Birthday": "1982-05-15",
+                "Line": 20,
             }
         }
         families_dict = {
@@ -240,14 +258,16 @@ class TestBirthBeforeMarriage(unittest.TestCase):
         """
         Wife's birthday is an empty string
         """
-        individuals_dict = { 
+        individuals_dict = {
             "@I1@": {
                 "ID": "@I1@",
                 "Birthday": "1980-01-01",
+                "Line": 10,
             },
             "@I2@": {
                 "ID": "@I2@",
                 "Birthday": "",
+                "Line": 20,
             }
         }
         families_dict = {

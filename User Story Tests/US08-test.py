@@ -33,6 +33,7 @@ class TestBirthAfterMarriage(unittest.TestCase):
             "@I3@": {
                 "ID": "@I3@",
                 "Birthday": "2001-01-01",
+                "Line": 30,
             }
         }
         families_dict = {
@@ -55,6 +56,7 @@ class TestBirthAfterMarriage(unittest.TestCase):
             "@I3@": {
                 "ID": "@I3@",
                 "Birthday": "2003-01-01",
+                "Line": 30,
             }
         }
         families_dict = {
@@ -69,7 +71,7 @@ class TestBirthAfterMarriage(unittest.TestCase):
         }
         self.assertEqual(
             validation(individuals_dict, families_dict),
-            "ERROR: Child @I3@ was born before the marriage of their parents in family @F1@\n"
+            "ERROR: Child @I3@ was born before the marriage of their parents in family @F1@ (Line 30)\n"
         )
 
     def test_birth_after_marriage_3(self):
@@ -80,6 +82,7 @@ class TestBirthAfterMarriage(unittest.TestCase):
             "@I3@": {
                 "ID": "@I3@",
                 "Birthday": "2011-06-01",
+                "Line": 30,
             }
         }
         families_dict = {
@@ -94,7 +97,7 @@ class TestBirthAfterMarriage(unittest.TestCase):
         }
         self.assertEqual(
             validation(individuals_dict, families_dict),
-            "ERROR: Child @I3@ was born more than 9 months after the divorce of their parents in family @F1@\n"
+            "ERROR: Child @I3@ was born more than 9 months after the divorce of their parents in family @F1@ (Line 30)\n"
         )
 
     def test_birth_after_marriage_4(self):
