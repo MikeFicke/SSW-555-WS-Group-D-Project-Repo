@@ -10,6 +10,8 @@
 from prettytable import PrettyTable
 import datetime
 
+from US27_current_age import calculate_current_age
+
 # citation: https://github.com/MikeFicke/SSW-555-WS-M2.B3
 
 # valid GEDCOM tags, organized by their expected level in the GEDCOM data
@@ -120,16 +122,8 @@ def parse_gedcom(file_contents):
     # Compute Alive and Age for each individual
     for indi in individuals.values():
         indi["Alive"] = indi["Death"] == "NA"  # "Is this person's Death field still 'NA' ? "  Boolean check
-        # Calculate the age
-        if indi["Birthday"] == "NA":
-            indi["Age"] = "NA"
-        else:
-            birth_year = int(indi["Birthday"].split("-")[0])  #  YYYY-MM-DD
-            if indi["Death"] != "NA":  # Person is dead
-                death_year = int(indi["Death"].split("-")[0])  #  YYYY-MM-DD
-            else:
-                death_year = datetime.date.today().year  # Use the current year because the person is living
-            indi["Age"] = death_year - birth_year  # Calculate the age
+        # US27: Calculate the individual's current age (or age at death), precise to the day.
+        indi["Age"] = calculate_current_age(indi["Birthday"], indi["Death"])
 
     return individuals, families
 
