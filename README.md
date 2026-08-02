@@ -83,6 +83,7 @@ Output is printed to the terminal and also saved to `output.txt`.
 │   ├── US34_large_age_gap_married_couples.py
 │   ├── US35_list_recent_births.py
 │   ├── US36_list_recent_deaths.py
+│   ├── US37_list_living_relatives_of_recent_deaths.py
 │   ├── US38_list_upcoming_birthdays.py
 │   └── US39_list_upcoming_anniversaries.py
 └── User Story Tests/        # Unit tests per user story
@@ -90,46 +91,47 @@ Output is printed to the terminal and also saved to `output.txt`.
 
 ## Implemented User Stories
 
-| ID   | Description                                                           |
-| ---- | --------------------------------------------------------------------- |
-| US01 | Dates before current date                                             |
-| US02 | Birth before marriage                                                 |
-| US03 | Birth before death                                                    |
-| US04 | Marriage before divorce                                               |
-| US05 | Marriage before death of spouse                                       |
-| US06 | Divorce before death of spouse                                        |
-| US07 | Age less than 150 years                                               |
-| US08 | Birth after marriage of parents (and within 9 months of divorce)      |
-| US09 | Birth before death of parents (and within 9 months of father's death) |
-| US10 | Marriage after age 14                                                 |
-| US11 | No bigamy                                                             |
-| US12 | Parents not too old                                                   |
-| US13 | Siblings spacing (at least 8 minutes apart, unless multiple birth)    |
-| US14 | Multiple births fewer than 5 siblings with same birthday              |
-| US15 | Fewer than 15 siblings                                                |
-| US16 | Male last names (children have same last name as father)              |
-| US17 | No marriages to descendants                                           |
-| US18 | Siblings should not marry one another                                 |
-| US19 | First cousins should not marry one another                           |
-| US20 | Aunts and uncles should not marry their nieces or nephews             |
-| US21 | Correct gender for role (husband/wife)                                |
-| US22 | Unique individual and family IDs                                      |
-| US23 | Unique name and birth date (no two individuals share both)            |
-| US24 | Unique families by spouses (name + marriage date)                     |
-| US25 | Unique first names and birth dates among children in a family         |
-| US26 | Corresponding entries (family/individual references match up)         |
-| US27 | Include individual's current age when listing individuals             |
-| US28 | List siblings in families by decreasing age (oldest first)            |
-| US29 | List all deceased individuals                                         |
-| US30 | List all living married individuals                                   |
-| US31 | List living individuals over 30 who have never been married           |
+| ID   | Description                                                                                           |
+| ---- | ----------------------------------------------------------------------------------------------------- |
+| US01 | Dates before current date                                                                             |
+| US02 | Birth before marriage                                                                                 |
+| US03 | Birth before death                                                                                    |
+| US04 | Marriage before divorce                                                                               |
+| US05 | Marriage before death of spouse                                                                       |
+| US06 | Divorce before death of spouse                                                                        |
+| US07 | Age less than 150 years                                                                               |
+| US08 | Birth after marriage of parents (and within 9 months of divorce)                                      |
+| US09 | Birth before death of parents (and within 9 months of father's death)                                 |
+| US10 | Marriage after age 14                                                                                 |
+| US11 | No bigamy                                                                                             |
+| US12 | Parents not too old                                                                                   |
+| US13 | Siblings spacing (at least 8 minutes apart, unless multiple birth)                                    |
+| US14 | Multiple births fewer than 5 siblings with same birthday                                              |
+| US15 | Fewer than 15 siblings                                                                                |
+| US16 | Male last names (children have same last name as father)                                              |
+| US17 | No marriages to descendants                                                                           |
+| US18 | Siblings should not marry one another                                                                 |
+| US19 | First cousins should not marry one another                                                            |
+| US20 | Aunts and uncles should not marry their nieces or nephews                                             |
+| US21 | Correct gender for role (husband/wife)                                                                |
+| US22 | Unique individual and family IDs                                                                      |
+| US23 | Unique name and birth date (no two individuals share both)                                            |
+| US24 | Unique families by spouses (name + marriage date)                                                     |
+| US25 | Unique first names and birth dates among children in a family                                         |
+| US26 | Corresponding entries (family/individual references match up)                                         |
+| US27 | Include individual's current age when listing individuals                                             |
+| US28 | List siblings in families by decreasing age (oldest first)                                            |
+| US29 | List all deceased individuals                                                                         |
+| US30 | List all living married individuals                                                                   |
+| US31 | List living individuals over 30 who have never been married                                           |
 | US34 | List married couples where the older spouse is more than twice the younger spouse's age (at marriage) |
-| US35 | List recent births (within the last 30 days)                          |
-| US36 | List recent deaths (within the last 30 days)                          |
-| US38 | List upcoming birthdays (within the next 30 days)                     |
-| US39 | List upcoming anniversaries (within the next 30 days)                 |
+| US35 | List recent births (within the last 30 days)                                                          |
+| US36 | List recent deaths (within the last 30 days)                                                          |
+| US37 | List living spouses and descendants of people who died in the last 30 days                            |
+| US38 | List upcoming birthdays (within the next 30 days)                                                     |
+| US39 | List upcoming anniversaries (within the next 30 days)                                                 |
 
 ## Team
 
-- Group D — 3 members
+- Group D — 3 members: Michael Ficke, Sam Bryan, William Bryce
 - Branching: feature branches off `main`, merged via PRs only

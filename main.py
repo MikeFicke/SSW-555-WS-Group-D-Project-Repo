@@ -44,6 +44,7 @@ from US25_unique_first_names_and_dates_in_family import validate_unique_first_na
 from US26_corresponding_entries import validate_corresponding_entries
 from US35_list_recent_births import validate_recent_births
 from US36_list_recent_deaths import validate_recent_deaths
+from US37_list_living_relatives_of_recent_deaths import validate_living_relatives_of_recent_deaths
 from US38_list_upcoming_birthdays import validate_forthcoming_birthdays
 from US39_list_upcoming_anniversaries import validate_upcoming_anniversaries
 
@@ -97,6 +98,7 @@ if __name__ == "__main__":
         validate_corresponding_entries(individuals, families)
         validate_recent_births(individuals)
         validate_recent_deaths(individuals)
+        validate_living_relatives_of_recent_deaths(individuals, families)
         validate_forthcoming_birthdays(individuals)
         validate_upcoming_anniversaries(individuals, families)
 
@@ -139,6 +141,7 @@ if __name__ == "__main__":
             validate_corresponding_entries(individuals, families)
             validate_recent_births(individuals)
             validate_recent_deaths(individuals)
+            validate_living_relatives_of_recent_deaths(individuals, families)
             validate_forthcoming_birthdays(individuals)
             validate_upcoming_anniversaries(individuals, families)
             sys.stdout = output  # Restore to terminal
