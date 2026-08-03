@@ -36,17 +36,21 @@ from US21_correct_gender_role import validate_correct_gender_role
 from US22_unique_ids import validate_unique_ids
 from US23_unique_name_and_birth_date import validate_unique_name_and_birth_date
 from US24_unique_families_by_spouses import validate_unique_families_by_spouses
+from US25_unique_first_names_and_dates_in_family import validate_unique_first_names_and_dates_in_family
+from US26_corresponding_entries import validate_corresponding_entries
 from US29_list_deceased import validate_list_deceased
 from US30_list_living_married import validate_list_living_married
 from US31_list_living_single_over_30 import validate_list_living_single_over_30
+from US32_list_multiple_births import validate_list_multiple_births
+from US33_list_orphans import validate_list_orphans
 from US34_large_age_gap_married_couples import validate_large_age_gap_married_couples
-from US25_unique_first_names_and_dates_in_family import validate_unique_first_names_and_dates_in_family
-from US26_corresponding_entries import validate_corresponding_entries
 from US35_list_recent_births import validate_recent_births
 from US36_list_recent_deaths import validate_recent_deaths
 from US37_list_living_relatives_of_recent_deaths import validate_living_relatives_of_recent_deaths
 from US38_list_upcoming_birthdays import validate_forthcoming_birthdays
 from US39_list_upcoming_anniversaries import validate_upcoming_anniversaries
+from US41_include_partial_dates import validate_include_partial_dates
+from US42_reject_illegitimate_dates import validate_reject_illegitimate_dates
 
 if __name__ == "__main__":
     try:
@@ -93,6 +97,8 @@ if __name__ == "__main__":
         validate_list_deceased(individuals)
         validate_list_living_married(individuals)
         validate_list_living_single_over_30(individuals)
+        validate_list_multiple_births(individuals, families)
+        validate_list_orphans(individuals, families)
         validate_large_age_gap_married_couples(individuals, families)
         validate_unique_first_names_and_dates_in_family(individuals, families)
         validate_corresponding_entries(individuals, families)
@@ -101,6 +107,8 @@ if __name__ == "__main__":
         validate_living_relatives_of_recent_deaths(individuals, families)
         validate_forthcoming_birthdays(individuals)
         validate_upcoming_anniversaries(individuals, families)
+        validate_include_partial_dates(individuals, families)
+        validate_reject_illegitimate_dates(individuals, families)
 
         # Save terminal output as a text file
         # citation: https://www.google.com/search?q=how+to+output+terminal+outputs+to+a+text+file+in+Python&sca_esv=7f84a317695edff8&rlz=1C1CHBF_enUS1023US1023&sxsrf=ANbL-n7W5Mn-MFzFwoi1yTcPZDPfeGxnUg%3A1781305106935&ei=Eo8saofcOM7-ptQP3-DV-Qk&biw=1536&bih=825&ved=0ahUKEwiHrYrR5oKVAxVOv4kEHV9wNZ8Q4dUDCBA&uact=5&oq=how+to+output+terminal+outputs+to+a+text+file+in+Python&gs_lp=Egxnd3Mtd2l6LXNlcnAiN2hvdyB0byBvdXRwdXQgdGVybWluYWwgb3V0cHV0cyB0byBhIHRleHQgZmlsZSBpbiBQeXRob24yChAhGAoYoAEYwwRImQ1Q-QZYsAtwAngBkAEAmAGJAaABpgaqAQM1LjO4AQPIAQD4AQGYAgWgAskCwgIKEAAYRxjWBBiwA5gDAIgGAZAGCJIHAzMuMqAHtSiyBwMxLjK4B7MCwgcHMC4xLjMuMcgHGYAIAQ&sclient=gws-wiz-serp
@@ -136,6 +144,8 @@ if __name__ == "__main__":
             validate_list_deceased(individuals)
             validate_list_living_married(individuals)
             validate_list_living_single_over_30(individuals)
+            validate_list_multiple_births(individuals, families)
+            validate_list_orphans(individuals, families)
             validate_large_age_gap_married_couples(individuals, families)
             validate_unique_first_names_and_dates_in_family(individuals, families)
             validate_corresponding_entries(individuals, families)
@@ -144,6 +154,8 @@ if __name__ == "__main__":
             validate_living_relatives_of_recent_deaths(individuals, families)
             validate_forthcoming_birthdays(individuals)
             validate_upcoming_anniversaries(individuals, families)
+            validate_include_partial_dates(individuals, families)
+            validate_reject_illegitimate_dates(individuals, families)
             sys.stdout = output  # Restore to terminal
 
     except FileNotFoundError as fe:
