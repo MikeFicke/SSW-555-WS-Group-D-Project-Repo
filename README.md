@@ -124,6 +124,8 @@ Output is printed to the terminal and also saved to `output.txt`.
 | US29 | List all deceased individuals                                                                         |
 | US30 | List all living married individuals                                                                   |
 | US31 | List living individuals over 30 who have never been married                                           |
+| US32 | List multiple births (children born on the same date in a family)                                     |
+| US33 | List orphans (both parents dead, child under 18)                                                      |
 | US34 | List married couples where the older spouse is more than twice the younger spouse's age (at marriage) |
 | US35 | List recent births (within the last 30 days)                                                          |
 | US36 | List recent deaths (within the last 30 days)                                                          |
@@ -131,6 +133,7 @@ Output is printed to the terminal and also saved to `output.txt`.
 | US38 | List upcoming birthdays (within the next 30 days)                                                     |
 | US39 | List upcoming anniversaries (within the next 30 days)                                                 |
 | US41 | List line numbers from the GEDCOM source file when reporting errors                                   |
+| US42 | Reject illegitimate dates (all dates must be valid calendar dates)                                    |
 
 ## Team
 

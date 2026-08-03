@@ -6,6 +6,10 @@
 import datetime
 
 def illegitimate_date(date_str):
+    # If US41 has already parsed the date string into a datetime.date object,
+    # it is by definition a legitimate date — skip strptime.
+    if isinstance(date_str, (datetime.date, datetime.datetime)):
+        return False
     try:
         datetime.datetime.strptime(date_str, "%Y-%m-%d").date()
         return False

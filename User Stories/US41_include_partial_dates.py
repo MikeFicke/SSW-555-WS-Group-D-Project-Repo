@@ -23,23 +23,19 @@ def validate_include_partial_dates(individual_dict, family_dict):
         birthday = individual["Birthday"]
         death = individual["Death"]
 
-        if birthday != "NA":
-            individual["Birthday"] = parse_date(birthday)
+        # Parse dates for display only — do NOT mutate the shared dict
+        parsed_birthday = parse_date(birthday) if birthday != "NA" else "NA"
+        parsed_death = parse_date(death) if death != "NA" else "NA"
 
-        if death != "NA":
-            individual["Death"] = parse_date(death)
-
-        print(f"US41: INDIVIDUAL ({individual['ID']}): Birthday = {individual['Birthday']}, Death = {individual['Death']}")
+        print(f"US41: INDIVIDUAL ({individual['ID']}): Birthday = {parsed_birthday}, Death = {parsed_death}")
 
 
     for family in family_dict.values():
         married = family["Married"]
         divorced = family["Divorced"]
 
-        if married != "NA":
-            family["Married"] = parse_date(married)
+        # Parse dates for display only — do NOT mutate the shared dict
+        parsed_married = parse_date(married) if married != "NA" else "NA"
+        parsed_divorced = parse_date(divorced) if divorced != "NA" else "NA"
 
-        if divorced != "NA":
-            family["Divorced"] = parse_date(divorced)
-
-        print(f"US41: FAMILY ({family['ID']}): Married = {family['Married']}, Divorced = {family['Divorced']}")
+        print(f"US41: FAMILY ({family['ID']}): Married = {parsed_married}, Divorced = {parsed_divorced}")
